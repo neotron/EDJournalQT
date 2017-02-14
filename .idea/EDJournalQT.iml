@@ -36,7 +36,6 @@
       <sourceFolder url="file://$MODULE_DIR$/test/Handler.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/Handler.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/cmake/lib.cmake" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
