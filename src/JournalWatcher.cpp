@@ -20,18 +20,20 @@
 #include <QDir>
 #include "JournalWatcher.h"
 
-void JournalWatcher::watchDirectory(const QString &path) {
+void JournalWatcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate) {
     _watcher.addPath(path);
     QDir dir(path, "Journal.*.log");
     QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time);
-    size_t i = 0;
-    auto date = QDateTime::currentDateTime().addSecs(-3600); // Things changed in the last hour.
+    bool didStartMonitoring = false;
+    auto monitorDate = QDateTime::currentDateTime().addSecs(-3600); // Things changed in the last hour.
     for(auto entry : list) {
-        if(entry.lastModified() > date) {
+        if(entry.lastModified() > monitorDate && !didStartMonitoring) {
             fileChanged(entry.absoluteFilePath());
-            if(++i > 3) {
-                break;
-            }
+            didStartMonitoring = true;
+        } else if(parseNewerThanDate.isValid() && entry.lastModified() >= parseNewerThanDate) {
+            JournalFile journal(entry.absoluteFilePath());
+            connect(&journal, SIGNAL(onEvent(const JournalFile &, const Event &)), this, SLOT(handleEvent(const JournalFile &, const Event &)));
+            journal.parse();
         }
     }
 }

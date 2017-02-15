@@ -28,7 +28,7 @@ public:
 
     virtual ~JournalWatcher();
 
-    void watchDirectory(const QString &dir);
+    void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate = QDateTime());
 
 public slots:
 
