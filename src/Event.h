@@ -153,7 +153,7 @@ public:
     QDateTime timestamp() const {
         return QDateTime::fromString(string("timestamp"), Qt::ISODate);
     }
-    EventType eventType() const {
+    EventType type() const {
         return _eventType;
     }
 
@@ -183,7 +183,7 @@ public:
 
 
 private:
-    Event(QJsonObject obj, EventType type) : QObject(), _obj(obj), _eventType(type) {
+    Event(QJsonObject obj, EventType type) : QObject(), _eventType(type), _obj(obj) {
     }
 
 private:

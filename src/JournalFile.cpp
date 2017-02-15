@@ -66,7 +66,7 @@ void JournalFile::stopWatching() {
 }
 
 void JournalFile::handleEvent(const Event &event) {
-    switch(event.eventType()) {
+    switch(event.type()) {
         case EventTypeLoadGame:
             _commander = event.string("Commander");
             break;

@@ -86,7 +86,6 @@ JournalWatcher::~JournalWatcher() {
 }
 
 void JournalWatcher::handleEvent(const JournalFile &journal, const Event &event) {
-    qDebug() << "handleEvent("<<event.obj()<<")";
     emit onEvent(journal, event);
 }
 
