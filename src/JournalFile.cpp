@@ -50,14 +50,11 @@ void JournalFile::parse() {
 }
 
 void JournalFile::startWatching() {
-#ifdef Q_OS_OSX
-    // OS X doesn't have working file monitoring! At least not for Elite.
     if(!_timer) {
         _timer = new QTimer(this);
         connect(_timer, SIGNAL(timeout()), this, SLOT(parse()));
         _timer->start(1000);
     }
-#endif
 }
 
 void JournalFile::stopWatching() {
