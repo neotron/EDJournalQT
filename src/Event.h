@@ -151,7 +151,7 @@ public:
     static Event eventFromDocument(const QJsonDocument &document);
 
     QDateTime timestamp() const {
-        return QDateTime::fromString(string("timestamp"), Qt::ISODate);
+        return date("timestamp");
     }
     EventType type() const {
         return _eventType;
@@ -165,6 +165,10 @@ public:
     int integer(QString key) const {
         auto value = _obj.value(key);
         return (int) (value.isDouble() ? value.toDouble() : 0);
+    }
+
+    QDateTime date(QString key) const {
+        return QDateTime::fromString(string(key), Qt::ISODate);
     }
 
     const QJsonObject &obj() const {
