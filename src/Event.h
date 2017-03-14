@@ -140,7 +140,13 @@ enum EventType {
     EventTypeWingAdd,
     EventTypeWingJoin,
     EventTypeWingLeave,
-    EventTypeSystemsShutdown
+    EventTypeSystemsShutdown,
+    EventTypeCargo,
+    EventTypeLoadout,
+    EventTypeScanned,
+    EventTypeStartJump,
+    EventTypeMaterials,
+    EventTypeSetUserShipName
 };
 
 class Event : public QObject {

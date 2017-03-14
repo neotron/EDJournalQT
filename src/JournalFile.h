@@ -31,8 +31,12 @@ public:
     void stopWatching();
 
 
-    const QString &commander() const {
-        return _commander;
+    const QString commander() const {
+        QString commander(_commander);
+        if(_beta) {
+            commander += " (beta)";
+        }
+        return commander;
     }
 
     const QString &system() const {
@@ -64,6 +68,7 @@ private:
     QString _body;
     QString _settlement;
     QTimer  *_timer;
+    bool    _beta;
 };
 
 

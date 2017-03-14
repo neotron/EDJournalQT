@@ -25,7 +25,7 @@ JournalFile::~JournalFile() {
     _file.close();
 }
 
-JournalFile::JournalFile(const QString &path) : QObject(), _path(path), _file(path), _timer(nullptr) {
+JournalFile::JournalFile(const QString &path) : QObject(), _path(path), _file(path), _timer(nullptr), _beta(false) {
     if(!_file.open(QIODevice::ReadOnly)) {
         qDebug() << "Couldn't open file for reading.";
         return;
@@ -81,6 +81,8 @@ void JournalFile::handleEvent(const Event &event) {
         case EventTypeFSDJump:
             _system = event.string("StarSystem");
             break;
+        case EventTypeFileHeader:
+            _beta = event.string("gameversion").contains("beta", Qt::CaseInsensitive);
         default:
             // Ignore
             break;

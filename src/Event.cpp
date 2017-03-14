@@ -160,6 +160,12 @@ QMap<QString, EventType> Event::s_makeEventLookupMap() {
     map["wingjoin"] = EventTypeWingJoin;
     map["wingleave"] = EventTypeWingLeave;
     map["systemsshutdown"] = EventTypeSystemsShutdown;
+    map["cargo"] = EventTypeCargo;
+    map["loadout"] = EventTypeLoadout;
+    map["scanned"] = EventTypeScanned;
+    map["startjump"] = EventTypeStartJump;
+    map["materials"] = EventTypeMaterials;
+    map["setusershipname"] = EventTypeSetUserShipName;
     return map;
 }
 
