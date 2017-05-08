@@ -146,7 +146,14 @@ enum EventType {
     EventTypeScanned,
     EventTypeStartJump,
     EventTypeMaterials,
-    EventTypeSetUserShipName
+    EventTypeSetUserShipName,
+    EventTypeChangeCrewRole,
+    EventTypeCrewMemberJoins,
+    EventTypeCrewMemberQuits,
+    EventTypeCrewMemberRoleChange,
+    EventTypeEndCrewSession,
+    EventTypeJoinACrew,
+    EventTypeQuitACrew,
 };
 
 class Event : public QObject {

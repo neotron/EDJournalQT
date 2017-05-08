@@ -37,7 +37,6 @@ Event Event::eventFromDocument(const QJsonDocument &document) {
         qDebug() << "Unknown event" << event;
     }
     return Event(obj, eventType);
-
 }
 
 QMap<QString, EventType> Event::s_makeEventLookupMap() {
@@ -166,6 +165,13 @@ QMap<QString, EventType> Event::s_makeEventLookupMap() {
     map["startjump"] = EventTypeStartJump;
     map["materials"] = EventTypeMaterials;
     map["setusershipname"] = EventTypeSetUserShipName;
+    map["changecrewrole"] = EventTypeChangeCrewRole;
+    map["crewmemberjoins"]=EventTypeCrewMemberJoins;
+    map["crewmemberquits"] = EventTypeCrewMemberQuits;
+    map["crewmemberrolechange"] = EventTypeCrewMemberRoleChange;
+    map["endcrewsession"] = EventTypeEndCrewSession;
+    map["joinacrew"] = EventTypeJoinACrew;
+    map["quitacrew"] = EventTypeQuitACrew;
     return map;
 }
 
