@@ -22,11 +22,12 @@
 
 void JournalWatcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate) {
     _watcher.addPath(path);
+    _newerThanDate = parseNewerThanDate;
     QDir dir(path, "Journal.*.log");
     QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time);
     bool didStartMonitoring = false;
     auto monitorDate = QDateTime::currentDateTime().addSecs(-3600); // Things changed in the last hour.
-    for(auto entry : list) {
+    for(const auto &entry : list) {
         if(entry.lastModified() > monitorDate && !didStartMonitoring) {
             fileChanged(entry.absoluteFilePath());
             didStartMonitoring = true;
@@ -89,6 +90,11 @@ JournalWatcher::~JournalWatcher() {
 
 void JournalWatcher::handleEvent(const JournalFile &journal, const Event &event) {
     emit onEvent(journal, event);
+}
+
+void JournalWatcher::journalPathChanged(const QString &from, const QString &to) {
+    _watcher.removePath(from);
+    watchDirectory(to, _newerThanDate);
 }
 
 

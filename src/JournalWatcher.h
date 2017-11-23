@@ -24,9 +24,9 @@ class JournalWatcher : public QObject {
 Q_OBJECT
 
 public:
-    JournalWatcher(QObject *parent = nullptr);
+    explicit JournalWatcher(QObject *parent = nullptr);
 
-    virtual ~JournalWatcher();
+    ~JournalWatcher() override;
 
     void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate = QDateTime());
 
@@ -38,6 +38,8 @@ public slots:
 
     void handleEvent(const JournalFile &journal, const Event &event);
 
+    void journalPathChanged(const QString &from, const QString &to);
+
 signals:
 
     void onEvent(const JournalFile &journal, const Event &event);
@@ -46,6 +48,7 @@ private:
     QFileSystemWatcher           _watcher;
     QMap<QString, JournalFile *> _watchedFiles;
     QDateTime _lastTimeStamp;
+    QDateTime _newerThanDate;
 };
 
 
