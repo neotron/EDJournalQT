@@ -17,6 +17,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDebug>
+#include <QJsonArray>
 #include "Event.h"
 
 QMap<QString, EventType> Event::s_eventLookupMap = Event::s_makeEventLookupMap();
@@ -172,7 +173,62 @@ QMap<QString, EventType> Event::s_makeEventLookupMap() {
     map["endcrewsession"] = EventTypeEndCrewSession;
     map["joinacrew"] = EventTypeJoinACrew;
     map["quitacrew"] = EventTypeQuitACrew;
+    map["music"] = EventTypeMusic;
+    map["friends"] = EventTypeFriends;
+    map["passengers"] = EventTypePassengers;
+    map["winginvite"] = EventTypeWingInvite;
+    map["navbeaconscan"] = EventTypeNavBeaconScan;
+    map["missionredirected"] = EventTypeMissionRedirected;
+    map["engineercontribution"] = EventTypeEngineerContribution;
+
+
     return map;
+}
+
+#define FLOAT(OBJ, VAL) do { if(OBJ.isDouble()) { success &= true;  VAL = static_cast<float>(OBJ.toDouble()); } else { success = false; }} while(false)
+QVector3D Event::position() const {
+    auto value = _obj.value("StarPos");
+    if(value.isArray()) {
+        auto array = value.toArray();
+        if(array.size() == 3) {
+            bool success = true;
+            float x=0, y=0, z=0;
+            FLOAT(array[0], x);
+            FLOAT(array[1], x);
+            FLOAT(array[2], z);
+            if(success) {
+                return {x, y, z};
+            }
+        }
+    }
+    return QVector3D();
+}
+#undef FLOAT
+
+QDateTime Event::date(QString key) const {
+    return QDateTime::fromString(string(key), Qt::ISODate);
+}
+
+int Event::integer(QString key) const {
+    auto value = _obj.value(key);
+    return (int) (value.isDouble() ? value.toDouble() : 0);
+}
+
+QString Event::string(QString key) const {
+    auto value = _obj.value(key);
+    return value.isString() ? value.toString() : QString();
+}
+
+EventType Event::type() const {
+    return _eventType;
+}
+
+QDateTime Event::timestamp() const {
+    return date("timestamp");
+}
+
+const QJsonObject &Event::obj() const {
+    return _obj;
 }
 
 

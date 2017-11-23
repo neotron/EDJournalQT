@@ -20,6 +20,7 @@
 #include <QJsonObject>
 #include <QMap>
 #include <QDateTime>
+#include <QVector3D>
 
 enum EventType {
     EventTypeUnknown,
@@ -154,6 +155,13 @@ enum EventType {
     EventTypeEndCrewSession,
     EventTypeJoinACrew,
     EventTypeQuitACrew,
+    EventTypeMusic,
+    EventTypeFriends,
+    EventTypePassengers,
+    EventTypeWingInvite,
+    EventTypeNavBeaconScan,
+    EventTypeMissionRedirected,
+    EventTypeEngineerContribution,
 };
 
 class Event : public QObject {
@@ -163,45 +171,29 @@ public:
     virtual ~Event() { }
     static Event eventFromDocument(const QJsonDocument &document);
 
-    QDateTime timestamp() const {
-        return date("timestamp");
-    }
-    EventType type() const {
-        return _eventType;
-    }
+    QDateTime timestamp() const;
 
-    QString string(QString key) const {
-        auto value = _obj.value(key);
-        return value.isString() ? value.toString() : QString();
-    }
+    EventType type() const;
 
-    int integer(QString key) const {
-        auto value = _obj.value(key);
-        return (int) (value.isDouble() ? value.toDouble() : 0);
-    }
+    QString string(QString key) const;
 
-    QDateTime date(QString key) const {
-        return QDateTime::fromString(string(key), Qt::ISODate);
-    }
+    int integer(QString key) const;
 
-    const QJsonObject &obj() const {
-        return _obj;
-    }
+    QDateTime date(QString key) const;
 
+    const QJsonObject &obj() const;
 
+    QVector3D position() const;
 
-
-    Event(QObject *parent=nullptr) : QObject(parent) { }
-
-    Event(const Event &other) : _eventType(other._eventType), _obj(other._obj) {}
-    Event(const Event &&other) : _eventType(other._eventType), _obj(std::move(other._obj)) {}
+    explicit Event(QObject *parent=nullptr) : QObject(parent), _eventType(EventTypeUnknown), _obj() { }
 
     bool isValid() const { return _eventType != EventTypeUnknown; }
 
+    Event(const Event &other) : _eventType(other._eventType), _obj(other._obj) {}
+    Event(Event &&other) : _eventType(other._eventType), _obj(std::move(other._obj)) {}
 
 private:
-    Event(QJsonObject obj, EventType type) : QObject(), _eventType(type), _obj(obj) {
-    }
+    Event(QJsonObject obj, EventType type) : QObject(), _eventType(type), _obj(obj) {}
 
 private:
     static QMap<QString,EventType> s_makeEventLookupMap();
