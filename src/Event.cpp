@@ -180,7 +180,8 @@ QMap<QString, EventType> Event::s_makeEventLookupMap() {
     map["navbeaconscan"] = EventTypeNavBeaconScan;
     map["missionredirected"] = EventTypeMissionRedirected;
     map["engineercontribution"] = EventTypeEngineerContribution;
-
+    map["communitygoal"] = EventTypeCommunityGoal;
+    map["afmurepairs"] = EventTypeAFMURepairs;
 
     return map;
 }

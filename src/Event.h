@@ -162,6 +162,8 @@ enum EventType {
     EventTypeNavBeaconScan,
     EventTypeMissionRedirected,
     EventTypeEngineerContribution,
+    EventTypeCommunityGoal,
+    EventTypeAFMURepairs
 };
 
 class Event : public QObject {
