@@ -19,28 +19,33 @@
 
 #pragma once
 #include <QCoreApplication>
-#include <deps/EDJournalQT/src/JournalFile.h>
-#include <deps/EDJournalQT/src/Event.h>
-#include <deps/EDJournalQT/src/JournalWatcher.h>
-
-class LiveJournal : public QObject {
+#include "JournalFile.h"
+#include "Events/Event.h"
+#include "JournalWatcher.h"
+namespace Journal {
+    class LiveJournal : public QObject {
     Q_OBJECT
 
 
-public:
-    static LiveJournal *instance();
-    void startWatching(const QDateTime &newerThanDate);
+    public:
+        static LiveJournal *instance();
 
-public slots:
-    void handleEvent(const JournalFile &, const Event &);
-    void journalPathChanged(const QString &from, const QString &to);
+        void startWatching(const QDateTime &newerThanDate, const QString &path);
 
-signals:
-    void onEvent(const JournalFile &, const Event &);
-private:
-    explicit LiveJournal(QObject *parent);
+    public slots:
 
-    JournalWatcher *_watcher;
-};
+        void handleEvent(const JournalFile &, EventPtr);
 
+        void journalPathChanged(const QString &from, const QString &to);
+
+    signals:
+
+        void onEvent(const JournalFile &, EventPtr);
+
+    private:
+        explicit LiveJournal(QObject *parent);
+
+        JournalWatcher *_watcher;
+    };
+}
 

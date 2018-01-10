@@ -16,60 +16,62 @@
 
 #pragma once
 #include <QFile>
-#include "Event.h"
 #include <QSet>
 #include <QTimer>
+#include "Events/Event.h"
 
-class JournalFile : public QObject {
+namespace Journal {
+
+    class JournalFile : public QObject {
     Q_OBJECT
 
-public:
-    JournalFile(const QString &path);
-    virtual ~JournalFile();
+    public:
+        explicit JournalFile(const QString &path);
 
-    void startWatching();
-    void stopWatching();
+        ~JournalFile() override;
+
+        void startWatching();
+
+        void stopWatching();
 
 
-    const QString commander() const {
-        QString commander(_commander);
-        if(_beta) {
-            commander += " (beta)";
+        const QString commander() const {
+            QString commander(_commander);
+            if(_beta) {
+                commander += " (beta)";
+            }
+            return commander;
         }
-        return commander;
-    }
 
-    const QString &system() const {
-        return _system;
-    }
+        const QString &system() const {
+            return _system;
+        }
 
-    const QString &body() const {
-        return _body;
-    }
+        const QString &body() const {
+            return _body;
+        }
 
-    const QString &settlement() const {
-        return _settlement;
-    }
+        const QString &settlement() const {
+            return _settlement;
+        }
 
-public slots:
-       void parse();
+    public slots:
+        void parse();
 
-signals:
-    void onEvent(const JournalFile &journal, const Event &event);
+    signals:
+        void onEvent(const JournalFile &journal, EventPtr event);
 
-private:
-    void handleEvent(const Event &event);
+    private:
+        void handleEvent(EventPtr event);
 
 
-    QString _commander;
-    QString _path;
-    QFile   _file;
-    QString _system;
-    QString _body;
-    QString _settlement;
-    QTimer  *_timer;
-    bool    _beta;
-};
-
-
-
+        QString _commander;
+        QString _path;
+        QFile _file;
+        QString _system;
+        QString _body;
+        QString _settlement;
+        QTimer *_timer;
+        bool _beta;
+    };
+}

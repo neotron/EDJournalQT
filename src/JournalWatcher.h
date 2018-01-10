@@ -19,37 +19,36 @@
 #include <QFileSystemWatcher>
 #include <QMap>
 #include "JournalFile.h"
+namespace Journal {
+    class JournalWatcher : public QObject {
+    Q_OBJECT
 
-class JournalWatcher : public QObject {
-Q_OBJECT
+    public:
+        explicit JournalWatcher(QObject *parent = nullptr);
 
-public:
-    explicit JournalWatcher(QObject *parent = nullptr);
+        ~JournalWatcher() override;
 
-    ~JournalWatcher() override;
+        void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate = QDateTime());
 
-    void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate = QDateTime());
+    public slots:
 
-public slots:
+        void fileChanged(const QString &path);
 
-    void fileChanged(const QString &path);
+        void directoryChanged(const QString &path);
 
-    void directoryChanged(const QString &path);
+        void handleEvent(const JournalFile &journal, EventPtr event);
 
-    void handleEvent(const JournalFile &journal, const Event &event);
+        void journalPathChanged(const QString &from, const QString &to);
 
-    void journalPathChanged(const QString &from, const QString &to);
+    signals:
 
-signals:
+        void onEvent(const JournalFile &journal, EventPtr event);
 
-    void onEvent(const JournalFile &journal, const Event &event);
-
-private:
-    QFileSystemWatcher           _watcher;
-    QMap<QString, JournalFile *> _watchedFiles;
-    QDateTime _lastTimeStamp;
-    QDateTime _newerThanDate;
-};
-
-
+    private:
+        QFileSystemWatcher           _watcher;
+        QMap<QString, JournalFile *> _watchedFiles;
+        QDateTime _lastTimeStamp;
+        QDateTime _newerThanDate;
+    };
+}
 

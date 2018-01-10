@@ -1,5 +1,5 @@
 //
-//  Copyright (C) 2016  David Hedbor <neotron@gmail.com>
+//  Copyright (C) 2018-  David Hedbor <neotron@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,75 +19,76 @@
 #include <QJsonArray>
 #include <QDebug>
 #include "JournalFile.h"
-
-JournalFile::~JournalFile() {
-    stopWatching();
-    _file.close();
-}
-
-JournalFile::JournalFile(const QString &path) : QObject(), _path(path), _file(path), _timer(nullptr), _beta(false) {
-    if(!_file.open(QIODevice::ReadOnly)) {
-        qDebug() << "Couldn't open file for reading.";
-        return;
+namespace Journal {
+    JournalFile::~JournalFile() {
+        stopWatching();
+        _file.close();
     }
-}
 
-void JournalFile::parse() {
-    while(!_file.atEnd()) {
-        auto lineBytes = _file.readLine();
-        if(lineBytes.isEmpty()) {
-            continue;
-        }
-        auto doc = QJsonDocument::fromJson(lineBytes);
-        if(doc.isEmpty() || !doc.isObject()) {
-            continue;
-        }
-        auto event = Event::eventFromDocument(doc);
-        if(event.isValid()) {
-            handleEvent(event);
+    JournalFile::JournalFile(const QString &path)
+        : QObject(), _path(path), _file(path), _timer(nullptr), _beta(false) {
+        if(!_file.open(QIODevice::ReadOnly)) {
+            qDebug() << "Couldn't open file for reading.";
+            return;
         }
     }
-}
 
-void JournalFile::startWatching() {
-    if(!_timer) {
-        _timer = new QTimer(this);
-        connect(_timer, SIGNAL(timeout()), this, SLOT(parse()));
-        _timer->start(1000);
+    void JournalFile::parse() {
+        while(!_file.atEnd()) {
+            auto lineBytes = _file.readLine();
+            if(lineBytes.isEmpty()) {
+                continue;
+            }
+            auto doc = QJsonDocument::fromJson(lineBytes);
+            if(doc.isEmpty() || !doc.isObject()) {
+                continue;
+            }
+            auto event = Event::eventFromDocument(doc);
+            if(event) {
+                handleEvent(event);
+            }
+        }
+    }
+
+    void JournalFile::startWatching() {
+        if(!_timer) {
+            _timer = new QTimer(this);
+            connect(_timer, SIGNAL(timeout()), this, SLOT(parse()));
+            _timer->start(1000);
+        }
+    }
+
+    void JournalFile::stopWatching() {
+        delete _timer;
+        _timer = nullptr;
+    }
+
+    void JournalFile::handleEvent(EventPtr event) {
+        switch(event->type()) {
+            case EventTypeLoadGame:
+                _commander = event->string("Commander");
+                break;
+            case EventTypeApproachSettlement:
+                _settlement = event->string("Name");
+                break;
+            case EventTypeSupercruiseEntry:
+                // Reset body
+                _body = "";
+                break;
+            case EventTypeSupercruiseExit:
+                _body = event->string("Body");
+                // intentional Fallthrough
+            case EventTypeLocation:
+            case EventTypeFSDJump:
+                _system = event->string("StarSystem");
+                break;
+            case EventTypeFileHeader:
+                _beta = event->string("gameversion").contains("beta", Qt::CaseInsensitive);
+            default:
+                // Ignore
+                break;
+        }
+        emit onEvent(*this, event);
     }
 }
-
-void JournalFile::stopWatching() {
-    delete _timer;
-    _timer = nullptr;
-}
-
-void JournalFile::handleEvent(const Event &event) {
-    switch(event.type()) {
-        case EventTypeLoadGame:
-            _commander = event.string("Commander");
-            break;
-        case EventTypeApproachSettlement:
-            _settlement = event.string("Name");
-            break;
-        case EventTypeSupercruiseEntry:
-            // Reset body
-            _body = "";
-            break;
-        case EventTypeSupercruiseExit:
-            _body   = event.string("Body");
-            // intentional Fallthrough
-        case EventTypeLocation:
-        case EventTypeFSDJump:
-            _system = event.string("StarSystem");
-            break;
-        case EventTypeFileHeader:
-            _beta = event.string("gameversion").contains("beta", Qt::CaseInsensitive);
-        default:
-            // Ignore
-            break;
-    }
-    emit onEvent(*this, event);
-}
-
 

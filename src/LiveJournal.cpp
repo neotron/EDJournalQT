@@ -15,32 +15,32 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "Settings.h"
+#include "JournalWatcher.h"
 #include "LiveJournal.h"
-
-LiveJournal::LiveJournal(QObject *parent) : QObject(parent), _watcher(new JournalWatcher(this)) {
-    connect(_watcher, SIGNAL(onEvent(const JournalFile &, const Event &)),
-            this, SLOT(handleEvent(const JournalFile &, const Event &)));
-}
-
-LiveJournal *LiveJournal::instance() {
-    static LiveJournal * s_journal = nullptr;
-    if(!s_journal) {
-        s_journal = new LiveJournal(qApp);
+namespace Journal {
+    LiveJournal::LiveJournal(QObject *parent)
+        : QObject(parent), _watcher(new JournalWatcher(this)) {
+        connect(_watcher, SIGNAL(onEvent(const JournalFile &, EventPtr)), this,
+                SLOT(handleEvent(const JournalFile &, EventPtr)));
     }
-    return s_journal;
+
+    LiveJournal *LiveJournal::instance() {
+        static LiveJournal *s_journal = nullptr;
+        if(!s_journal) {
+            s_journal = new LiveJournal(qApp);
+        }
+        return s_journal;
+    }
+
+    void LiveJournal::handleEvent(const JournalFile &file, EventPtr event) {
+        emit onEvent(file, event);
+    }
+
+    void LiveJournal::startWatching(const QDateTime &newerThanDate, const QString &path) {
+        _watcher->watchDirectory(path, newerThanDate);
+    }
+
+    void LiveJournal::journalPathChanged(const QString &from, const QString &to) {
+        _watcher->journalPathChanged(from, to);
+    }
 }
-
-void LiveJournal::handleEvent(const JournalFile &file, const Event &event) {
-    emit onEvent(file, event);
-}
-
-void LiveJournal::startWatching(const QDateTime &newerThanDate) {
-    _watcher->watchDirectory(Settings::restoreJournalPath(), newerThanDate);
-
-}
-
-void LiveJournal::journalPathChanged(const QString &from, const QString &to) {
-    _watcher->journalPathChanged(from, to);
-}
-
