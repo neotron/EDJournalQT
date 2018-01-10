@@ -36,13 +36,13 @@ namespace Journal {
         auto obj = document.object();
         auto event = obj.value("event").toString().toLower();
 
-        auto eventType = s_eventLookupMap.contains(event) ? s_eventLookupMap[event] : EventTypeUnknown;
+        auto eventType = s_eventLookupMap.contains(event) ? s_eventLookupMap[event] : Unknown;
 
-        if(eventType == EventTypeUnknown) {
+        if(eventType == Unknown) {
             qDebug() << "Unknown event" << event;
         }
         switch(eventType) {
-            case EventTypeScan:
+            case Scan:
                 return std::make_shared<EventScan>(obj);
             default:
                 return std::make_shared<Event>(obj, eventType);
@@ -90,7 +90,7 @@ namespace Journal {
         return value.toArray();
     }
 
-    EventType Event::type() const {
+    Event::Type Event::type() const {
         return _eventType;
     }
 
@@ -112,7 +112,7 @@ namespace Journal {
         return value.isBool() ? value.toBool() : false;
     }
 
-    Event::Event(const QJsonObject &obj, EventType type)
+    Event::Event(const QJsonObject &obj, Type type)
         : QObject(), _eventType(type), _obj(obj) {}
 
     const EventScan *Event::scan() const {

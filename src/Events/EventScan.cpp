@@ -18,7 +18,7 @@
 namespace Journal {
 
     EventScan::EventScan(const QJsonObject &obj)
-        : Event(obj, EventTypeScan), _bodyType(Body::UnknownBody) {
+        : Event(obj, Scan), _bodyType(Body::UnknownBody) {
         createBodyInstance();
     }
 

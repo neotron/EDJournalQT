@@ -65,30 +65,30 @@ namespace Journal {
 
     void JournalFile::handleEvent(EventPtr event) {
         switch(event->type()) {
-            case EventTypeLoadGame:
-                _commander = event->string("Commander");
-                break;
-            case EventTypeApproachSettlement:
-                _settlement = event->string("Name");
-                break;
-            case EventTypeSupercruiseEntry:
-                // Reset body
-                _body = "";
-                break;
-            case EventTypeSupercruiseExit:
-                _body = event->string("Body");
-                // intentional Fallthrough
-            case EventTypeLocation:
-            case EventTypeFSDJump:
-                _system = event->string("StarSystem");
-                break;
-            case EventTypeFileHeader:
-                _beta = event->string("gameversion").contains("beta", Qt::CaseInsensitive);
-            default:
-                // Ignore
-                break;
-        }
+        case Event::LoadGame:
+            _commander = event->string("Commander");
+            break;
+        case Event::ApproachSettlement:
+            _settlement = event->string("Name");
+            break;
+        case Event::SupercruiseEntry:
+            // Reset body
+            _body = "";
+            break;
+        case Event::SupercruiseExit:
+            _body = event->string("Body");
+            // intentional Fallthrough
+        case Event::Location:
+        case Event::FSDJump:
+            _system = event->string("StarSystem");
+            break;
+        case Event::FileHeader:
+            _beta = event->string("gameversion").contains("beta", Qt::CaseInsensitive);
+        default:
+            // Ignore
+            break;
         emit onEvent(*this, event);
     }
+        }
 }
 

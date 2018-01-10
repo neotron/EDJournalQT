@@ -18,3 +18,10 @@
 #pragma once
 #include "Events/Event.h"
 #include "Events/EventScan.h"
+#include "JournalWatcher.h"
+#include "JournalFile.h"
+#include "LiveJournal.h"
+
+// you need these to connect signals, so just going to auto-use them
+using Journal::EventPtr;
+using Journal::JournalFile;
