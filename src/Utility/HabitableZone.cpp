@@ -17,6 +17,8 @@
 
 #include "HabitableZone.h"
 #include <QDebug>
+#include <cmath>
+
 const double bolSol = 4.72;
 const double pogsonsRatio = -2.5;
 const double innerStellarFlux = 1.1;
