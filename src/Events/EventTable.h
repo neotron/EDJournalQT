@@ -17,7 +17,7 @@
 
 #pragma once
 namespace Journal {
-    QMap<QString, Event::Type>
+    QMap<QString, Event::JournalEvent>
         Event::s_eventLookupMap = {{ "fileheader",           Event::FileHeader },
                                    { "clearsavedgame",       Event::ClearSavedGame },
                                    { "newcommander",         Event::NewCommander },

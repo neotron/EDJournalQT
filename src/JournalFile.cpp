@@ -18,7 +18,10 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDebug>
+#include <QApplication>
 #include "JournalFile.h"
+#include "Events.h"
+
 namespace Journal {
     JournalFile::~JournalFile() {
         stopWatching();
@@ -43,7 +46,7 @@ namespace Journal {
             if(doc.isEmpty() || !doc.isObject()) {
                 continue;
             }
-            auto event = Event::eventFromDocument(doc);
+            auto event = Event::eventFromDocument(doc, this);
             if(event) {
                 handleEvent(event);
             }
@@ -63,32 +66,49 @@ namespace Journal {
         _timer = nullptr;
     }
 
-    void JournalFile::handleEvent(EventPtr event) {
-        switch(event->type()) {
-        case Event::LoadGame:
-            _commander = event->string("Commander");
-            break;
-        case Event::ApproachSettlement:
-            _settlement = event->string("Name");
-            break;
-        case Event::SupercruiseEntry:
-            // Reset body
-            _body = "";
-            break;
-        case Event::SupercruiseExit:
-            _body = event->string("Body");
-            // intentional Fallthrough
-        case Event::Location:
-        case Event::FSDJump:
-            _system = event->string("StarSystem");
-            break;
-        case Event::FileHeader:
-            _beta = event->string("gameversion").contains("beta", Qt::CaseInsensitive);
-        default:
-            // Ignore
-            break;
-        emit onEvent(*this, event);
-    }
+    void JournalFile::handleEvent(Event *event) {
+        switch(event->journalEvent()) {
+            case Event::LoadGame:
+                _commander = dynamic_cast<EventLoadGame*>(event)->commander();
+                break;
+            case Event::ApproachSettlement:
+                _settlement = event->string(Key::Name);
+                break;
+            case Event::SupercruiseEntry:
+                // Reset body
+                _body = "";
+                break;
+            case Event::SupercruiseExit:
+                _body = event->string(Key::Body);
+                // intentional Fallthrough
+            case Event::Location:
+            case Event::FSDJump:
+                _system = event->string(Key::StarSystem);
+                break;
+            case Event::FileHeader:
+                _beta = event->string(Key::gameversion).contains("beta", Qt::CaseInsensitive);
+            default:
+                // Ignore
+                break;
         }
+        postEvent(event);
+    }
+
+    void JournalFile::postEvent(Event *event) {
+        for(auto h: _eventHandlers) {
+            QApplication::sendEvent(h, event);
+        }
+    }
+
+    void JournalFile::deregisterHandler(QObject *handler) {
+        _eventHandlers.remove(handler);
+        qDebug() << "Deregistering handler" << handler << "for file"<<_path;
+    }
+
+    void JournalFile::registerHandler(QObject *handler) {
+        _eventHandlers.insert(handler);
+        connect(handler, &QObject::destroyed, this, &JournalFile::deregisterHandler);
+        qDebug() << "Registering handler" << handler << "for file"<<_path;
+    }
 }
 

@@ -24,42 +24,28 @@ namespace  Journal {
     Planet::Planet(const Event &ev)
         : StellarBody(ev, Body::Planet), _type(Unknown),
           _atmosphereType(Atmosphere::Unknown),
-          _atmosphere(ev.string("Atmosphere")),
-          _volcanism(ev.string("Volcanism")),
-          _massEm(ev.doubleValue("MassEM")),
-          _surfaceGravity(ev.doubleValue("SurfaceGravity")),
-          _surfacePressure(ev.doubleValue("SurfacePressure")),
-          _landable(ev.boolean("Landable")),
-          _tidalLock(ev.boolean("TidalLock")),
+          _atmosphere(ev.string(Key::Atmosphere)),
+          _volcanism(ev.string(Key::Volcanism)),
+          _massEm(ev.doubleValue(Key::MassEM)),
+          _surfaceGravity(ev.doubleValue(Key::SurfaceGravity)),
+          _surfacePressure(ev.doubleValue(Key::SurfacePressure)),
+          _landable(ev.boolean(Key::Landable)),
+          _tidalLock(ev.boolean(Key::TidalLock)),
           _terraformState(TerraformState::None)
     {
         if(s_planetToType.contains(_typeName)) {
             _type = s_planetToType[_typeName];
         }
-        auto atmType = ev.string("AtmosphereType");
+        auto atmType = ev.string(Key::AtmosphereType);
         if(s_atmoToType.contains(atmType)) {
             _atmosphereType = s_atmoToType[atmType];
         }
 
-        auto tfs = ev.string("TerraformState");
+        auto tfs = ev.string(Key::TerraformState);
         if(s_tfsToType.contains(tfs)) {
             _terraformState = s_tfsToType[tfs];
         }
-        auto materials = ev.array("Materials");
-        for(auto const &mat: materials) {
-            if(!mat.isObject()) {
-                continue;
-            }
-            auto obj = mat.toObject();
-            auto str = obj["Name"].toString();
-            auto val = obj["Percent"].toDouble();
-            auto actualMaterial = Materials::material(str);
-            if(!actualMaterial.isValid()) {
-                continue;
-            }
-            actualMaterial.setPercentage(val);
-            _materials += actualMaterial;
-        }
+        _materials = std::move(Materials::materials(ev.array(Key::Materials)));
 
         // We might have to calculate gravity - without a DSS it's not included in the output
         // but we get mass and radius which is all we need.

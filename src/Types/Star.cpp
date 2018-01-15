@@ -22,9 +22,9 @@
 namespace Journal {
 
     Star::Star(const Event &ev)
-        : StellarBody(ev, Body::Star), _type(Unknown), _stellarAge(ev.doubleValue("StellarAge")),
-          _absoluteMagnitude(ev.doubleValue("AbsoluteMagnitude")), _stellarMass(ev.doubleValue("StellarMass")),
-          _luminosity(ev.string("Luminosity")) {
+        : StellarBody(ev, Body::Star), _type(Unknown), _stellarAge(ev.doubleValue(Key::StellarAge)),
+          _absoluteMagnitude(ev.doubleValue(Key::AbsoluteMagnitude)), _stellarMass(ev.doubleValue(Key::StellarMass)),
+          _luminosity(ev.string(Key::Luminosity)) {
         if(s_starToType.contains(_typeName)) {
             _type = s_starToType[_typeName];
         }

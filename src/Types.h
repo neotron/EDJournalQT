@@ -21,3 +21,4 @@
 #include "Types/StellarBody.h"
 #include "Types/Planet.h"
 #include "Types/Star.h"
+#include "Types/RankProgress.h"

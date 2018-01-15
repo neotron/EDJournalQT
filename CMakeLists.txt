@@ -15,11 +15,11 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
 if (MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GR")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GR /std:c++latest")
 endif()
 set(LINK_LIBS Qt5::Core Qt5::Widgets)
-
 file(GLOB_RECURSE LIB_SOURCE_FILES src/*.cpp src/*.h)
+
 header_directories(INCLUDE_DIRS src/ "${PROJECT_SOURCE_DIR}")
 
 add_library(EDJournalQT ${LIB_SOURCE_FILES})

@@ -13,23 +13,25 @@
 //
 // You should have received a copy of the GNU General Public License
 
+#include <src/JournalFile.h>
+#include <src/Types/Enums.h>
 #include "EventScan.h"
 #include "Event.h"
 namespace Journal {
 
-    EventScan::EventScan(const QJsonObject &obj)
-        : Event(obj, Scan), _bodyType(Body::UnknownBody) {
+    EventScan::EventScan(const QJsonObject &obj, const JournalFile *file)
+        : Event(obj, file, Scan), _bodyType(Body::UnknownBody) {
         createBodyInstance();
     }
 
     void EventScan::createBodyInstance() {
-        auto type = string("PlanetClass");
+        auto type = string(Key::PlanetClass);
         if(!type.isEmpty()) {
             _bodyType = Body::Planet;
             _planet = std::make_shared<Planet>(*this);
         }
 
-        type = string("StarType");
+        type = string(Key::StarType);
         if(!type.isEmpty()) {
             _bodyType = Body::Star;
             _star = std::make_shared<Star>(*this);

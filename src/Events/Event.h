@@ -22,20 +22,19 @@
 #include <QDateTime>
 #include <QVector3D>
 #include <QJsonArray>
+#include <QEvent>
 #include <memory>
+#include "Key.h"
 
 namespace Journal {
-    class EventScan;
-
-    class Event;
+#include "eventclasses.inc"
     typedef std::shared_ptr<const Event> EventPtr;
+    class JournalFile;
 
-    class Event : public QObject {
-    Q_OBJECT
-
+    class Event : public QEvent {
     public:
-        enum Type {
-            Unknown,
+        enum JournalEvent {
+            Unknown = QEvent::User+1000,
             FileHeader,
             ClearSavedGame,
             NewCommander,
@@ -175,30 +174,23 @@ namespace Journal {
             MissionRedirected,
             EngineerContribution,
             CommunityGoal,
-            AFMURepairs
+            AFMURepairs,
+            NumEvents
         };
 
-        explicit Event(QObject *parent = nullptr)
-            : QObject(parent), _eventType(Unknown), _obj() {}
-
-        Event(const Event &other) : _eventType(other._eventType), _obj(other._obj) {}
-
-        Event(Event &&other) noexcept : _eventType(other._eventType), _obj(std::move(other._obj)) {}
-
-        Event(const QJsonObject &obj, Type type);
+        Event(const QJsonObject &obj, const JournalFile *file, JournalEvent event);
 
         ~Event() override = default;
 
-        static EventPtr eventFromDocument(const QJsonDocument &document);
+        static Event *eventFromDocument(QJsonDocument &document, Journal::JournalFile *pFile);
 
         QDateTime timestamp() const;
 
-
-        Type type() const;
+        JournalEvent journalEvent() const;
 
         QString string(const QString &key) const;
 
-        int integer(const QString &key) const;
+        int64_t integer(const QString &key) const;
 
         bool boolean(const QString &key) const;
 
@@ -212,15 +204,16 @@ namespace Journal {
 
         QJsonArray array(const QString &key) const;
 
-        bool isValid() const { return _eventType != Unknown; }
+        bool isValid() const { return journalEvent() != Unknown; }
 
-        const EventScan *scan() const;
+        const JournalFile *file() const;
 
     private:
-        static QMap<QString, Type> s_eventLookupMap;
+        static QMap<QString, JournalEvent> s_eventLookupMap;
 
-        Type _eventType;
+        const JournalFile *_file;
         QJsonObject _obj;
+
     };
 }
 

@@ -20,8 +20,6 @@
 namespace Journal {
     LiveJournal::LiveJournal(QObject *parent)
         : QObject(parent), _watcher(new JournalWatcher(this)) {
-        connect(_watcher, SIGNAL(onEvent(const JournalFile &, EventPtr)), this,
-                SLOT(handleEvent(const JournalFile &, EventPtr)));
     }
 
     LiveJournal *LiveJournal::instance() {
@@ -32,15 +30,19 @@ namespace Journal {
         return s_journal;
     }
 
-    void LiveJournal::handleEvent(const JournalFile &file, EventPtr event) {
-        emit onEvent(file, event);
-    }
-
     void LiveJournal::startWatching(const QDateTime &newerThanDate, const QString &path) {
         _watcher->watchDirectory(path, newerThanDate);
     }
 
     void LiveJournal::journalPathChanged(const QString &from, const QString &to) {
         _watcher->journalPathChanged(from, to);
+    }
+
+    void LiveJournal::registerHandler(QObject *handler) {
+        _watcher->registerHandler(handler);
+    }
+
+    void LiveJournal::deregisterHandler(QObject *handler) {
+        _watcher->deregisterHandler(handler);
     }
 }

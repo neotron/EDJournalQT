@@ -19,6 +19,7 @@
 #include <QSet>
 #include <QTimer>
 #include "Events/Event.h"
+#include "EventDispatch.h"
 
 namespace Journal {
 
@@ -55,16 +56,17 @@ namespace Journal {
             return _settlement;
         }
 
+        void registerHandler(QObject *handler);
+
+        void deregisterHandler(QObject *handler);
+
     public slots:
         void parse();
 
-    signals:
-        void onEvent(const JournalFile &journal, EventPtr event);
-
     private:
-        void handleEvent(EventPtr event);
+        void handleEvent(Event *event);
 
-
+        QSet<QObject *> _eventHandlers;
         QString _commander;
         QString _path;
         QFile _file;
@@ -73,5 +75,7 @@ namespace Journal {
         QString _settlement;
         QTimer *_timer;
         bool _beta;
+
+        void postEvent(Event *event);
     };
 }

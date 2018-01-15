@@ -22,24 +22,24 @@
 namespace  Journal {
 
     StellarBody::StellarBody(const Event &ev, Body::Type type)
-        : _bodyName(ev.string("BodyName")),
-          _surfaceTemperature(ev.doubleValue("SurfaceTemperature")),
-          _radius(ev.doubleValue("Radius")),
-          _semiMajorAxis(ev.doubleValue("SemiMajorAxis")),
-          _eccentricity(ev.doubleValue("Eccentricity")),
-          _orbitalInclination(ev.doubleValue("OrbitalInclination")),
-          _periapsis(ev.doubleValue("Periapsis")),
-          _orbitalPeriod(ev.doubleValue("OrbitalPeriod")),
-          _rotationPeriod(ev.doubleValue("RotationPeriod")),
-          _distanceFromArrivalLs(ev.doubleValue("distanceFromArrivalLs")),
+        : _bodyName(ev.string(Key::BodyName)),
+          _surfaceTemperature(ev.doubleValue(Key::SurfaceTemperature)),
+          _radius(ev.doubleValue(Key::Radius)),
+          _semiMajorAxis(ev.doubleValue(Key::SemiMajorAxis)),
+          _eccentricity(ev.doubleValue(Key::Eccentricity)),
+          _orbitalInclination(ev.doubleValue(Key::OrbitalInclination)),
+          _periapsis(ev.doubleValue(Key::Periapsis)),
+          _orbitalPeriod(ev.doubleValue(Key::OrbitalPeriod)),
+          _rotationPeriod(ev.doubleValue(Key::RotationPeriod)),
+          _distanceFromArrivalLs(ev.doubleValue(Key::DistanceFromArrivalLS)),
           _bodyType(type)
     {
         switch(type) {
             case Body::Planet:
-                _typeName = ev.string("PlanetClass");
+                _typeName = ev.string(Key::PlanetClass);
                 break;
             case Body::Star:
-                _typeName = ev.string("StarType");
+                _typeName = ev.string(Key::StarType);
                 break;
             default:
                 _typeName = "Unknown";

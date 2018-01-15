@@ -2,9 +2,14 @@
 // Created by neotron on 2018-01-07.
 //
 
+#include <QtCore/QJsonObject>
+#include <QtCore/QJsonValue>
+#include <QtCore/QJsonArray>
 #include "Materials.h"
 #include "MaterialTable.h"
 #include <utility>
+#include <src/Events/Key.h>
+
 namespace Journal {
 
     Material::Material(QString id, QString name, QString abbreviation, Material::Rarity rarity, Material::Type type)
@@ -64,11 +69,11 @@ namespace Journal {
         return "     ";
     }
 
-    quint16 Material::quantity() const {
+    int16_t Material::quantity() const {
         return _quantity;
     }
 
-    void Material::setQuantity(quint16 quantity) {
+    void Material::setQuantity(int16_t quantity) {
         _quantity = quantity;
     }
 
@@ -82,5 +87,38 @@ namespace Journal {
 
     Material Materials::material(const QString &id) {
         return _materialTable[id];
+    }
+
+    // Create a material object from a json value.
+    // Handles both raw strings, should those ever occur,
+    // and Name/Count or Name/Percent dictionaries.
+    Material Materials::material(const QJsonValue &value) {
+        Material material;
+        if(value.isString()) {
+            material = Materials::material(value.toString());
+        } else if(value.isObject()) {
+            auto obj = value.toObject();
+            material = Materials::material(obj.value(Key::Name).toString());
+            if(material.isValid()) {
+                material.setQuantity(static_cast<int16_t>(obj.value(Key::Count).toInt(0)));
+                material.setPercentage(obj.value(Key::Percent).toDouble(0.0));
+            }
+        }
+        return material;
+    }
+
+    QList<Material> Materials::materials(const QJsonArray &arr) {
+        QList<Material> materials;
+        for(auto const &mat: arr) {
+            auto material = Materials::material(mat);
+            if(material.isValid()) {
+                materials += material;
+            }
+        }
+        return materials;
+    }
+
+    QList<Material> Materials::materials(const QJsonValue &value) {
+        return materials(value.toArray());
     }
 }

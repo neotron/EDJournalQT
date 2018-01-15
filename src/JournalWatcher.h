@@ -30,21 +30,20 @@ namespace Journal {
 
         void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate = QDateTime());
 
+        void registerHandler(QObject *handler);
+
+        void deregisterHandler(QObject *handler);
+
     public slots:
 
         void fileChanged(const QString &path);
 
         void directoryChanged(const QString &path);
 
-        void handleEvent(const JournalFile &journal, EventPtr event);
-
         void journalPathChanged(const QString &from, const QString &to);
 
-    signals:
-
-        void onEvent(const JournalFile &journal, EventPtr event);
-
     private:
+        QSet<QObject *> _eventHandlers;
         QFileSystemWatcher           _watcher;
         QMap<QString, JournalFile *> _watchedFiles;
         QDateTime _lastTimeStamp;

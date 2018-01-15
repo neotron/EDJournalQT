@@ -39,9 +39,9 @@ namespace Journal {
 
         bool isValid() const;
 
-        quint16 quantity() const;
+        int16_t quantity() const;
 
-        void setQuantity(quint16 quantity);
+        void setQuantity(int16_t quantity);
 
         double percentage() const;
 
@@ -51,9 +51,9 @@ namespace Journal {
         QString _id; // Journal identifier
         QString _name; // Long name
         QString _abbreviation; // Abbreviation
-        Rarity _rarity;
+        Rarity _rarity{};
         Type _type;
-        quint16 _quantity{};
+        int16_t _quantity{};
         double _percentage{};
     };
 
@@ -61,9 +61,13 @@ namespace Journal {
     Q_OBJECT
     public:
         static Material material(const QString &id);
+        static Material material(const QJsonValue &value);
+        static QList<Material> materials(const QJsonArray &arr);
+        static QList<Material> materials(const QJsonValue &value);
 
     private:
         static QMap<QString, Material> _materialTable;
+
     };
 }
 

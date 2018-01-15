@@ -18,23 +18,25 @@
 #include <QJsonObject>
 #include <QDebug>
 #include <QJsonArray>
+#include <QDebug>
+#include <src/JournalFile.h>
 
 #include "Event.h"
 #include "EventScan.h"
+#include "EventMaterials.h"
+#include "EventLoadGame.h"
 #include "EventTable.h"
-#include <QDebug>
 
 namespace Journal {
 
-
-    EventPtr Event::eventFromDocument(const QJsonDocument &document) {
+    Event *Event::eventFromDocument(QJsonDocument &document, Journal::JournalFile *file) {
 
         if(!document.isObject()) {
-            return EventPtr();
+            return nullptr;
         }
 
         auto obj = document.object();
-        auto event = obj.value("event").toString().toLower();
+        auto event = obj.value(Key::event).toString().toLower();
 
         auto eventType = s_eventLookupMap.contains(event) ? s_eventLookupMap[event] : Unknown;
 
@@ -43,16 +45,21 @@ namespace Journal {
         }
         switch(eventType) {
             case Scan:
-                return std::make_shared<EventScan>(obj);
+                return new EventScan(obj, file);
+            case Materials:
+                return new EventMaterials(obj, file);
+            case LoadGame:
+                return new EventLoadGame(obj, file);
             default:
-                return std::make_shared<Event>(obj, eventType);
+                return new Event(obj, file, eventType);
         }
     }
 
-#define FLOAT(OBJ, VAL) do { if((OBJ).isDouble()) { success &= true;  VAL = static_cast<float>((OBJ).toDouble()); } else { success = false; }} while(false)
+#define FLOAT(OBJ, VAL) do { if((OBJ).isDouble()) { success &= true;  (VAL) = static_cast<float>((OBJ).toDouble()); } else { success = false; }} while(false)
+
 
     QVector3D Event::position() const {
-        auto value = _obj.value("StarPos");
+        auto value = _obj.value(Key::StarPos);
         if(value.isArray()) {
             auto array = value.toArray();
             if(array.size() == 3) {
@@ -75,9 +82,9 @@ namespace Journal {
         return QDateTime::fromString(string(key), Qt::ISODate);
     }
 
-    int Event::integer(const QString &key) const {
+    int64_t Event::integer(const QString &key) const {
         auto value = _obj.value(key);
-        return (int) (value.isDouble() ? value.toDouble() : 0);
+        return static_cast<int64_t>(value.isDouble() ? value.toDouble() : 0);
     }
 
     QString Event::string(const QString &key) const {
@@ -90,12 +97,9 @@ namespace Journal {
         return value.toArray();
     }
 
-    Event::Type Event::type() const {
-        return _eventType;
-    }
 
     QDateTime Event::timestamp() const {
-        return date("timestamp");
+        return date(Key::timestamp);
     }
 
     const QJsonObject &Event::obj() const {
@@ -112,11 +116,20 @@ namespace Journal {
         return value.isBool() ? value.toBool() : false;
     }
 
-    Event::Event(const QJsonObject &obj, Type type)
-        : QObject(), _eventType(type), _obj(obj) {}
+    Event::Event(const QJsonObject &obj, const JournalFile *file, JournalEvent event)
+        : QEvent(static_cast<QEvent::Type>(event)), _file(file), _obj(obj) {
+    }
 
-    const EventScan *Event::scan() const {
-        qDebug() << typeid(this).name();
-        return dynamic_cast<const EventScan*>(this);
+    Event::JournalEvent Event::journalEvent() const {
+        auto type = QEvent::type();
+        if(type >= Unknown && type < NumEvents){
+            return static_cast<JournalEvent>(type);
+        }
+        return Unknown;
+    }
+
+    const JournalFile *Event::file() const {
+        return _file;
     }
 }
+

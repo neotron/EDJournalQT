@@ -26,21 +26,18 @@ namespace Journal {
     class LiveJournal : public QObject {
     Q_OBJECT
 
-
     public:
         static LiveJournal *instance();
 
         void startWatching(const QDateTime &newerThanDate, const QString &path);
 
+        void deregisterHandler(QObject *handler);
+
+         void registerHandler(QObject *handler);
+
     public slots:
 
-        void handleEvent(const JournalFile &, EventPtr);
-
         void journalPathChanged(const QString &from, const QString &to);
-
-    signals:
-
-        void onEvent(const JournalFile &, EventPtr);
 
     private:
         explicit LiveJournal(QObject *parent);

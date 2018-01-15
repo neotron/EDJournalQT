@@ -34,9 +34,9 @@ namespace Journal {
                 didStartMonitoring = true;
             } else if(parseNewerThanDate.isValid() && entry.lastModified() >= parseNewerThanDate) {
                 JournalFile journal(entry.absoluteFilePath());
-                connect(&journal, SIGNAL(onEvent(
-                                             const JournalFile &, const Event &)), this, SLOT(handleEvent(
-                                                                                                  const JournalFile &, const Event &)));
+                for(auto handler: _eventHandlers) {
+                     journal.registerHandler(handler);
+                 }
                 journal.parse();
             }
         }
@@ -78,8 +78,9 @@ namespace Journal {
         if(!journal) {
             journal = new JournalFile(path);
             _watchedFiles[path] = journal;
-            connect(journal, SIGNAL(onEvent(const JournalFile &, EventPtr)),
-                    this, SLOT(handleEvent(const JournalFile &, EventPtr)));
+            for(auto handler: _eventHandlers) {
+                 journal->registerHandler(handler);
+             }
             journal->startWatching();
         }
         journal->parse();
@@ -96,12 +97,25 @@ namespace Journal {
         _watchedFiles.clear();
     }
 
-    void JournalWatcher::handleEvent(const JournalFile &journal, EventPtr event) {
-        emit onEvent(journal, event);
-    }
-
     void JournalWatcher::journalPathChanged(const QString &from, const QString &to) {
         _watcher.removePath(from);
         watchDirectory(to, _newerThanDate);
+    }
+
+    void JournalWatcher::deregisterHandler(QObject *handler) {
+        _eventHandlers.remove(handler);
+        for(auto file: _watchedFiles.values()) {
+            file->deregisterHandler(handler);
+        }
+        qDebug() << "Dergistering handler" << handler;
+    }
+
+    void JournalWatcher::registerHandler(QObject *handler) {
+        _eventHandlers.insert(handler);
+        for(auto file: _watchedFiles.values()) {
+            file->registerHandler(handler);
+        }
+        qDebug() << "Registering handler" << handler;
+        connect(handler, &QObject::destroyed, this, &JournalWatcher::deregisterHandler);
     }
 }

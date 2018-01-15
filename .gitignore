@@ -28,3 +28,13 @@
 *.out
 *.app
 /.idea/workspace.xml
+
+
+# emacs backups
+\#*#
+*~
+
+*/output
+tools/*.inc
+tools/*.h
+
