@@ -35,6 +35,8 @@ namespace Journal {
 
          void registerHandler(QObject *handler);
 
+        const State::Commander * commanderState(const QString &name) const;
+
     public slots:
 
         void journalPathChanged(const QString &from, const QString &to);

@@ -18,6 +18,7 @@
 #include <QFile>
 #include <QSet>
 #include <QTimer>
+#include "Types/Materials.h"
 #include "Events/Event.h"
 #include "EventDispatch.h"
 
@@ -35,14 +36,7 @@ namespace Journal {
 
         void stopWatching();
 
-
-        const QString commander() const {
-            QString commander(_commander);
-            if(_beta) {
-                commander += " (beta)";
-            }
-            return commander;
-        }
+        const QString &commander() const;
 
         const QString &system() const {
             return _system;
@@ -55,6 +49,10 @@ namespace Journal {
         const QString &settlement() const {
             return _settlement;
         }
+
+        const QList<Material> &materials() const;
+
+        bool beta() const;
 
         void registerHandler(QObject *handler);
 
@@ -74,6 +72,7 @@ namespace Journal {
         QString _body;
         QString _settlement;
         QTimer *_timer;
+        QList<Material> _materials;
         bool _beta;
 
         void postEvent(Event *event);

@@ -17,27 +17,22 @@
 
 
 #pragma once
-#include "Event.h"
-#include "Types/Materials.h"
-#include "Events/EventExtensions.h"
 
-namespace Journal {
-    class EventMaterialChanged: public Event, public Extension::MaterialsChanged {
+#include "EventDispatch.h"
+namespace Journal::State {
+    class Commander;
+
+    class CommanderState : public EventDispatch {
+    public:
+        explicit CommanderState(QObject *parent = nullptr);
+
+        const Commander *commanderState(const QString &name) const;
+
+        QList<QString> knownCommanders() const;
     protected:
-        EventMaterialChanged(const QJsonObject &obj, const JournalFile *file, JournalEvent event);
-        ~EventMaterialChanged() override;
-    public:
-        const Material &material() const;
-    };
+        void onEventGeneric(Event *event) override;
 
-    class EventMaterialCollected : public EventMaterialChanged {
-    public:
-        EventMaterialCollected(const QJsonObject &obj, const JournalFile *file);
-    };
-
-    class EventMaterialDiscarded : public EventMaterialChanged {
-    public:
-        EventMaterialDiscarded(const QJsonObject &obj, const JournalFile *file);
+    private:
+        QMap<QString,Commander *> _commanderState;
     };
 }
-

@@ -24,6 +24,7 @@ namespace Journal::State {
 // Keeps track of the current state of commander data. Every state we need to track, such as current system,
 // current material counts, assets etc starts at this level.
     class Commander: public QObject, public EventDispatcher {
+
         Q_OBJECT
 
     private:
@@ -39,6 +40,7 @@ namespace Journal::State {
         int64_t _loan;
         QMap<QString,Material> _materials;
         QMap<RankProgress::Type, RankProgress> _ranks;
+
     public:
         explicit Commander(EventLoadGame *game, QObject *parent = nullptr);
 

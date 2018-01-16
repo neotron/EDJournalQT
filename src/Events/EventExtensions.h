@@ -26,8 +26,8 @@
 namespace Journal::Extension {
     class CreditsChanged {
     public:
-        explicit CreditsChanged(int64_t creditChange)
-            : _creditChange(creditChange) {}
+        explicit CreditsChanged(int64_t creditChange);
+        virtual ~CreditsChanged();
 
         // Credit change is either negative or positive depending on if it's a profit or not.
         int64_t creditChange() const {
@@ -40,8 +40,9 @@ namespace Journal::Extension {
 
     class CommodityExchange: public CreditsChanged {
     public:
-        explicit CommodityExchange(QString type, int64_t perItemCredits = 0, int16_t count = 1)
-            : CreditsChanged(perItemCredits * count), _type(std::move(type)), _perItemCredits(perItemCredits), _count(count) {}
+        explicit CommodityExchange(QString type, int64_t perItemCredits = 0, int16_t count = 1);
+
+        ~CommodityExchange() override;
 
         const QString &type() const {
             return _type;
@@ -63,20 +64,11 @@ namespace Journal::Extension {
 
     class MaterialsChanged {
     public:
-        explicit MaterialsChanged(const QJsonObject &material)
-        : _materials({ Materials::material(material) })
-        {}
+        explicit MaterialsChanged(const QJsonObject &material);
+        explicit MaterialsChanged(const QJsonValue &materials);
+        virtual ~MaterialsChanged();
 
-        explicit MaterialsChanged(const QJsonValue &materials) {
-            if(materials.isArray()) {
-            } else {
-                _materials += Materials::material(materials);
-            }
-        }
-
-        const QList<Material> &materials() const {
-            return _materials;
-        }
+        const QList<Material> &materials() const;
 
     protected:
         QList<Material> _materials;

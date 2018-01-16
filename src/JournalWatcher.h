@@ -19,7 +19,12 @@
 #include <QFileSystemWatcher>
 #include <QMap>
 #include "JournalFile.h"
+
 namespace Journal {
+    namespace State {
+        class Commander;
+        class CommanderState;
+    }
     class JournalWatcher : public QObject {
     Q_OBJECT
 
@@ -34,6 +39,10 @@ namespace Journal {
 
         void deregisterHandler(QObject *handler);
 
+        State::CommanderState *state() const;
+
+        const State::Commander * commanderState(const QString &name) const;
+
     public slots:
 
         void fileChanged(const QString &path);
@@ -43,6 +52,7 @@ namespace Journal {
         void journalPathChanged(const QString &from, const QString &to);
 
     private:
+        State::CommanderState *_state;
         QSet<QObject *> _eventHandlers;
         QFileSystemWatcher           _watcher;
         QMap<QString, JournalFile *> _watchedFiles;

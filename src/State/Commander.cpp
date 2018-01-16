@@ -15,7 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+#include <QDebug>
 #include "Commander.h"
+
 namespace Journal::State {
     Commander::Commander(Journal::EventLoadGame *game, QObject *parent)
         : QObject(parent)
@@ -48,6 +50,7 @@ namespace Journal::State {
         _gameMode = game->gameMode();
         _credits = game->credits();
         _loan = game->loan();
+        handleMaterialsChanged(game->file()->materials());
     }
 
     void Commander::onEventRank(EventRank *eventRank) {
@@ -73,6 +76,7 @@ namespace Journal::State {
     }
 
     void Commander::onEventGeneric(Event *event) {
+//        qDebug() << "commander event"<<event->obj();
         switch(event->journalEvent()) {
             case Event::MaterialDiscarded:
             case Event::MaterialCollected:
@@ -92,18 +96,20 @@ namespace Journal::State {
 
     void Commander::handleMaterialChanged(const Material &material) {
         if(!material.isValid()) {
+            qDebug() << "Invalid material:" << material.name() << material.quantity();
             return;
         }
         Material &current = _materials[material.id()];
         if(current.isValid()) {
             current.setQuantity(current.quantity() + material.quantity());
+            qDebug() << "Updated material:" << material.name() << current.quantity();
         } else {
             _materials[material.id()] = material;
+            qDebug() << "New material:" << material.name() << material.quantity();
         }
     }
 
     void Commander::handleMaterialsChanged(const QList<Material> &list) {
-
         for(auto &mat: list) {
             handleMaterialChanged(mat);
         }

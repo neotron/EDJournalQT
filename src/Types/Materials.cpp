@@ -9,6 +9,7 @@
 #include "MaterialTable.h"
 #include <utility>
 #include <src/Events/Key.h>
+#include <QDebug>
 
 namespace Journal {
 
@@ -103,6 +104,7 @@ namespace Journal {
     }
 
     Material Materials::material(const QJsonObject &obj) {
+        qDebug() << obj;
         Material material = Materials::material(obj.value(Key::Name).toString());
         if(material.isValid()) {
             material.setQuantity(static_cast<int16_t>(obj.value(Key::Count).toInt(0)));

@@ -19,6 +19,7 @@
 #include <thread>
 #include <QDir>
 #include "JournalWatcher.h"
+#include "State/CommanderState.h"
 
 namespace Journal {
     void JournalWatcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate) {
@@ -43,13 +44,14 @@ namespace Journal {
     }
 
     JournalWatcher::JournalWatcher(QObject *parent)
-        : QObject(parent), _watcher(), _watchedFiles(), _lastTimeStamp() {
+        : QObject(parent), _state(new State::CommanderState(this)), _watcher(), _watchedFiles(), _lastTimeStamp() {
         connect(&_watcher, SIGNAL(fileChanged(
                                       const QString &)), this, SLOT(fileChanged(
                                                                         const QString &)));
         connect(&_watcher, SIGNAL(directoryChanged(
                                       const QString &)), this, SLOT(directoryChanged(
                                                                         const QString &)));
+        _eventHandlers += _state;
     }
 
     void JournalWatcher::directoryChanged(const QString &path) {
@@ -118,4 +120,13 @@ namespace Journal {
         qDebug() << "Registering handler" << handler;
         connect(handler, &QObject::destroyed, this, &JournalWatcher::deregisterHandler);
     }
+
+    State::CommanderState *JournalWatcher::state() const {
+        return _state;
+    }
+
+    const State::Commander * JournalWatcher::commanderState(const QString &name) const {
+        return _state->commanderState(name);
+    }
+
 }

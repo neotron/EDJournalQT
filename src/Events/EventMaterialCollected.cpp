@@ -46,5 +46,7 @@ namespace Journal {
     const Material &EventMaterialChanged::material() const {
         return _materials.first();
     }
+
+    EventMaterialChanged::~EventMaterialChanged() = default;
 }
 

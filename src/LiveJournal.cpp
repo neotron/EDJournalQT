@@ -45,4 +45,8 @@ namespace Journal {
     void LiveJournal::deregisterHandler(QObject *handler) {
         _watcher->deregisterHandler(handler);
     }
+
+    const State::Commander *LiveJournal::commanderState(const QString &name) const {
+        return _watcher->commanderState(name);
+    }
 }

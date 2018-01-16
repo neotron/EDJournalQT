@@ -114,7 +114,11 @@ QMap<QString, Material> Materials::_materialTable =
         ManufacturedA("Thargoid Energy Cell", Standard, "UKEC", "unknownenergycell"),
         ManufacturedA("Thargoid Organic Circuitry", VeryRare, "UKOC", "unknownorganiccircuitry"),
         ManufacturedA("Thargoid Technology Components", Rare, "UKTC", "unknowntechnologycomponents"),
-        ManufacturedA("Sensor Fragment", VeryRare, "UES", "unknownenergysource"),
+        ManufacturedA("Thargoid Sensor Fragment", VeryRare, "UES", "unknownenergysource"),
+        ManufacturedA("Thargoid Wreckage Components", Standard, "TWC", "tg_wreckagecomponents"),
+        ManufacturedA("Thargoid Bio-Mechanical Conduits", Standard, "TBMC", "tg_biomechanicalconduits"),
+        ManufacturedA("Thargoid Weapon Parts", Rare, "TWP", "tg_weaponparts"),
+        ManufacturedA("Thargoid Propulsion Elements", VeryRare, "TPE", "tg_propulsionelement"),
 
         // THARGOID DATA
         Encoded("Thargoid Material Composition Data", Standard, "UMCD", "tg_compositiondata"),
@@ -122,6 +126,8 @@ QMap<QString, Material> Materials::_materialTable =
         Encoded("Thargoid Residue Data", Rare, "URDA", "tg_residuedata"),
         Encoded("Thargoid Ship Signature", Standard, "USSig", "unknownshipsignature"),
         Encoded("Thargoid Wake Data", Rare, "UWD", "unknownwakedata"),
+        Encoded("Thargoid Ship Flight Data", Rare, "TSFD", "tg_shipflightdata"),
+        Encoded("Thargoid Ship System Data", Rare, "TSSD", "tg_shipsystemsdata"),
 
         // RAW VERY COMMON
         Raw("Carbon", VeryCommon, "C"),

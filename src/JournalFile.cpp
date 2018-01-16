@@ -68,6 +68,12 @@ namespace Journal {
 
     void JournalFile::handleEvent(Event *event) {
         switch(event->journalEvent()) {
+            case Event::Materials:
+                // This event happens before load game so need to keep it here;
+                _materials += dynamic_cast<EventMaterials*>(event)->manufactured();
+                _materials += dynamic_cast<EventMaterials*>(event)->raw();
+                _materials += dynamic_cast<EventMaterials*>(event)->encoded();
+                break;
             case Event::LoadGame:
                 _commander = dynamic_cast<EventLoadGame*>(event)->commander();
                 break;
@@ -109,6 +115,18 @@ namespace Journal {
         _eventHandlers.insert(handler);
         connect(handler, &QObject::destroyed, this, &JournalFile::deregisterHandler);
         qDebug() << "Registering handler" << handler << "for file"<<_path;
+    }
+
+    const QList<Material> &JournalFile::materials() const {
+        return _materials;
+    }
+
+    bool JournalFile::beta() const {
+        return _beta;
+    }
+
+    const QString &JournalFile::commander() const {
+        return _commander;
     }
 }
 

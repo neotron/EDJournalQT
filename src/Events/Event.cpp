@@ -21,10 +21,7 @@
 #include <QDebug>
 #include <src/JournalFile.h>
 
-#include "Event.h"
-#include "EventScan.h"
-#include "EventMaterials.h"
-#include "EventLoadGame.h"
+#include "Events.h"
 #include "EventTable.h"
 
 namespace Journal {
@@ -44,12 +41,9 @@ namespace Journal {
             qDebug() << "Unknown event" << event;
         }
         switch(eventType) {
-            case Scan:
-                return new EventScan(obj, file);
-            case Materials:
-                return new EventMaterials(obj, file);
-            case LoadGame:
-                return new EventLoadGame(obj, file);
+#define EVENT(EV) case EV: return new Event##EV(obj, file);
+#include "events.inc"
+#undef EVENT
             default:
                 return new Event(obj, file, eventType);
         }
