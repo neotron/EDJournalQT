@@ -18,12 +18,14 @@
 
 #pragma once
 #include "Event.h"
+#include "EventExtensions.h"
 
 namespace Journal {
-    class EventMarketBuy : public Event {
+    class EventMarketBuy : public Event, public Extension::CommodityExchange {
     public:
         EventMarketBuy(const QJsonObject &obj, const JournalFile *file);
 
+        int64_t totalCost() const;
     private:
 
     };

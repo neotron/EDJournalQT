@@ -19,7 +19,7 @@
 
 namespace Journal {
     EventBuyAmmo::EventBuyAmmo(const QJsonObject &obj, const JournalFile *file)
-        : Event(obj, file, BuyAmmo) {
+        : Event(obj, file, BuyAmmo), Extension::CreditsChanged(-obj.value(Key::Cost).toInt(0)) {
     }
 }
 

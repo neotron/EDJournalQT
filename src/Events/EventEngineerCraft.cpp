@@ -19,7 +19,28 @@
 
 namespace Journal {
     EventEngineerCraft::EventEngineerCraft(const QJsonObject &obj, const JournalFile *file)
-        : Event(obj, file, EngineerCraft) {
+        : Event(obj, file, EngineerCraft),
+          MaterialsChanged(obj.value(Key::Ingredients)),
+          _engineer(obj.value(Key::Engineer).toString()),
+          _blueprint(obj.value(Key::Blueprint).toString()),
+          _level(static_cast<uint8_t>(obj.value(Key::Level).toInt()))
+    {
+    }
+
+    const QString &EventEngineerCraft::engineer() const {
+        return _engineer;
+    }
+
+    const QString &EventEngineerCraft::blueprint() const {
+        return _blueprint;
+    }
+
+    uint8_t EventEngineerCraft::level() const {
+        return _level;
+    }
+
+    const QList<Material> &EventEngineerCraft::ingredients() const {
+        return materials();
     }
 }
 

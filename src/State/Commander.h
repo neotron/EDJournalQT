@@ -52,5 +52,7 @@ namespace Journal::State {
         void onEventGeneric(Event *event) override;
 
         void handleMaterialChanged(const Material &material);
+
+        void handleMaterialsChanged(const QList<Material> &list);
     };
 }

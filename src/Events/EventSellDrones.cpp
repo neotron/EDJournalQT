@@ -19,7 +19,10 @@
 
 namespace Journal {
     EventSellDrones::EventSellDrones(const QJsonObject &obj, const JournalFile *file)
-        : Event(obj, file, SellDrones) {
+        : Event(obj, file, SellDrones),
+          CommodityExchange(obj.value(Key::Type).toString(),
+                            obj.value(Key::SellPrice).toInt(),
+                            static_cast<int16_t>(obj.value(Key::Count).toInt())) {
     }
 }
 

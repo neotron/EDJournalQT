@@ -18,14 +18,24 @@
 
 #pragma once
 #include "Event.h"
-
+#include "EventExtensions.h"
 namespace Journal {
-    class EventEngineerCraft : public Event {
+    class EventEngineerCraft : public Event, public Extension::MaterialsChanged {
     public:
         EventEngineerCraft(const QJsonObject &obj, const JournalFile *file);
 
-    private:
+        const QString &engineer() const;
 
+        const QString &blueprint() const;
+
+        uint8_t level() const;
+
+        const QList<Material> &ingredients() const;
+
+    private:
+        QString _engineer;
+        QString _blueprint;
+        uint8_t _level;
     };
 }
 

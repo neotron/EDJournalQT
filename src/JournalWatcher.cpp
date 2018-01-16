@@ -107,7 +107,7 @@ namespace Journal {
         for(auto file: _watchedFiles.values()) {
             file->deregisterHandler(handler);
         }
-        qDebug() << "Dergistering handler" << handler;
+        qDebug() << "Deregistering handler" << handler;
     }
 
     void JournalWatcher::registerHandler(QObject *handler) {

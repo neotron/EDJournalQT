@@ -19,16 +19,14 @@
 #pragma once
 #include "Event.h"
 #include "Types/Materials.h"
+#include "Events/EventExtensions.h"
 
 namespace Journal {
-    class EventMaterialChanged: public Event {
+    class EventMaterialChanged: public Event, Extension::MaterialsChanged {
     protected:
         EventMaterialChanged(const QJsonObject &obj, const JournalFile *file, JournalEvent event);
     public:
         const Material &material() const;
-
-    private:
-        Material _material;
     };
 
     class EventMaterialCollected : public EventMaterialChanged {

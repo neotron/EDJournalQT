@@ -19,7 +19,13 @@
 
 namespace Journal {
     EventMarketBuy::EventMarketBuy(const QJsonObject &obj, const JournalFile *file)
-        : Event(obj, file, MarketBuy) {
+        : Event(obj, file, MarketBuy),
+          CommodityExchange(obj.value(Key::Type).toString(),
+                            obj.value(Key::BuyPrice).toInt(),
+                            -static_cast<int16_t>(obj.value(Key::Count).toInt()))
+    {
     }
+
+    int64_t EventMarketBuy::totalCost() const { return abs(creditChange()); }
 }
 

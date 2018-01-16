@@ -76,9 +76,16 @@ namespace Journal::State {
         switch(event->journalEvent()) {
             case Event::MaterialDiscarded:
             case Event::MaterialCollected:
-                handleMaterialChanged(dynamic_cast<EventMaterialChanged*>(event)->material());
+            case Event::EngineerCraft:
+                handleMaterialsChanged(dynamic_cast<Extension::MaterialsChanged *>(event)->materials());
                 break;
-            default:
+            default: {
+                // This is used as a base class on any event that changes credits such as commodity transactions
+                auto creditsChanged = dynamic_cast<Extension::CreditsChanged*>(event);
+                if(creditsChanged) {
+                    _credits += creditsChanged->creditChange();
+                }
+            }
                 break; // No-op
         }
     }
@@ -92,6 +99,13 @@ namespace Journal::State {
             current.setQuantity(current.quantity() + material.quantity());
         } else {
             _materials[material.id()] = material;
+        }
+    }
+
+    void Commander::handleMaterialsChanged(const QList<Material> &list) {
+
+        for(auto &mat: list) {
+            handleMaterialChanged(mat);
         }
     }
 }

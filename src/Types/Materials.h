@@ -60,8 +60,9 @@ namespace Journal {
     class Materials : public QObject {
     Q_OBJECT
     public:
-        static Material material(const QString &id);
         static Material material(const QJsonValue &value);
+        static Material material(const QJsonObject &obj);
+        static Material material(const QString &id);
         static QList<Material> materials(const QJsonArray &arr);
         static QList<Material> materials(const QJsonValue &value);
 

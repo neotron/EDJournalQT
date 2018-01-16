@@ -29,14 +29,14 @@ namespace Journal {
     }
 
     EventMaterialChanged::EventMaterialChanged(const QJsonObject &obj, const JournalFile *file, JournalEvent event)
-        : Event(obj, file, event), _material(Materials::material(string(Key::Name))) {
+        : Event(obj, file, event), MaterialsChanged(obj) {
         auto change = static_cast<int16_t>(integer(Key::Count));
         switch(event) {
             case MaterialCollected:
-                _material.setQuantity(change);
+                _materials.first().setQuantity(change);
                 break;
             case MaterialDiscarded:
-                _material.setQuantity(-change);
+                _materials.first().setQuantity(-change);
                 break;
             default:
                 break; // no-op
@@ -44,7 +44,7 @@ namespace Journal {
     }
 
     const Material &EventMaterialChanged::material() const {
-        return _material;
+        return _materials.first();
     }
 }
 

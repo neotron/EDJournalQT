@@ -97,12 +97,16 @@ namespace Journal {
         if(value.isString()) {
             material = Materials::material(value.toString());
         } else if(value.isObject()) {
-            auto obj = value.toObject();
-            material = Materials::material(obj.value(Key::Name).toString());
-            if(material.isValid()) {
-                material.setQuantity(static_cast<int16_t>(obj.value(Key::Count).toInt(0)));
-                material.setPercentage(obj.value(Key::Percent).toDouble(0.0));
-            }
+            material = Materials::material(value.toObject());
+        }
+        return material;
+    }
+
+    Material Materials::material(const QJsonObject &obj) {
+        Material material = Materials::material(obj.value(Key::Name).toString());
+        if(material.isValid()) {
+            material.setQuantity(static_cast<int16_t>(obj.value(Key::Count).toInt(0)));
+            material.setPercentage(obj.value(Key::Percent).toDouble(0.0));
         }
         return material;
     }
