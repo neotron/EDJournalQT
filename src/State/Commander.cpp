@@ -50,7 +50,13 @@ namespace Journal::State {
         _gameMode = game->gameMode();
         _credits = game->credits();
         _loan = game->loan();
-        handleMaterialsChanged(game->file()->materials());
+
+        // Materials might come before load event, so check for it in the file first.
+        auto materials = game->file()->materials();
+        if(!materials.isEmpty()) {
+            _materials.clear();
+            handleMaterialsChanged(materials);
+        }
     }
 
     void Commander::onEventRank(EventRank *eventRank) {
@@ -102,10 +108,10 @@ namespace Journal::State {
         Material &current = _materials[material.id()];
         if(current.isValid()) {
             current.setQuantity(current.quantity() + material.quantity());
-            qDebug() << "Updated material:" << material.name() << current.quantity();
+//            qDebug() << "Updated material:" << material.name() << current.quantity();
         } else {
             _materials[material.id()] = material;
-            qDebug() << "New material:" << material.name() << material.quantity();
+  //          qDebug() << "New material:" << material.name() << material.quantity();
         }
     }
 
