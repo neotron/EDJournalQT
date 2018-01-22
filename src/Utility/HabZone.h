@@ -16,24 +16,25 @@
 //
 
 #pragma once
+namespace Journal::Util {
+    class HabZone {
+    public:
+        HabZone();
 
-class HabZone {
-public:
-    HabZone();
+        HabZone(double inner, double outer);
 
-    HabZone(double inner, double outer);
+        bool isValid() const;
 
-    bool isValid() const;
+        int innerLS() const;
 
-    int innerLS() const;
+        int outerLS() const;
 
-    int outerLS() const;
+        double innerAU() const;
 
-    double innerAU() const;
+        double outerAU() const;
 
-    double outerAU() const;
-
-private:
-    double _inner = -1;
-    double _outer = -1;
-};
+    private:
+        double _inner = -1;
+        double _outer = -1;
+    };
+}

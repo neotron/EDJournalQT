@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-
-#include "Event.h"
-#include "Star.h"
 #include "Utility/HabitableZone.h"
+#include "Utility/BodyWorth.h"
+#include "Events/Event.h"
+#include "Star.h"
 
 namespace Journal {
 
@@ -100,7 +100,11 @@ namespace Journal {
         return _luminosity;
     }
 
-    HabZone Star::habitableZone() const {
-        return HabitableZone::habitableZone(_type, _surfaceTemperature, _absoluteMagnitude);
+    Util::HabZone Star::habitableZone() const {
+        return Util::HabitableZone::habitableZone(_type, _surfaceTemperature, _absoluteMagnitude);
+    }
+
+    int64_t Star::estimatedValue() const {
+        return Util::BodyWorth::estimatedWorth(*this);
     }
 }

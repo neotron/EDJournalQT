@@ -18,8 +18,18 @@
 
 #pragma once
 
-namespace Journal {
-    class BodyWorth {
+#include <cstdint>
+#include <src/Types.h>
 
-    };
+namespace Journal::Util {
+    class BodyWorth {
+    public:
+        static int64_t estimatedWorth(PlanetPtr planet);
+        static int64_t estimatedWorth(StarPtr star);
+        static int64_t estimatedWorth(const Planet &planet);
+        static int64_t estimatedWorth(const Star &star);
+    private:
+        static int64_t adjustedStarValue(int64_t value, double mass);
+        static int64_t adjustedPlanetValue(int64_t value, double mass);
+};
 }

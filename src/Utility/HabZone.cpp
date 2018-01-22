@@ -17,28 +17,32 @@
 
 #include "HabitableZone.h"
 #include "HabZone.h"
-const double lsInAU = 499.005;
-bool HabZone::isValid() const {
-    return _inner >= 0 && _outer > 0;
+namespace Journal::Util {
+    const double lsInAU = 499.005;
+
+    bool HabZone::isValid() const {
+        return _inner >= 0 && _outer > 0;
+    }
+
+    double HabZone::innerAU() const {
+        return _inner;
+    }
+
+    double HabZone::outerAU() const {
+        return _outer;
+    }
+
+    int HabZone::innerLS() const {
+        return static_cast<int>(_inner * lsInAU);
+    }
+
+    int HabZone::outerLS() const {
+        return static_cast<int>(_outer * lsInAU);
+    }
+
+    HabZone::HabZone(double inner, double outer)
+        : _inner(inner), _outer(outer) {}
+
+    HabZone::HabZone()
+        : _inner(-1), _outer(-1) {}
 }
-
-double HabZone::innerAU() const {
-    return _inner;
-}
-
-double HabZone::outerAU() const {
-    return _outer;
-}
-
-int HabZone::innerLS() const {
-    return static_cast<int>(_inner * lsInAU);
-}
-
-int HabZone::outerLS() const {
-    return static_cast<int>(_outer * lsInAU);
-}
-
-HabZone::HabZone(double inner, double outer)
-    : _inner(inner), _outer(outer) {}
-
-HabZone::HabZone(): _inner(-1), _outer(-1){}

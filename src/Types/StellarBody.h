@@ -58,6 +58,8 @@ namespace  Journal {
 
         Body::Type bodyType() const;
 
+        virtual int64_t estimatedValue() const;
+
     protected:
         QString _typeName{};
         QString _bodyName{};

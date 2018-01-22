@@ -71,11 +71,15 @@ namespace Journal {
 
         TerraformState::State terraformState() const;
 
+        bool isTerraformable() const;
+
         const QList<Material> &materials() const;
 
         QString typeNameShort() const;
 
         QString typeNameMedium() const;
+
+        int64_t estimatedValue() const override;
 
     private:
         Type _type;

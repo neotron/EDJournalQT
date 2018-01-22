@@ -23,7 +23,7 @@ const double bolSol = 4.72;
 const double pogsonsRatio = -2.5;
 const double innerStellarFlux = 1.1;
 const double outerStellarFlux = 0.53;
-namespace Journal {
+namespace Journal::Util {
 
     HabZone HabitableZone:: habitableZone(Star::Type starClass, double temp, double absoluteMagnitude) {
         if(!s_lookup.contains(starClass)) {
