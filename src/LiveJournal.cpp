@@ -30,8 +30,8 @@ namespace Journal {
         return s_journal;
     }
 
-    void LiveJournal::startWatching(const QDateTime &newerThanDate, const QString &path) {
-        _watcher->watchDirectory(path, newerThanDate);
+    void LiveJournal::startWatching(const QDateTime &newerThanDate, const QString &path, bool newestOnly) {
+        _watcher->watchDirectory(path, newerThanDate, newestOnly);
     }
 
     void LiveJournal::journalPathChanged(const QString &from, const QString &to) {

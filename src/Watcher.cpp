@@ -22,14 +22,19 @@
 #include "State/CommanderState.h"
 
 namespace Journal {
-    void Watcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate) {
+    void Watcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate, bool newestOnly) {
         _watcher.addPath(path);
         _newerThanDate = parseNewerThanDate;
         QDir dir(path, "Journal.*.log");
-        QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time);
+        QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time | QDir::Reversed);
         bool didStartMonitoring = false;
         auto monitorDate = QDateTime::currentDateTime().addSecs(-3600); // Things changed in the last hour.
+        if(newestOnly) {
+            list = { list.last() };
+        }
+
         for(const auto &entry : list) {
+            qDebug() << "Parsing file" <<entry.fileName() << "with"<<entry.lastModified();
             if(entry.lastModified() > monitorDate && !didStartMonitoring) {
                 fileChanged(entry.absoluteFilePath());
                 didStartMonitoring = true;
@@ -101,7 +106,7 @@ namespace Journal {
 
     void Watcher::journalPathChanged(const QString &from, const QString &to) {
         _watcher.removePath(from);
-        watchDirectory(to, _newerThanDate);
+        watchDirectory(to, _newerThanDate, false);
     }
 
     void Watcher::deregisterHandler(QObject *handler) {

@@ -16,7 +16,7 @@
 //
 
 #include "StellarBody.h"
-#include "Event.h"
+#include "Events/Event.h"
 #include "StellarBodesTables.h"
 
 namespace  Journal {
@@ -96,5 +96,9 @@ namespace  Journal {
 
     const QString &StellarBody::bodyName() const {
         return _bodyName;
+    }
+
+    int64_t StellarBody::estimatedValue() const {
+        return 0;
     }
 }

@@ -15,9 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "Event.h"
-#include "Planet.h"
 #include <QDebug>
+#include "Planet.h"
+#include "Events/Event.h"
+#include "Utility/BodyWorth.h"
 
 namespace  Journal {
 
@@ -250,4 +251,11 @@ namespace  Journal {
         return _materials;
     }
 
+    bool Planet::isTerraformable() const {
+        return _terraformState != TerraformState::None;
+    }
+
+    int64_t Planet::estimatedValue() const {
+        return Util::BodyWorth::estimatedWorth(*this);
+    }
 }

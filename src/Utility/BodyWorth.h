@@ -15,34 +15,21 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "HabitableZone.h"
-#include "HabZone.h"
+
+#pragma once
+
+#include <cstdint>
+#include <src/Types.h>
+
 namespace Journal::Util {
-    const double lsInAU = 499.005;
-
-    bool HabZone::isValid() const {
-        return _inner >= 0 && _outer > 0;
-    }
-
-    double HabZone::innerAU() const {
-        return _inner;
-    }
-
-    double HabZone::outerAU() const {
-        return _outer;
-    }
-
-    int HabZone::innerLS() const {
-        return static_cast<int>(_inner * lsInAU);
-    }
-
-    int HabZone::outerLS() const {
-        return static_cast<int>(_outer * lsInAU);
-    }
-
-    HabZone::HabZone(double inner, double outer)
-        : _inner(inner), _outer(outer) {}
-
-    HabZone::HabZone()
-        : _inner(-1), _outer(-1) {}
+    class BodyWorth {
+    public:
+        static int64_t estimatedWorth(PlanetPtr planet);
+        static int64_t estimatedWorth(StarPtr star);
+        static int64_t estimatedWorth(const Planet &planet);
+        static int64_t estimatedWorth(const Star &star);
+    private:
+        static int64_t adjustedStarValue(int64_t value, double mass);
+        static int64_t adjustedPlanetValue(int64_t value, double mass);
+};
 }

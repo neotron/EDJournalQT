@@ -21,7 +21,7 @@
 #include "Types/Star.h"
 #include "HabZone.h"
 
-namespace Journal {
+namespace Journal::Util  {
     struct BCEntry {
         int K;
         double BC;

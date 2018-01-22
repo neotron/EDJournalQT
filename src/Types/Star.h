@@ -54,7 +54,10 @@ namespace Journal {
 
         QString typeNameMedium() const;
 
-        HabZone habitableZone() const;
+        Util::HabZone habitableZone() const;
+
+        int64_t estimatedValue() const override;
+
     private:
         Type _type;
         double _stellarAge;

@@ -20,10 +20,8 @@ endif()
 set(LINK_LIBS Qt5::Core Qt5::Widgets)
 file(GLOB_RECURSE LIB_SOURCE_FILES src/*.cpp src/*.h)
 
-header_directories(INCLUDE_DIRS src/ "${PROJECT_SOURCE_DIR}")
-
 add_library(EDJournalQT ${LIB_SOURCE_FILES})
-include_directories(AFTER ${INCLUDE_DIRS})
+include_directories(AFTER "src")
 target_link_libraries(EDJournalQT ${LINK_LIBS})
 file(GLOB APP_SOURCE_FILES test/*.cpp test/*.h test/*.ui)
 
