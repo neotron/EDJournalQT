@@ -22,7 +22,7 @@
 namespace Journal {
     class EventBuyExplorationData : public Event {
     public:
-        EventBuyExplorationData(const QJsonObject &obj, const JournalFile *file);
+        EventBuyExplorationData(const QJsonObject &obj, const JFile *file);
 
     private:
 

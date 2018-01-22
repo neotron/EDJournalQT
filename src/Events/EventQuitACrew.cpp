@@ -18,7 +18,7 @@
 #include "EventQuitACrew.h"
 
 namespace Journal {
-    EventQuitACrew::EventQuitACrew(const QJsonObject &obj, const JournalFile *file)
+    EventQuitACrew::EventQuitACrew(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, QuitACrew) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventSellExplorationData.h"
 
 namespace Journal {
-    EventSellExplorationData::EventSellExplorationData(const QJsonObject &obj, const JournalFile *file)
+    EventSellExplorationData::EventSellExplorationData(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, SellExplorationData) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventRepairAll.h"
 
 namespace Journal {
-    EventRepairAll::EventRepairAll(const QJsonObject &obj, const JournalFile *file)
+    EventRepairAll::EventRepairAll(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, RepairAll) {
     }
 }

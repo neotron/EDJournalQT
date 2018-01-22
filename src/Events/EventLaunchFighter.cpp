@@ -18,7 +18,7 @@
 #include "EventLaunchFighter.h"
 
 namespace Journal {
-    EventLaunchFighter::EventLaunchFighter(const QJsonObject &obj, const JournalFile *file)
+    EventLaunchFighter::EventLaunchFighter(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, LaunchFighter) {
     }
 }

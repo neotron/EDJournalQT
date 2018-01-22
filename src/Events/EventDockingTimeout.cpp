@@ -18,7 +18,7 @@
 #include "EventDockingTimeout.h"
 
 namespace Journal {
-    EventDockingTimeout::EventDockingTimeout(const QJsonObject &obj, const JournalFile *file)
+    EventDockingTimeout::EventDockingTimeout(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DockingTimeout) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventShipyardBuy.h"
 
 namespace Journal {
-    EventShipyardBuy::EventShipyardBuy(const QJsonObject &obj, const JournalFile *file)
+    EventShipyardBuy::EventShipyardBuy(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ShipyardBuy) {
     }
 }

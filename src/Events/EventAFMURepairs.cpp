@@ -18,7 +18,7 @@
 #include "EventAFMURepairs.h"
 
 namespace Journal {
-    EventAFMURepairs::EventAFMURepairs(const QJsonObject &obj, const JournalFile *file)
+    EventAFMURepairs::EventAFMURepairs(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, AFMURepairs) {
     }
 }

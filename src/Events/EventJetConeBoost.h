@@ -22,7 +22,7 @@
 namespace Journal {
     class EventJetConeBoost : public Event {
     public:
-        EventJetConeBoost(const QJsonObject &obj, const JournalFile *file);
+        EventJetConeBoost(const QJsonObject &obj, const JFile *file);
 
     private:
 

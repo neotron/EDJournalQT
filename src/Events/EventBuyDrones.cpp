@@ -18,7 +18,7 @@
 #include "EventBuyDrones.h"
 
 namespace Journal {
-    EventBuyDrones::EventBuyDrones(const QJsonObject &obj, const JournalFile *file)
+    EventBuyDrones::EventBuyDrones(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, BuyDrones),
           CommodityExchange(obj.value(Key::Type).toString(),
                             obj.value(Key::BuyPrice).toInt(),

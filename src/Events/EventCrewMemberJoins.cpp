@@ -18,7 +18,7 @@
 #include "EventCrewMemberJoins.h"
 
 namespace Journal {
-    EventCrewMemberJoins::EventCrewMemberJoins(const QJsonObject &obj, const JournalFile *file)
+    EventCrewMemberJoins::EventCrewMemberJoins(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CrewMemberJoins) {
     }
 }

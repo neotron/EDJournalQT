@@ -18,7 +18,7 @@
 #include "EventShipyardSwap.h"
 
 namespace Journal {
-    EventShipyardSwap::EventShipyardSwap(const QJsonObject &obj, const JournalFile *file)
+    EventShipyardSwap::EventShipyardSwap(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ShipyardSwap) {
     }
 }

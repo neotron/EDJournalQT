@@ -18,7 +18,7 @@
 #include "EventLoadout.h"
 
 namespace Journal {
-    EventLoadout::EventLoadout(const QJsonObject &obj, const JournalFile *file)
+    EventLoadout::EventLoadout(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Loadout) {
     }
 }

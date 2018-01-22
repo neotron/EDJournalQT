@@ -22,7 +22,7 @@
 namespace Journal {
     class EventLaunchSRV : public Event {
     public:
-        EventLaunchSRV(const QJsonObject &obj, const JournalFile *file);
+        EventLaunchSRV(const QJsonObject &obj, const JFile *file);
 
     private:
 

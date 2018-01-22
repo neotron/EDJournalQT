@@ -22,7 +22,7 @@
 namespace Journal {
     class EventApproachSettlement : public Event {
     public:
-        EventApproachSettlement(const QJsonObject &obj, const JournalFile *file);
+        EventApproachSettlement(const QJsonObject &obj, const JFile *file);
 
     private:
 

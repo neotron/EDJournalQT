@@ -18,7 +18,7 @@
 #include "EventEndCrewSession.h"
 
 namespace Journal {
-    EventEndCrewSession::EventEndCrewSession(const QJsonObject &obj, const JournalFile *file)
+    EventEndCrewSession::EventEndCrewSession(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, EndCrewSession) {
     }
 }

@@ -18,11 +18,11 @@
 #include <QFileInfo>
 #include <thread>
 #include <QDir>
-#include "JournalWatcher.h"
+#include "Watcher.h"
 #include "State/CommanderState.h"
 
 namespace Journal {
-    void JournalWatcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate) {
+    void Watcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate) {
         _watcher.addPath(path);
         _newerThanDate = parseNewerThanDate;
         QDir dir(path, "Journal.*.log");
@@ -34,7 +34,7 @@ namespace Journal {
                 fileChanged(entry.absoluteFilePath());
                 didStartMonitoring = true;
             } else if(parseNewerThanDate.isValid() && entry.lastModified() >= parseNewerThanDate) {
-                JournalFile journal(entry.absoluteFilePath());
+                JFile journal(entry.absoluteFilePath());
                 for(auto handler: _eventHandlers) {
                      journal.registerHandler(handler);
                  }
@@ -43,7 +43,7 @@ namespace Journal {
         }
     }
 
-    JournalWatcher::JournalWatcher(QObject *parent)
+    Watcher::Watcher(QObject *parent)
         : QObject(parent), _state(new State::CommanderState(this)), _watcher(), _watchedFiles(), _lastTimeStamp() {
         connect(&_watcher, SIGNAL(fileChanged(
                                       const QString &)), this, SLOT(fileChanged(
@@ -54,7 +54,7 @@ namespace Journal {
         _eventHandlers += _state;
     }
 
-    void JournalWatcher::directoryChanged(const QString &path) {
+    void Watcher::directoryChanged(const QString &path) {
         QDir dir(path, "Journal.*.log");
         QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time);
         auto newest = list.first();
@@ -67,7 +67,7 @@ namespace Journal {
         }
     }
 
-    void JournalWatcher::fileChanged(const QString &path) {
+    void Watcher::fileChanged(const QString &path) {
         auto journal = _watchedFiles[path];
         QFileInfo checkFile(path);
         if(!checkFile.exists()) {
@@ -78,7 +78,7 @@ namespace Journal {
             return;
         }
         if(!journal) {
-            journal = new JournalFile(path);
+            journal = new JFile(path);
             _watchedFiles[path] = journal;
             for(auto handler: _eventHandlers) {
                  journal->registerHandler(handler);
@@ -90,7 +90,7 @@ namespace Journal {
     }
 
 
-    JournalWatcher::~JournalWatcher() {
+    Watcher::~Watcher() {
         _watcher.removePaths(_watcher.directories());
         _watcher.removePaths(_watcher.files());
         for(auto ptr: _watchedFiles) {
@@ -99,12 +99,12 @@ namespace Journal {
         _watchedFiles.clear();
     }
 
-    void JournalWatcher::journalPathChanged(const QString &from, const QString &to) {
+    void Watcher::journalPathChanged(const QString &from, const QString &to) {
         _watcher.removePath(from);
         watchDirectory(to, _newerThanDate);
     }
 
-    void JournalWatcher::deregisterHandler(QObject *handler) {
+    void Watcher::deregisterHandler(QObject *handler) {
         _eventHandlers.remove(handler);
         for(auto file: _watchedFiles.values()) {
             file->deregisterHandler(handler);
@@ -112,20 +112,20 @@ namespace Journal {
         qDebug() << "Deregistering handler" << handler;
     }
 
-    void JournalWatcher::registerHandler(QObject *handler) {
+    void Watcher::registerHandler(QObject *handler) {
         _eventHandlers.insert(handler);
         for(auto file: _watchedFiles.values()) {
             file->registerHandler(handler);
         }
         qDebug() << "Registering handler" << handler;
-        connect(handler, &QObject::destroyed, this, &JournalWatcher::deregisterHandler);
+        connect(handler, &QObject::destroyed, this, &Watcher::deregisterHandler);
     }
 
-    State::CommanderState *JournalWatcher::state() const {
+    State::CommanderState *Watcher::state() const {
         return _state;
     }
 
-    const State::Commander * JournalWatcher::commanderState(const QString &name) const {
+    const State::Commander * Watcher::commanderState(const QString &name) const {
         return _state->commanderState(name);
     }
 

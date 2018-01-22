@@ -18,7 +18,7 @@
 #include "EventMusic.h"
 
 namespace Journal {
-    EventMusic::EventMusic(const QJsonObject &obj, const JournalFile *file)
+    EventMusic::EventMusic(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Music) {
     }
 }

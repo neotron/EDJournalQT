@@ -18,7 +18,7 @@
 #include "EventMissionRedirected.h"
 
 namespace Journal {
-    EventMissionRedirected::EventMissionRedirected(const QJsonObject &obj, const JournalFile *file)
+    EventMissionRedirected::EventMissionRedirected(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, MissionRedirected) {
     }
 }

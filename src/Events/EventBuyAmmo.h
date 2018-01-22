@@ -23,7 +23,7 @@
 namespace Journal {
     class EventBuyAmmo : public Event, public Extension::CreditsChanged {
     public:
-        EventBuyAmmo(const QJsonObject &obj, const JournalFile *file);
+        EventBuyAmmo(const QJsonObject &obj, const JFile *file);
 
     };
 }

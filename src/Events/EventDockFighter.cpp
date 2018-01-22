@@ -18,7 +18,7 @@
 #include "EventDockFighter.h"
 
 namespace Journal {
-    EventDockFighter::EventDockFighter(const QJsonObject &obj, const JournalFile *file)
+    EventDockFighter::EventDockFighter(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DockFighter) {
     }
 }

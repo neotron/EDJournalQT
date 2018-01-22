@@ -22,7 +22,7 @@
 namespace Journal {
     class EventModuleBuy : public Event {
     public:
-        EventModuleBuy(const QJsonObject &obj, const JournalFile *file);
+        EventModuleBuy(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventDockingGranted.h"
 
 namespace Journal {
-    EventDockingGranted::EventDockingGranted(const QJsonObject &obj, const JournalFile *file)
+    EventDockingGranted::EventDockingGranted(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DockingGranted) {
     }
 }

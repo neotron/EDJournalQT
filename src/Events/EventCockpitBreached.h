@@ -22,7 +22,7 @@
 namespace Journal {
     class EventCockpitBreached : public Event {
     public:
-        EventCockpitBreached(const QJsonObject &obj, const JournalFile *file);
+        EventCockpitBreached(const QJsonObject &obj, const JFile *file);
 
     private:
 

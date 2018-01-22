@@ -23,7 +23,7 @@
 namespace Journal {
     class EventMaterials : public Event {
     public:
-        EventMaterials(const QJsonObject &obj, const JournalFile *file);
+        EventMaterials(const QJsonObject &obj, const JFile *file);
 
         const QList<Material> &raw() const;
 

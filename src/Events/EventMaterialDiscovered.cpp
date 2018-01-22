@@ -18,7 +18,7 @@
 #include "EventMaterialDiscovered.h"
 
 namespace Journal {
-    EventMaterialDiscovered::EventMaterialDiscovered(const QJsonObject &obj, const JournalFile *file)
+    EventMaterialDiscovered::EventMaterialDiscovered(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, MaterialDiscovered),
           _material(Materials::material(obj.value(Key::Name))),
           _discoveryNumber(obj.value(Key::DiscoveryNumber).toInt(0)) {

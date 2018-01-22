@@ -18,7 +18,7 @@
 #include "EventDataScanned.h"
 
 namespace Journal {
-    EventDataScanned::EventDataScanned(const QJsonObject &obj, const JournalFile *file)
+    EventDataScanned::EventDataScanned(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DataScanned) {
     }
 }

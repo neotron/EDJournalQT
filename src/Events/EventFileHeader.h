@@ -22,7 +22,7 @@
 namespace Journal {
     class EventFileHeader : public Event {
     public:
-        EventFileHeader(const QJsonObject &obj, const JournalFile *file);
+        EventFileHeader(const QJsonObject &obj, const JFile *file);
 
         const QString &language() const;
 

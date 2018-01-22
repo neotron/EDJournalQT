@@ -22,7 +22,7 @@
 namespace Journal {
     class EventModuleSwap : public Event {
     public:
-        EventModuleSwap(const QJsonObject &obj, const JournalFile *file);
+        EventModuleSwap(const QJsonObject &obj, const JFile *file);
 
     private:
 

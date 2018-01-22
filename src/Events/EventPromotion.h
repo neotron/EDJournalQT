@@ -22,7 +22,7 @@
 namespace Journal {
     class EventPromotion : public Event {
     public:
-        EventPromotion(const QJsonObject &obj, const JournalFile *file);
+        EventPromotion(const QJsonObject &obj, const JFile *file);
 
     private:
 

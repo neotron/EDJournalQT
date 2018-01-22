@@ -19,9 +19,9 @@
 
 #pragma once
 #include <QCoreApplication>
-#include "JournalFile.h"
+#include "JFile.h"
 #include "Events/Event.h"
-#include "JournalWatcher.h"
+#include "Watcher.h"
 namespace Journal {
     class LiveJournal : public QObject {
     Q_OBJECT
@@ -44,7 +44,7 @@ namespace Journal {
     private:
         explicit LiveJournal(QObject *parent);
 
-        JournalWatcher *_watcher;
+        Watcher *_watcher;
     };
 }
 

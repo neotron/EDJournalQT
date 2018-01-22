@@ -18,7 +18,7 @@
 #include "EventPowerplayJoin.h"
 
 namespace Journal {
-    EventPowerplayJoin::EventPowerplayJoin(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplayJoin::EventPowerplayJoin(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplayJoin) {
     }
 }

@@ -22,7 +22,7 @@
 namespace Journal {
     class EventSupercruiseExit : public Event {
     public:
-        EventSupercruiseExit(const QJsonObject &obj, const JournalFile *file);
+        EventSupercruiseExit(const QJsonObject &obj, const JFile *file);
 
     private:
 

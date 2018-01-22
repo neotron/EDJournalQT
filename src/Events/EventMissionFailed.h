@@ -22,7 +22,7 @@
 namespace Journal {
     class EventMissionFailed : public Event {
     public:
-        EventMissionFailed(const QJsonObject &obj, const JournalFile *file);
+        EventMissionFailed(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "JournalWatcher.h"
+#include "Watcher.h"
 #include "Handler.h"
 
 int main(int argc, char *argv[]) {

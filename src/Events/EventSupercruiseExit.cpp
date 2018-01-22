@@ -18,7 +18,7 @@
 #include "EventSupercruiseExit.h"
 
 namespace Journal {
-    EventSupercruiseExit::EventSupercruiseExit(const QJsonObject &obj, const JournalFile *file)
+    EventSupercruiseExit::EventSupercruiseExit(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, SupercruiseExit) {
     }
 }

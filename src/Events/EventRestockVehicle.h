@@ -22,7 +22,7 @@
 namespace Journal {
     class EventRestockVehicle : public Event {
     public:
-        EventRestockVehicle(const QJsonObject &obj, const JournalFile *file);
+        EventRestockVehicle(const QJsonObject &obj, const JFile *file);
 
     private:
 

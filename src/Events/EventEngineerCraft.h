@@ -22,7 +22,7 @@
 namespace Journal {
     class EventEngineerCraft : public Event, public Extension::MaterialsChanged {
     public:
-        EventEngineerCraft(const QJsonObject &obj, const JournalFile *file);
+        EventEngineerCraft(const QJsonObject &obj, const JFile *file);
 
         const QString &engineer() const;
 

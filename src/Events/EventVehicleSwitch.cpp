@@ -18,7 +18,7 @@
 #include "EventVehicleSwitch.h"
 
 namespace Journal {
-    EventVehicleSwitch::EventVehicleSwitch(const QJsonObject &obj, const JournalFile *file)
+    EventVehicleSwitch::EventVehicleSwitch(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, VehicleSwitch) {
     }
 }

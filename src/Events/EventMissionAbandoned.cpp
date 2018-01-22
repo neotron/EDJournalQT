@@ -18,7 +18,7 @@
 #include "EventMissionAbandoned.h"
 
 namespace Journal {
-    EventMissionAbandoned::EventMissionAbandoned(const QJsonObject &obj, const JournalFile *file)
+    EventMissionAbandoned::EventMissionAbandoned(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, MissionAbandoned) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventLiftoff.h"
 
 namespace Journal {
-    EventLiftoff::EventLiftoff(const QJsonObject &obj, const JournalFile *file)
+    EventLiftoff::EventLiftoff(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Liftoff) {
     }
 }

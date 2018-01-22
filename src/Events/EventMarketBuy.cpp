@@ -18,7 +18,7 @@
 #include "EventMarketBuy.h"
 
 namespace Journal {
-    EventMarketBuy::EventMarketBuy(const QJsonObject &obj, const JournalFile *file)
+    EventMarketBuy::EventMarketBuy(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, MarketBuy),
           CommodityExchange(obj.value(Key::Type).toString(),
                             obj.value(Key::BuyPrice).toInt(),

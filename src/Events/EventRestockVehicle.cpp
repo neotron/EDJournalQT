@@ -18,7 +18,7 @@
 #include "EventRestockVehicle.h"
 
 namespace Journal {
-    EventRestockVehicle::EventRestockVehicle(const QJsonObject &obj, const JournalFile *file)
+    EventRestockVehicle::EventRestockVehicle(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, RestockVehicle) {
     }
 }

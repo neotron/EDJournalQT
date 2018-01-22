@@ -18,7 +18,7 @@
 #include "EventFileHeader.h"
 
 namespace Journal {
-    EventFileHeader::EventFileHeader(const QJsonObject &obj, const JournalFile *file)
+    EventFileHeader::EventFileHeader(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, FileHeader) {
         _language = string(Key::language);
         _version = string(Key::gameversion);

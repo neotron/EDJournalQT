@@ -22,7 +22,7 @@
 namespace Journal {
     class EventRedeemVoucher : public Event {
     public:
-        EventRedeemVoucher(const QJsonObject &obj, const JournalFile *file);
+        EventRedeemVoucher(const QJsonObject &obj, const JFile *file);
 
     private:
 

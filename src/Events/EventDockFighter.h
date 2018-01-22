@@ -22,7 +22,7 @@
 namespace Journal {
     class EventDockFighter : public Event {
     public:
-        EventDockFighter(const QJsonObject &obj, const JournalFile *file);
+        EventDockFighter(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -28,8 +28,7 @@
 
 namespace Journal {
 #include "eventclasses.inc"
-    typedef std::shared_ptr<const Event> EventPtr;
-    class JournalFile;
+    class JFile;
 
     class Event : public QEvent {
     public:
@@ -178,11 +177,11 @@ namespace Journal {
             NumEvents
         };
 
-        Event(const QJsonObject &obj, const JournalFile *file, JournalEvent event);
+        Event(const QJsonObject &obj, const JFile *file, JournalEvent event);
 
         ~Event() override = default;
 
-        static Event *eventFromDocument(QJsonDocument &document, Journal::JournalFile *pFile);
+        static Event *eventFromDocument(QJsonDocument &document, Journal::JFile *pFile);
 
         QDateTime timestamp() const;
 
@@ -206,12 +205,12 @@ namespace Journal {
 
         bool isValid() const { return journalEvent() != Unknown; }
 
-        const JournalFile *file() const;
+        const JFile *file() const;
 
     private:
         static QMap<QString, JournalEvent> s_eventLookupMap;
 
-        const JournalFile *_file;
+        const JFile *_file;
         QJsonObject _obj;
 
     };

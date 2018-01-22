@@ -18,7 +18,7 @@
 #include "EventPassengers.h"
 
 namespace Journal {
-    EventPassengers::EventPassengers(const QJsonObject &obj, const JournalFile *file)
+    EventPassengers::EventPassengers(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Passengers) {
     }
 }

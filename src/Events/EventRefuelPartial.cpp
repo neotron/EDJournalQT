@@ -18,7 +18,7 @@
 #include "EventRefuelPartial.h"
 
 namespace Journal {
-    EventRefuelPartial::EventRefuelPartial(const QJsonObject &obj, const JournalFile *file)
+    EventRefuelPartial::EventRefuelPartial(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, RefuelPartial) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventCockpitBreached.h"
 
 namespace Journal {
-    EventCockpitBreached::EventCockpitBreached(const QJsonObject &obj, const JournalFile *file)
+    EventCockpitBreached::EventCockpitBreached(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CockpitBreached) {
     }
 }

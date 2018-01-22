@@ -22,7 +22,7 @@
 namespace Journal {
     class EventHeatWarning : public Event {
     public:
-        EventHeatWarning(const QJsonObject &obj, const JournalFile *file);
+        EventHeatWarning(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -22,7 +22,7 @@
 namespace Journal {
     class EventMissionRedirected : public Event {
     public:
-        EventMissionRedirected(const QJsonObject &obj, const JournalFile *file);
+        EventMissionRedirected(const QJsonObject &obj, const JFile *file);
 
     private:
 

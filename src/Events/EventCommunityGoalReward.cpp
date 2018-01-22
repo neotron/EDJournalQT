@@ -18,7 +18,7 @@
 #include "EventCommunityGoalReward.h"
 
 namespace Journal {
-    EventCommunityGoalReward::EventCommunityGoalReward(const QJsonObject &obj, const JournalFile *file)
+    EventCommunityGoalReward::EventCommunityGoalReward(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CommunityGoalReward) {
     }
 }

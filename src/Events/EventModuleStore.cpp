@@ -18,7 +18,7 @@
 #include "EventModuleStore.h"
 
 namespace Journal {
-    EventModuleStore::EventModuleStore(const QJsonObject &obj, const JournalFile *file)
+    EventModuleStore::EventModuleStore(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ModuleStore) {
     }
 }

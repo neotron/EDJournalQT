@@ -25,7 +25,7 @@ namespace Journal {
                             public Extension::CommodityExchange
     {
     public:
-        EventMarketSell(const QJsonObject &obj, const JournalFile *file);
+        EventMarketSell(const QJsonObject &obj, const JFile *file);
         int64_t totalSale() const;
         int64_t profit() const;
         int avgPricePaid() const;

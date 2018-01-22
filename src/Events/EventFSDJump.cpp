@@ -18,7 +18,7 @@
 #include "EventFSDJump.h"
 
 namespace Journal {
-    EventFSDJump::EventFSDJump(const QJsonObject &obj, const JournalFile *file)
+    EventFSDJump::EventFSDJump(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, FSDJump) {
     }
 }

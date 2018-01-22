@@ -23,7 +23,7 @@
 namespace Journal {
     class EventLoadGame: public Event {
     public:
-        explicit EventLoadGame(const QJsonObject &obj, const JournalFile *file);
+        explicit EventLoadGame(const QJsonObject &obj, const JFile *file);
 
         const QString &commander() const;
 

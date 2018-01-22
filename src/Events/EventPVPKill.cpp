@@ -18,7 +18,7 @@
 #include "EventPVPKill.h"
 
 namespace Journal {
-    EventPVPKill::EventPVPKill(const QJsonObject &obj, const JournalFile *file)
+    EventPVPKill::EventPVPKill(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PVPKill) {
     }
 }

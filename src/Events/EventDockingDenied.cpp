@@ -18,7 +18,7 @@
 #include "EventDockingDenied.h"
 
 namespace Journal {
-    EventDockingDenied::EventDockingDenied(const QJsonObject &obj, const JournalFile *file)
+    EventDockingDenied::EventDockingDenied(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DockingDenied) {
     }
 }

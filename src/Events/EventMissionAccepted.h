@@ -22,7 +22,7 @@
 namespace Journal {
     class EventMissionAccepted : public Event {
     public:
-        EventMissionAccepted(const QJsonObject &obj, const JournalFile *file);
+        EventMissionAccepted(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventSupercruiseEntry.h"
 
 namespace Journal {
-    EventSupercruiseEntry::EventSupercruiseEntry(const QJsonObject &obj, const JournalFile *file)
+    EventSupercruiseEntry::EventSupercruiseEntry(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, SupercruiseEntry) {
     }
 }

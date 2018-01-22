@@ -22,7 +22,7 @@
 namespace Journal {
     class EventRepair : public Event {
     public:
-        EventRepair(const QJsonObject &obj, const JournalFile *file);
+        EventRepair(const QJsonObject &obj, const JFile *file);
 
     private:
 

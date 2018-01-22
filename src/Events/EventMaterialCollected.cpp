@@ -20,15 +20,15 @@
 
 namespace Journal {
 
-    EventMaterialCollected::EventMaterialCollected(const QJsonObject &obj, const JournalFile *file)
+    EventMaterialCollected::EventMaterialCollected(const QJsonObject &obj, const JFile *file)
         : EventMaterialChanged(obj, file, MaterialCollected) {
     }
 
-    EventMaterialDiscarded::EventMaterialDiscarded(const QJsonObject &obj, const JournalFile *file)
+    EventMaterialDiscarded::EventMaterialDiscarded(const QJsonObject &obj, const JFile *file)
         : EventMaterialChanged(obj, file, MaterialDiscarded) {
     }
 
-    EventMaterialChanged::EventMaterialChanged(const QJsonObject &obj, const JournalFile *file, JournalEvent event)
+    EventMaterialChanged::EventMaterialChanged(const QJsonObject &obj, const JFile *file, JournalEvent event)
         : Event(obj, file, event), MaterialsChanged(obj) {
         auto change = static_cast<int16_t>(integer(Key::Count));
         switch(event) {

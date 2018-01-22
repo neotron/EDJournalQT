@@ -22,7 +22,7 @@
 namespace Journal {
     class EventFactionKillBond : public Event {
     public:
-        EventFactionKillBond(const QJsonObject &obj, const JournalFile *file);
+        EventFactionKillBond(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventPowerplaySalary.h"
 
 namespace Journal {
-    EventPowerplaySalary::EventPowerplaySalary(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplaySalary::EventPowerplaySalary(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplaySalary) {
     }
 }

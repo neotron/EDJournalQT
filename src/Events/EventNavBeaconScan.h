@@ -22,7 +22,7 @@
 namespace Journal {
     class EventNavBeaconScan : public Event {
     public:
-        EventNavBeaconScan(const QJsonObject &obj, const JournalFile *file);
+        EventNavBeaconScan(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -22,7 +22,7 @@
 namespace Journal {
     class EventStartJump : public Event {
     public:
-        EventStartJump(const QJsonObject &obj, const JournalFile *file);
+        EventStartJump(const QJsonObject &obj, const JFile *file);
 
     private:
 

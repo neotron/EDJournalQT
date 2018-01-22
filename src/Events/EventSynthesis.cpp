@@ -18,7 +18,7 @@
 #include "EventSynthesis.h"
 
 namespace Journal {
-    EventSynthesis::EventSynthesis(const QJsonObject &obj, const JournalFile *file)
+    EventSynthesis::EventSynthesis(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Synthesis) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventRedeemVoucher.h"
 
 namespace Journal {
-    EventRedeemVoucher::EventRedeemVoucher(const QJsonObject &obj, const JournalFile *file)
+    EventRedeemVoucher::EventRedeemVoucher(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, RedeemVoucher) {
     }
 }

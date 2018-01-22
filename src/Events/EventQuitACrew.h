@@ -22,7 +22,7 @@
 namespace Journal {
     class EventQuitACrew : public Event {
     public:
-        EventQuitACrew(const QJsonObject &obj, const JournalFile *file);
+        EventQuitACrew(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventSetUserShipName.h"
 
 namespace Journal {
-    EventSetUserShipName::EventSetUserShipName(const QJsonObject &obj, const JournalFile *file)
+    EventSetUserShipName::EventSetUserShipName(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, SetUserShipName) {
     }
 }

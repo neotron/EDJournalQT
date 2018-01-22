@@ -18,7 +18,7 @@
 #include "EventFetchRemoteModule.h"
 
 namespace Journal {
-    EventFetchRemoteModule::EventFetchRemoteModule(const QJsonObject &obj, const JournalFile *file)
+    EventFetchRemoteModule::EventFetchRemoteModule(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, FetchRemoteModule) {
     }
 }

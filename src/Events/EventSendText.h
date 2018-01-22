@@ -22,7 +22,7 @@
 namespace Journal {
     class EventSendText : public Event {
     public:
-        EventSendText(const QJsonObject &obj, const JournalFile *file);
+        EventSendText(const QJsonObject &obj, const JFile *file);
 
     private:
 

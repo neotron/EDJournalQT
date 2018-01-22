@@ -18,7 +18,7 @@
 #include "EventClearSavedGame.h"
 
 namespace Journal {
-    EventClearSavedGame::EventClearSavedGame(const QJsonObject &obj, const JournalFile *file)
+    EventClearSavedGame::EventClearSavedGame(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ClearSavedGame) {
     }
 }

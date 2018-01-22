@@ -22,7 +22,7 @@
 namespace Journal {
     class EventLoadout : public Event {
     public:
-        EventLoadout(const QJsonObject &obj, const JournalFile *file);
+        EventLoadout(const QJsonObject &obj, const JFile *file);
 
     private:
 

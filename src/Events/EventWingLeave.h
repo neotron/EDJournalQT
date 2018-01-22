@@ -22,7 +22,7 @@
 namespace Journal {
     class EventWingLeave : public Event {
     public:
-        EventWingLeave(const QJsonObject &obj, const JournalFile *file);
+        EventWingLeave(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventTouchdown.h"
 
 namespace Journal {
-    EventTouchdown::EventTouchdown(const QJsonObject &obj, const JournalFile *file)
+    EventTouchdown::EventTouchdown(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Touchdown) {
     }
 }

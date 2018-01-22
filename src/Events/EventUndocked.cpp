@@ -18,7 +18,7 @@
 #include "EventUndocked.h"
 
 namespace Journal {
-    EventUndocked::EventUndocked(const QJsonObject &obj, const JournalFile *file)
+    EventUndocked::EventUndocked(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Undocked) {
     }
 }

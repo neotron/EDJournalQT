@@ -18,7 +18,7 @@
 #include "EventScientificResearch.h"
 
 namespace Journal {
-    EventScientificResearch::EventScientificResearch(const QJsonObject &obj, const JournalFile *file)
+    EventScientificResearch::EventScientificResearch(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ScientificResearch) {
     }
 }

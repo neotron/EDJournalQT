@@ -18,7 +18,7 @@
 #include "EventReceiveText.h"
 
 namespace Journal {
-    EventReceiveText::EventReceiveText(const QJsonObject &obj, const JournalFile *file)
+    EventReceiveText::EventReceiveText(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ReceiveText) {
     }
 }

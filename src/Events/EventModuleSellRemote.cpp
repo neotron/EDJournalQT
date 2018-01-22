@@ -18,7 +18,7 @@
 #include "EventModuleSellRemote.h"
 
 namespace Journal {
-    EventModuleSellRemote::EventModuleSellRemote(const QJsonObject &obj, const JournalFile *file)
+    EventModuleSellRemote::EventModuleSellRemote(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ModuleSellRemote) {
     }
 }

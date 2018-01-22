@@ -24,7 +24,7 @@
 namespace Journal {
     class EventMaterialChanged: public Event, public Extension::MaterialsChanged {
     protected:
-        EventMaterialChanged(const QJsonObject &obj, const JournalFile *file, JournalEvent event);
+        EventMaterialChanged(const QJsonObject &obj, const JFile *file, JournalEvent event);
         ~EventMaterialChanged() override;
     public:
         const Material &material() const;
@@ -32,12 +32,12 @@ namespace Journal {
 
     class EventMaterialCollected : public EventMaterialChanged {
     public:
-        EventMaterialCollected(const QJsonObject &obj, const JournalFile *file);
+        EventMaterialCollected(const QJsonObject &obj, const JFile *file);
     };
 
     class EventMaterialDiscarded : public EventMaterialChanged {
     public:
-        EventMaterialDiscarded(const QJsonObject &obj, const JournalFile *file);
+        EventMaterialDiscarded(const QJsonObject &obj, const JFile *file);
     };
 }
 

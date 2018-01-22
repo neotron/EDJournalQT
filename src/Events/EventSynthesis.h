@@ -22,7 +22,7 @@
 namespace Journal {
     class EventSynthesis : public Event {
     public:
-        EventSynthesis(const QJsonObject &obj, const JournalFile *file);
+        EventSynthesis(const QJsonObject &obj, const JFile *file);
 
     private:
 

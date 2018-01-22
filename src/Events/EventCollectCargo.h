@@ -22,7 +22,7 @@
 namespace Journal {
     class EventCollectCargo : public Event {
     public:
-        EventCollectCargo(const QJsonObject &obj, const JournalFile *file);
+        EventCollectCargo(const QJsonObject &obj, const JFile *file);
 
     private:
 

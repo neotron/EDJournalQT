@@ -18,11 +18,11 @@
 
 #pragma once
 
-#include "EventDispatch.h"
+#include "EventDispatchObject.h"
 namespace Journal::State {
     class Commander;
 
-    class CommanderState : public EventDispatch {
+    class CommanderState : public EventDispatchObject {
     public:
         explicit CommanderState(QObject *parent = nullptr);
 

@@ -18,7 +18,7 @@
 #include "EventCargo.h"
 
 namespace Journal {
-    EventCargo::EventCargo(const QJsonObject &obj, const JournalFile *file)
+    EventCargo::EventCargo(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Cargo) {
     }
 }

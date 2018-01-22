@@ -22,7 +22,7 @@
 namespace Journal {
     class EventInterdiction : public Event {
     public:
-        EventInterdiction(const QJsonObject &obj, const JournalFile *file);
+        EventInterdiction(const QJsonObject &obj, const JFile *file);
 
     private:
 

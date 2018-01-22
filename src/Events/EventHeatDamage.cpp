@@ -18,7 +18,7 @@
 #include "EventHeatDamage.h"
 
 namespace Journal {
-    EventHeatDamage::EventHeatDamage(const QJsonObject &obj, const JournalFile *file)
+    EventHeatDamage::EventHeatDamage(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, HeatDamage) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventSelfDestruct.h"
 
 namespace Journal {
-    EventSelfDestruct::EventSelfDestruct(const QJsonObject &obj, const JournalFile *file)
+    EventSelfDestruct::EventSelfDestruct(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, SelfDestruct) {
     }
 }

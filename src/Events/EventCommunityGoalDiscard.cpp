@@ -18,7 +18,7 @@
 #include "EventCommunityGoalDiscard.h"
 
 namespace Journal {
-    EventCommunityGoalDiscard::EventCommunityGoalDiscard(const QJsonObject &obj, const JournalFile *file)
+    EventCommunityGoalDiscard::EventCommunityGoalDiscard(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CommunityGoalDiscard) {
     }
 }

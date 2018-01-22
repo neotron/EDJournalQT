@@ -18,7 +18,7 @@
 #include "EventPowerplayCollect.h"
 
 namespace Journal {
-    EventPowerplayCollect::EventPowerplayCollect(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplayCollect::EventPowerplayCollect(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplayCollect) {
     }
 }

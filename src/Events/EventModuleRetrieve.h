@@ -22,7 +22,7 @@
 namespace Journal {
     class EventModuleRetrieve : public Event {
     public:
-        EventModuleRetrieve(const QJsonObject &obj, const JournalFile *file);
+        EventModuleRetrieve(const QJsonObject &obj, const JFile *file);
 
     private:
 

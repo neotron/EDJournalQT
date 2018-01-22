@@ -18,7 +18,7 @@
 #include "EventPowerplayDefect.h"
 
 namespace Journal {
-    EventPowerplayDefect::EventPowerplayDefect(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplayDefect::EventPowerplayDefect(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplayDefect) {
     }
 }

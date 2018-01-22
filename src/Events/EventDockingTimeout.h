@@ -22,7 +22,7 @@
 namespace Journal {
     class EventDockingTimeout : public Event {
     public:
-        EventDockingTimeout(const QJsonObject &obj, const JournalFile *file);
+        EventDockingTimeout(const QJsonObject &obj, const JFile *file);
 
     private:
 

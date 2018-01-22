@@ -18,7 +18,7 @@
 #include "EventInterdiction.h"
 
 namespace Journal {
-    EventInterdiction::EventInterdiction(const QJsonObject &obj, const JournalFile *file)
+    EventInterdiction::EventInterdiction(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Interdiction) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventJetConeBoost.h"
 
 namespace Journal {
-    EventJetConeBoost::EventJetConeBoost(const QJsonObject &obj, const JournalFile *file)
+    EventJetConeBoost::EventJetConeBoost(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, JetConeBoost) {
     }
 }

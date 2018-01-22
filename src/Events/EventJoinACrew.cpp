@@ -18,7 +18,7 @@
 #include "EventJoinACrew.h"
 
 namespace Journal {
-    EventJoinACrew::EventJoinACrew(const QJsonObject &obj, const JournalFile *file)
+    EventJoinACrew::EventJoinACrew(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, JoinACrew) {
     }
 }

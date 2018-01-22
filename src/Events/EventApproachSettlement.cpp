@@ -18,7 +18,7 @@
 #include "EventApproachSettlement.h"
 
 namespace Journal {
-    EventApproachSettlement::EventApproachSettlement(const QJsonObject &obj, const JournalFile *file)
+    EventApproachSettlement::EventApproachSettlement(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ApproachSettlement) {
     }
 }

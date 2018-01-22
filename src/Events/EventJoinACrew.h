@@ -22,7 +22,7 @@
 namespace Journal {
     class EventJoinACrew : public Event {
     public:
-        EventJoinACrew(const QJsonObject &obj, const JournalFile *file);
+        EventJoinACrew(const QJsonObject &obj, const JFile *file);
 
     private:
 

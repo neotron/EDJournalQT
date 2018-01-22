@@ -22,7 +22,7 @@
 namespace Journal {
     class EventFetchRemoteModule : public Event {
     public:
-        EventFetchRemoteModule(const QJsonObject &obj, const JournalFile *file);
+        EventFetchRemoteModule(const QJsonObject &obj, const JFile *file);
 
     private:
 

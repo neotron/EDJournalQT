@@ -15,12 +15,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include <src/JournalFile.h>
+#include <src/JFile.h>
 #include "EventLoadGame.h"
 #include "Event.h"
 
 namespace  Journal {
-    EventLoadGame::EventLoadGame(const QJsonObject &obj, const JournalFile *file)
+    EventLoadGame::EventLoadGame(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, LoadGame),
           _commander(string(Key::Commander)),
           _ship(string(Key::Ship)),

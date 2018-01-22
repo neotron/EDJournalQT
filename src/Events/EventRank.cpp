@@ -18,7 +18,7 @@
 #include "EventRank.h"
 
 namespace Journal {
-    EventRank::EventRank(const QJsonObject &obj, const JournalFile *file)
+    EventRank::EventRank(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Rank) {
         for(auto &key: obj.keys()) {
             auto value = obj[key];

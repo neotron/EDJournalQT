@@ -18,7 +18,7 @@
 #include "EventCrewMemberQuits.h"
 
 namespace Journal {
-    EventCrewMemberQuits::EventCrewMemberQuits(const QJsonObject &obj, const JournalFile *file)
+    EventCrewMemberQuits::EventCrewMemberQuits(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CrewMemberQuits) {
     }
 }

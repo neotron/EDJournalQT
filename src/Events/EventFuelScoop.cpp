@@ -18,7 +18,7 @@
 #include "EventFuelScoop.h"
 
 namespace Journal {
-    EventFuelScoop::EventFuelScoop(const QJsonObject &obj, const JournalFile *file)
+    EventFuelScoop::EventFuelScoop(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, FuelScoop) {
     }
 }

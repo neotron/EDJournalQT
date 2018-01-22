@@ -18,7 +18,7 @@
 #include "EventDocked.h"
 
 namespace Journal {
-    EventDocked::EventDocked(const QJsonObject &obj, const JournalFile *file)
+    EventDocked::EventDocked(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Docked) {
     }
 }

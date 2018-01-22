@@ -18,7 +18,7 @@
 #include "EventWingAdd.h"
 
 namespace Journal {
-    EventWingAdd::EventWingAdd(const QJsonObject &obj, const JournalFile *file)
+    EventWingAdd::EventWingAdd(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, WingAdd) {
     }
 }

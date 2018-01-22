@@ -18,7 +18,7 @@
 #include "EventDockingCancelled.h"
 
 namespace Journal {
-    EventDockingCancelled::EventDockingCancelled(const QJsonObject &obj, const JournalFile *file)
+    EventDockingCancelled::EventDockingCancelled(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DockingCancelled) {
     }
 }

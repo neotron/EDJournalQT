@@ -15,11 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "JournalWatcher.h"
+#include "Watcher.h"
 #include "LiveJournal.h"
 namespace Journal {
     LiveJournal::LiveJournal(QObject *parent)
-        : QObject(parent), _watcher(new JournalWatcher(this)) {
+        : QObject(parent), _watcher(new Watcher(this)) {
     }
 
     LiveJournal *LiveJournal::instance() {

@@ -18,7 +18,7 @@
 #include "EventDied.h"
 
 namespace Journal {
-    EventDied::EventDied(const QJsonObject &obj, const JournalFile *file)
+    EventDied::EventDied(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Died) {
     }
 }

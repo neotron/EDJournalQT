@@ -19,14 +19,14 @@
 #include <QDebug>
 #include <QJsonArray>
 #include <QDebug>
-#include <src/JournalFile.h>
+#include <src/JFile.h>
 
 #include "Events.h"
 #include "EventTable.h"
 
 namespace Journal {
 
-    Event *Event::eventFromDocument(QJsonDocument &document, Journal::JournalFile *file) {
+    Event *Event::eventFromDocument(QJsonDocument &document, Journal::JFile *file) {
 
         if(!document.isObject()) {
             return nullptr;
@@ -110,7 +110,7 @@ namespace Journal {
         return value.isBool() ? value.toBool() : false;
     }
 
-    Event::Event(const QJsonObject &obj, const JournalFile *file, JournalEvent event)
+    Event::Event(const QJsonObject &obj, const JFile *file, JournalEvent event)
         : QEvent(static_cast<QEvent::Type>(event)), _file(file), _obj(obj) {
     }
 
@@ -122,7 +122,7 @@ namespace Journal {
         return Unknown;
     }
 
-    const JournalFile *Event::file() const {
+    const JFile *Event::file() const {
         return _file;
     }
 }

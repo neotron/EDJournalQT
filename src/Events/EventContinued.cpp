@@ -18,7 +18,7 @@
 #include "EventContinued.h"
 
 namespace Journal {
-    EventContinued::EventContinued(const QJsonObject &obj, const JournalFile *file)
+    EventContinued::EventContinued(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Continued) {
     }
 }

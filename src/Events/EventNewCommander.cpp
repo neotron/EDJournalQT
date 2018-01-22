@@ -18,7 +18,7 @@
 #include "EventNewCommander.h"
 
 namespace Journal {
-    EventNewCommander::EventNewCommander(const QJsonObject &obj, const JournalFile *file)
+    EventNewCommander::EventNewCommander(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, NewCommander) {
     }
 }

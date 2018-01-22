@@ -18,7 +18,7 @@
 #include "EventPowerplayVoucher.h"
 
 namespace Journal {
-    EventPowerplayVoucher::EventPowerplayVoucher(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplayVoucher::EventPowerplayVoucher(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplayVoucher) {
     }
 }

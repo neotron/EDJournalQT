@@ -18,7 +18,7 @@
 #include "EventBounty.h"
 
 namespace Journal {
-    EventBounty::EventBounty(const QJsonObject &obj, const JournalFile *file)
+    EventBounty::EventBounty(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Bounty) {
     }
 }

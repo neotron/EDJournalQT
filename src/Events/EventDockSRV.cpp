@@ -18,7 +18,7 @@
 #include "EventDockSRV.h"
 
 namespace Journal {
-    EventDockSRV::EventDockSRV(const QJsonObject &obj, const JournalFile *file)
+    EventDockSRV::EventDockSRV(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DockSRV) {
     }
 }

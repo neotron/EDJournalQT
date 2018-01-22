@@ -18,7 +18,7 @@
 #include "EventPowerplayFastTrack.h"
 
 namespace Journal {
-    EventPowerplayFastTrack::EventPowerplayFastTrack(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplayFastTrack::EventPowerplayFastTrack(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplayFastTrack) {
     }
 }

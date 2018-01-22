@@ -20,7 +20,7 @@
 
 namespace Journal::State {
     CommanderState::CommanderState(QObject *parent)
-    : EventDispatch(parent) {}
+    : EventDispatchObject(parent) {}
 
     void CommanderState::onEventGeneric(Event *event) {
         auto commanderName = event->file()->commander();

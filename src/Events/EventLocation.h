@@ -22,7 +22,7 @@
 namespace Journal {
     class EventLocation : public Event {
     public:
-        EventLocation(const QJsonObject &obj, const JournalFile *file);
+        EventLocation(const QJsonObject &obj, const JFile *file);
 
     private:
 

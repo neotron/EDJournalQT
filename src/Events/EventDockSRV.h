@@ -22,7 +22,7 @@
 namespace Journal {
     class EventDockSRV : public Event {
     public:
-        EventDockSRV(const QJsonObject &obj, const JournalFile *file);
+        EventDockSRV(const QJsonObject &obj, const JFile *file);
 
     private:
 

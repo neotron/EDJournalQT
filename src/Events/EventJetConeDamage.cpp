@@ -18,7 +18,7 @@
 #include "EventJetConeDamage.h"
 
 namespace Journal {
-    EventJetConeDamage::EventJetConeDamage(const QJsonObject &obj, const JournalFile *file)
+    EventJetConeDamage::EventJetConeDamage(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, JetConeDamage) {
     }
 }

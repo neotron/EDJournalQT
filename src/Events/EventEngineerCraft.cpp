@@ -18,7 +18,7 @@
 #include "EventEngineerCraft.h"
 
 namespace Journal {
-    EventEngineerCraft::EventEngineerCraft(const QJsonObject &obj, const JournalFile *file)
+    EventEngineerCraft::EventEngineerCraft(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, EngineerCraft),
           MaterialsChanged(obj.value(Key::Ingredients)),
           _engineer(obj.value(Key::Engineer).toString()),

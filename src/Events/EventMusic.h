@@ -22,7 +22,7 @@
 namespace Journal {
     class EventMusic : public Event {
     public:
-        EventMusic(const QJsonObject &obj, const JournalFile *file);
+        EventMusic(const QJsonObject &obj, const JFile *file);
 
     private:
 

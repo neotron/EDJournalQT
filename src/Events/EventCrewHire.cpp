@@ -18,7 +18,7 @@
 #include "EventCrewHire.h"
 
 namespace Journal {
-    EventCrewHire::EventCrewHire(const QJsonObject &obj, const JournalFile *file)
+    EventCrewHire::EventCrewHire(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CrewHire) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventNavBeaconScan.h"
 
 namespace Journal {
-    EventNavBeaconScan::EventNavBeaconScan(const QJsonObject &obj, const JournalFile *file)
+    EventNavBeaconScan::EventNavBeaconScan(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, NavBeaconScan) {
     }
 }

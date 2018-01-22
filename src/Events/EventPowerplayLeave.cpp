@@ -18,7 +18,7 @@
 #include "EventPowerplayLeave.h"
 
 namespace Journal {
-    EventPowerplayLeave::EventPowerplayLeave(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplayLeave::EventPowerplayLeave(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplayLeave) {
     }
 }

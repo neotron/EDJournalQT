@@ -18,7 +18,7 @@
 #include "EventModuleSell.h"
 
 namespace Journal {
-    EventModuleSell::EventModuleSell(const QJsonObject &obj, const JournalFile *file)
+    EventModuleSell::EventModuleSell(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ModuleSell) {
     }
 }

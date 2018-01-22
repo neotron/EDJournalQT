@@ -22,7 +22,7 @@
 namespace Journal {
     class EventShipyardNew : public Event {
     public:
-        EventShipyardNew(const QJsonObject &obj, const JournalFile *file);
+        EventShipyardNew(const QJsonObject &obj, const JFile *file);
 
     private:
 

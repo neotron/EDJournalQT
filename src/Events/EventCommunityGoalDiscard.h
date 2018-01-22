@@ -22,7 +22,7 @@
 namespace Journal {
     class EventCommunityGoalDiscard : public Event {
     public:
-        EventCommunityGoalDiscard(const QJsonObject &obj, const JournalFile *file);
+        EventCommunityGoalDiscard(const QJsonObject &obj, const JFile *file);
 
     private:
 

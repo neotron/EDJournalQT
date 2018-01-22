@@ -18,7 +18,7 @@
 #include "EventMissionAccepted.h"
 
 namespace Journal {
-    EventMissionAccepted::EventMissionAccepted(const QJsonObject &obj, const JournalFile *file)
+    EventMissionAccepted::EventMissionAccepted(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, MissionAccepted) {
     }
 }

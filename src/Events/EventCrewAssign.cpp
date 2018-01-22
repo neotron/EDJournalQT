@@ -18,7 +18,7 @@
 #include "EventCrewAssign.h"
 
 namespace Journal {
-    EventCrewAssign::EventCrewAssign(const QJsonObject &obj, const JournalFile *file)
+    EventCrewAssign::EventCrewAssign(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CrewAssign) {
     }
 }

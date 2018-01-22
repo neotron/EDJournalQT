@@ -18,7 +18,7 @@
 #include "EventMaterials.h"
 
 namespace  Journal {
-    EventMaterials::EventMaterials(const QJsonObject &obj, const JournalFile *file)
+    EventMaterials::EventMaterials(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Materials) {
         _raw = std::move(Materials::materials(obj.value(Key::Raw)));
         _encoded = std::move(Materials::materials(obj.value(Key::Encoded)));

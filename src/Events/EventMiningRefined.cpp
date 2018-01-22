@@ -18,7 +18,7 @@
 #include "EventMiningRefined.h"
 
 namespace Journal {
-    EventMiningRefined::EventMiningRefined(const QJsonObject &obj, const JournalFile *file)
+    EventMiningRefined::EventMiningRefined(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, MiningRefined) {
     }
 }

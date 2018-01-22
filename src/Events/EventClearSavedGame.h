@@ -22,7 +22,7 @@
 namespace Journal {
     class EventClearSavedGame : public Event {
     public:
-        EventClearSavedGame(const QJsonObject &obj, const JournalFile *file);
+        EventClearSavedGame(const QJsonObject &obj, const JFile *file);
 
     private:
 

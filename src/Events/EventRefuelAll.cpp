@@ -18,7 +18,7 @@
 #include "EventRefuelAll.h"
 
 namespace Journal {
-    EventRefuelAll::EventRefuelAll(const QJsonObject &obj, const JournalFile *file)
+    EventRefuelAll::EventRefuelAll(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, RefuelAll) {
     }
 }

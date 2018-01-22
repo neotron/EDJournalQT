@@ -22,7 +22,7 @@
 namespace Journal {
     class EventSystemsShutdown : public Event {
     public:
-        EventSystemsShutdown(const QJsonObject &obj, const JournalFile *file);
+        EventSystemsShutdown(const QJsonObject &obj, const JFile *file);
 
     private:
 

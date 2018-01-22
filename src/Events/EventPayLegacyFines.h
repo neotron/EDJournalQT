@@ -22,7 +22,7 @@
 namespace Journal {
     class EventPayLegacyFines : public Event {
     public:
-        EventPayLegacyFines(const QJsonObject &obj, const JournalFile *file);
+        EventPayLegacyFines(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventPayLegacyFines.h"
 
 namespace Journal {
-    EventPayLegacyFines::EventPayLegacyFines(const QJsonObject &obj, const JournalFile *file)
+    EventPayLegacyFines::EventPayLegacyFines(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PayLegacyFines) {
     }
 }

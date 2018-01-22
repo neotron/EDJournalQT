@@ -18,20 +18,20 @@
 
 #include <QFileSystemWatcher>
 #include <QMap>
-#include "JournalFile.h"
+#include "JFile.h"
 
 namespace Journal {
     namespace State {
         class Commander;
         class CommanderState;
     }
-    class JournalWatcher : public QObject {
+    class Watcher : public QObject {
     Q_OBJECT
 
     public:
-        explicit JournalWatcher(QObject *parent = nullptr);
+        explicit Watcher(QObject *parent = nullptr);
 
-        ~JournalWatcher() override;
+        ~Watcher() override;
 
         void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate = QDateTime());
 
@@ -55,7 +55,7 @@ namespace Journal {
         State::CommanderState *_state;
         QSet<QObject *> _eventHandlers;
         QFileSystemWatcher           _watcher;
-        QMap<QString, JournalFile *> _watchedFiles;
+        QMap<QString, JFile *> _watchedFiles;
         QDateTime _lastTimeStamp;
         QDateTime _newerThanDate;
     };

@@ -22,7 +22,7 @@
 namespace Journal {
     class EventEjectCargo : public Event {
     public:
-        EventEjectCargo(const QJsonObject &obj, const JournalFile *file);
+        EventEjectCargo(const QJsonObject &obj, const JFile *file);
 
     private:
 

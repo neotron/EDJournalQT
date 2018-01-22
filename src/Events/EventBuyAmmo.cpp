@@ -18,7 +18,7 @@
 #include "EventBuyAmmo.h"
 
 namespace Journal {
-    EventBuyAmmo::EventBuyAmmo(const QJsonObject &obj, const JournalFile *file)
+    EventBuyAmmo::EventBuyAmmo(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, BuyAmmo), Extension::CreditsChanged(-obj.value(Key::Cost).toInt(0)) {
     }
 }

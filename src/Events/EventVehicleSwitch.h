@@ -22,7 +22,7 @@
 namespace Journal {
     class EventVehicleSwitch : public Event {
     public:
-        EventVehicleSwitch(const QJsonObject &obj, const JournalFile *file);
+        EventVehicleSwitch(const QJsonObject &obj, const JFile *file);
 
     private:
 

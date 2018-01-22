@@ -22,7 +22,7 @@
 namespace Journal {
     class EventPVPKill : public Event {
     public:
-        EventPVPKill(const QJsonObject &obj, const JournalFile *file);
+        EventPVPKill(const QJsonObject &obj, const JFile *file);
 
     private:
 

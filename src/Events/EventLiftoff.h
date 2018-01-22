@@ -22,7 +22,7 @@
 namespace Journal {
     class EventLiftoff : public Event {
     public:
-        EventLiftoff(const QJsonObject &obj, const JournalFile *file);
+        EventLiftoff(const QJsonObject &obj, const JFile *file);
 
     private:
 

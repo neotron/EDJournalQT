@@ -23,7 +23,7 @@
 namespace Journal {
     class EventMaterialDiscovered : public Event {
     public:
-        EventMaterialDiscovered(const QJsonObject &obj, const JournalFile *file);
+        EventMaterialDiscovered(const QJsonObject &obj, const JFile *file);
 
         const Material &material() const;
 

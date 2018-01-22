@@ -18,7 +18,7 @@
 #include "EventEngineerApply.h"
 
 namespace Journal {
-    EventEngineerApply::EventEngineerApply(const QJsonObject &obj, const JournalFile *file)
+    EventEngineerApply::EventEngineerApply(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, EngineerApply) {
     }
 }

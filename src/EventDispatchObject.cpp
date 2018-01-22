@@ -16,7 +16,7 @@
 //
 
 #include <QtWidgets/QMainWindow>
-#include "EventDispatch.h"
+#include "EventDispatchObject.h"
 #include "Events.h"
 #include <QDebug>
 
@@ -28,13 +28,13 @@
   break;
 
 namespace Journal {
-    void EventDispatch::customEvent(QEvent *qEvent) {
+    void EventDispatchObject::customEvent(QEvent *qEvent) {
         if(!dispatchJournalEvent(qEvent)) {
             QObject::customEvent(qEvent);
         }
     }
 
-    EventDispatch::EventDispatch(QObject *parent)
+    EventDispatchObject::EventDispatchObject(QObject *parent)
         : QObject(parent) {}
 
     bool EventDispatcher::dispatchJournalEvent(QEvent *qEvent) {

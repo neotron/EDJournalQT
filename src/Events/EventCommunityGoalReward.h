@@ -22,7 +22,7 @@
 namespace Journal {
     class EventCommunityGoalReward : public Event {
     public:
-        EventCommunityGoalReward(const QJsonObject &obj, const JournalFile *file);
+        EventCommunityGoalReward(const QJsonObject &obj, const JFile *file);
 
     private:
 

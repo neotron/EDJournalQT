@@ -157,10 +157,7 @@
 #include "Events/EventWingJoin.h"
 #include "Events/EventWingLeave.h"
 
-#include "JournalWatcher.h"
-#include "JournalFile.h"
+#include "Watcher.h"
+#include "JFile.h"
 #include "LiveJournal.h"
 
-// you need these to connect signals, so just going to auto-use them
-using Journal::EventPtr;
-using Journal::JournalFile;

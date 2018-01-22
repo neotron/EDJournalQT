@@ -22,7 +22,7 @@
 namespace Journal {
     class EventDatalinkScan : public Event {
     public:
-        EventDatalinkScan(const QJsonObject &obj, const JournalFile *file);
+        EventDatalinkScan(const QJsonObject &obj, const JFile *file);
 
     private:
 

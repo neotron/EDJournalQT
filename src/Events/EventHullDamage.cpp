@@ -18,7 +18,7 @@
 #include "EventHullDamage.h"
 
 namespace Journal {
-    EventHullDamage::EventHullDamage(const QJsonObject &obj, const JournalFile *file)
+    EventHullDamage::EventHullDamage(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, HullDamage) {
     }
 }

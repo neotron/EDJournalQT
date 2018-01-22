@@ -18,7 +18,7 @@
 #include "EventFriends.h"
 
 namespace Journal {
-    EventFriends::EventFriends(const QJsonObject &obj, const JournalFile *file)
+    EventFriends::EventFriends(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Friends) {
     }
 }

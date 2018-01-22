@@ -22,7 +22,7 @@
 namespace Journal {
     class EventCrewMemberJoins : public Event {
     public:
-        EventCrewMemberJoins(const QJsonObject &obj, const JournalFile *file);
+        EventCrewMemberJoins(const QJsonObject &obj, const JFile *file);
 
     private:
 

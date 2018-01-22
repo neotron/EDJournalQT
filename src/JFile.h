@@ -20,17 +20,17 @@
 #include <QTimer>
 #include "Types/Materials.h"
 #include "Events/Event.h"
-#include "EventDispatch.h"
+#include "EventDispatchObject.h"
 
 namespace Journal {
 
-    class JournalFile : public QObject {
+    class JFile : public QObject {
     Q_OBJECT
 
     public:
-        explicit JournalFile(const QString &path);
+        explicit JFile(const QString &path);
 
-        ~JournalFile() override;
+        ~JFile() override;
 
         void startWatching();
 

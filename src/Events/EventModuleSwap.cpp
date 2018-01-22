@@ -18,7 +18,7 @@
 #include "EventModuleSwap.h"
 
 namespace Journal {
-    EventModuleSwap::EventModuleSwap(const QJsonObject &obj, const JournalFile *file)
+    EventModuleSwap::EventModuleSwap(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ModuleSwap) {
     }
 }

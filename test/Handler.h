@@ -17,7 +17,7 @@
 #pragma once
 
 #include <QDirIterator>
-#include "JournalFile.h"
+#include "JFile.h"
 #include <QDebug>
 #include <QSet>
 

@@ -18,7 +18,7 @@
 #include "EventPromotion.h"
 
 namespace Journal {
-    EventPromotion::EventPromotion(const QJsonObject &obj, const JournalFile *file)
+    EventPromotion::EventPromotion(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Promotion) {
     }
 }

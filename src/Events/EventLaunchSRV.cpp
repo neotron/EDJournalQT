@@ -18,7 +18,7 @@
 #include "EventLaunchSRV.h"
 
 namespace Journal {
-    EventLaunchSRV::EventLaunchSRV(const QJsonObject &obj, const JournalFile *file)
+    EventLaunchSRV::EventLaunchSRV(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, LaunchSRV) {
     }
 }

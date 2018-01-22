@@ -18,7 +18,7 @@
 #include "EventMissionFailed.h"
 
 namespace Journal {
-    EventMissionFailed::EventMissionFailed(const QJsonObject &obj, const JournalFile *file)
+    EventMissionFailed::EventMissionFailed(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, MissionFailed) {
     }
 }

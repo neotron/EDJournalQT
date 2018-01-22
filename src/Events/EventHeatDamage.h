@@ -22,7 +22,7 @@
 namespace Journal {
     class EventHeatDamage : public Event {
     public:
-        EventHeatDamage(const QJsonObject &obj, const JournalFile *file);
+        EventHeatDamage(const QJsonObject &obj, const JFile *file);
 
     private:
 

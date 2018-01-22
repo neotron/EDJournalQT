@@ -23,7 +23,7 @@
 namespace Journal {
     class EventBuyDrones : public Event, public Extension::CommodityExchange {
     public:
-        EventBuyDrones(const QJsonObject &obj, const JournalFile *file);
+        EventBuyDrones(const QJsonObject &obj, const JFile *file);
 
     private:
 

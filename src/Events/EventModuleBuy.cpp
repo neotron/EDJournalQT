@@ -18,7 +18,7 @@
 #include "EventModuleBuy.h"
 
 namespace Journal {
-    EventModuleBuy::EventModuleBuy(const QJsonObject &obj, const JournalFile *file)
+    EventModuleBuy::EventModuleBuy(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ModuleBuy) {
     }
 }

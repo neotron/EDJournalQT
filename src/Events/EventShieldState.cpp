@@ -18,7 +18,7 @@
 #include "EventShieldState.h"
 
 namespace Journal {
-    EventShieldState::EventShieldState(const QJsonObject &obj, const JournalFile *file)
+    EventShieldState::EventShieldState(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ShieldState) {
     }
 }

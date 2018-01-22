@@ -24,7 +24,7 @@ namespace Journal {
 
     class EventScan: public Event {
     public:
-        EventScan(const QJsonObject &obj, const JournalFile *file);
+        EventScan(const QJsonObject &obj, const JFile *file);
         ~EventScan() override = default;
 
         Body::Type bodyType() const;

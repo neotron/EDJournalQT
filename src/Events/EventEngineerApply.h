@@ -22,7 +22,7 @@
 namespace Journal {
     class EventEngineerApply : public Event {
     public:
-        EventEngineerApply(const QJsonObject &obj, const JournalFile *file);
+        EventEngineerApply(const QJsonObject &obj, const JFile *file);
 
     private:
 

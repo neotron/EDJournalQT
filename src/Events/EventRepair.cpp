@@ -18,7 +18,7 @@
 #include "EventRepair.h"
 
 namespace Journal {
-    EventRepair::EventRepair(const QJsonObject &obj, const JournalFile *file)
+    EventRepair::EventRepair(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Repair) {
     }
 }

@@ -33,11 +33,11 @@ namespace Journal {
 
     };
 
-    class EventDispatch : public QObject, public EventDispatcher {
+    class EventDispatchObject : public QObject, public EventDispatcher {
     Q_OBJECT
 
     public:
-        explicit EventDispatch(QObject *parent);
+        explicit EventDispatchObject(QObject *parent);
 
     protected:
         void customEvent(QEvent *qEvent) override;

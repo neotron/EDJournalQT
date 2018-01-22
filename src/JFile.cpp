@@ -19,16 +19,16 @@
 #include <QJsonArray>
 #include <QDebug>
 #include <QApplication>
-#include "JournalFile.h"
+#include "JFile.h"
 #include "Events.h"
 
 namespace Journal {
-    JournalFile::~JournalFile() {
+    JFile::~JFile() {
         stopWatching();
         _file.close();
     }
 
-    JournalFile::JournalFile(const QString &path)
+    JFile::JFile(const QString &path)
         : QObject(), _path(path), _file(path), _timer(nullptr), _beta(false) {
         if(!_file.open(QIODevice::ReadOnly)) {
             qDebug() << "Couldn't open file for reading.";
@@ -36,7 +36,7 @@ namespace Journal {
         }
     }
 
-    void JournalFile::parse() {
+    void JFile::parse() {
         while(!_file.atEnd()) {
             auto lineBytes = _file.readLine();
             if(lineBytes.isEmpty()) {
@@ -53,7 +53,7 @@ namespace Journal {
         }
     }
 
-    void JournalFile::startWatching() {
+    void JFile::startWatching() {
         if(!_timer) {
             _timer = new QTimer(this);
             connect(_timer, SIGNAL(timeout()), this, SLOT(parse()));
@@ -61,12 +61,12 @@ namespace Journal {
         }
     }
 
-    void JournalFile::stopWatching() {
+    void JFile::stopWatching() {
         delete _timer;
         _timer = nullptr;
     }
 
-    void JournalFile::handleEvent(Event *event) {
+    void JFile::handleEvent(Event *event) {
         switch(event->journalEvent()) {
             case Event::Materials:
                 // This event happens before load game so need to keep it here;
@@ -100,32 +100,32 @@ namespace Journal {
         postEvent(event);
     }
 
-    void JournalFile::postEvent(Event *event) {
+    void JFile::postEvent(Event *event) {
         for(auto h: _eventHandlers) {
             QApplication::sendEvent(h, event);
         }
     }
 
-    void JournalFile::deregisterHandler(QObject *handler) {
+    void JFile::deregisterHandler(QObject *handler) {
         _eventHandlers.remove(handler);
         qDebug() << "Deregistering handler" << handler << "for file"<<_path;
     }
 
-    void JournalFile::registerHandler(QObject *handler) {
+    void JFile::registerHandler(QObject *handler) {
         _eventHandlers.insert(handler);
-        connect(handler, &QObject::destroyed, this, &JournalFile::deregisterHandler);
+        connect(handler, &QObject::destroyed, this, &JFile::deregisterHandler);
         qDebug() << "Registering handler" << handler << "for file"<<_path;
     }
 
-    const QList<Material> &JournalFile::materials() const {
+    const QList<Material> &JFile::materials() const {
         return _materials;
     }
 
-    bool JournalFile::beta() const {
+    bool JFile::beta() const {
         return _beta;
     }
 
-    const QString &JournalFile::commander() const {
+    const QString &JFile::commander() const {
         return _commander;
     }
 }

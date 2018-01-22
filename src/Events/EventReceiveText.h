@@ -22,7 +22,7 @@
 namespace Journal {
     class EventReceiveText : public Event {
     public:
-        EventReceiveText(const QJsonObject &obj, const JournalFile *file);
+        EventReceiveText(const QJsonObject &obj, const JFile *file);
 
     private:
 

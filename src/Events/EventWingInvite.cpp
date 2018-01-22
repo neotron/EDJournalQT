@@ -18,7 +18,7 @@
 #include "EventWingInvite.h"
 
 namespace Journal {
-    EventWingInvite::EventWingInvite(const QJsonObject &obj, const JournalFile *file)
+    EventWingInvite::EventWingInvite(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, WingInvite) {
     }
 }

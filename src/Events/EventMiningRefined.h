@@ -22,7 +22,7 @@
 namespace Journal {
     class EventMiningRefined : public Event {
     public:
-        EventMiningRefined(const QJsonObject &obj, const JournalFile *file);
+        EventMiningRefined(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventLocation.h"
 
 namespace Journal {
-    EventLocation::EventLocation(const QJsonObject &obj, const JournalFile *file)
+    EventLocation::EventLocation(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Location) {
     }
 }

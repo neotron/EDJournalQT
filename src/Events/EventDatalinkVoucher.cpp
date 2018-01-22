@@ -18,7 +18,7 @@
 #include "EventDatalinkVoucher.h"
 
 namespace Journal {
-    EventDatalinkVoucher::EventDatalinkVoucher(const QJsonObject &obj, const JournalFile *file)
+    EventDatalinkVoucher::EventDatalinkVoucher(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DatalinkVoucher) {
     }
 }

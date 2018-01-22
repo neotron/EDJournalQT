@@ -22,7 +22,7 @@
 namespace Journal {
     class EventWingAdd : public Event {
     public:
-        EventWingAdd(const QJsonObject &obj, const JournalFile *file);
+        EventWingAdd(const QJsonObject &obj, const JFile *file);
 
     private:
 

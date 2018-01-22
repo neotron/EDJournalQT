@@ -18,7 +18,7 @@
 #include "EventSendText.h"
 
 namespace Journal {
-    EventSendText::EventSendText(const QJsonObject &obj, const JournalFile *file)
+    EventSendText::EventSendText(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, SendText) {
     }
 }

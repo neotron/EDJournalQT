@@ -23,7 +23,7 @@
 namespace Journal {
     class EventRank : public Event {
     public:
-        EventRank(const QJsonObject &obj, const JournalFile *file);
+        EventRank(const QJsonObject &obj, const JFile *file);
 
         const QMap<RankProgress::Type, RankProgress> &ranks() const;
         RankProgress rankFor(RankProgress::Type type) const;

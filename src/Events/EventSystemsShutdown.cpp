@@ -18,7 +18,7 @@
 #include "EventSystemsShutdown.h"
 
 namespace Journal {
-    EventSystemsShutdown::EventSystemsShutdown(const QJsonObject &obj, const JournalFile *file)
+    EventSystemsShutdown::EventSystemsShutdown(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, SystemsShutdown) {
     }
 }

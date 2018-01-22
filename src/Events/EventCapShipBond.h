@@ -22,7 +22,7 @@
 namespace Journal {
     class EventCapShipBond : public Event {
     public:
-        EventCapShipBond(const QJsonObject &obj, const JournalFile *file);
+        EventCapShipBond(const QJsonObject &obj, const JFile *file);
 
     private:
 

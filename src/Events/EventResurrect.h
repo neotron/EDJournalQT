@@ -22,7 +22,7 @@
 namespace Journal {
     class EventResurrect : public Event {
     public:
-        EventResurrect(const QJsonObject &obj, const JournalFile *file);
+        EventResurrect(const QJsonObject &obj, const JFile *file);
 
     private:
 

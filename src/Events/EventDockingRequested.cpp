@@ -18,7 +18,7 @@
 #include "EventDockingRequested.h"
 
 namespace Journal {
-    EventDockingRequested::EventDockingRequested(const QJsonObject &obj, const JournalFile *file)
+    EventDockingRequested::EventDockingRequested(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DockingRequested) {
     }
 }

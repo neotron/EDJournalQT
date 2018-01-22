@@ -22,7 +22,7 @@
 namespace Journal {
     class EventPowerplaySalary : public Event {
     public:
-        EventPowerplaySalary(const QJsonObject &obj, const JournalFile *file);
+        EventPowerplaySalary(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventUSSDrop.h"
 
 namespace Journal {
-    EventUSSDrop::EventUSSDrop(const QJsonObject &obj, const JournalFile *file)
+    EventUSSDrop::EventUSSDrop(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, USSDrop) {
     }
 }

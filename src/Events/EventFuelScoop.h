@@ -22,7 +22,7 @@
 namespace Journal {
     class EventFuelScoop : public Event {
     public:
-        EventFuelScoop(const QJsonObject &obj, const JournalFile *file);
+        EventFuelScoop(const QJsonObject &obj, const JFile *file);
 
     private:
 

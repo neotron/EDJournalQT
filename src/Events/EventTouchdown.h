@@ -22,7 +22,7 @@
 namespace Journal {
     class EventTouchdown : public Event {
     public:
-        EventTouchdown(const QJsonObject &obj, const JournalFile *file);
+        EventTouchdown(const QJsonObject &obj, const JFile *file);
 
     private:
 

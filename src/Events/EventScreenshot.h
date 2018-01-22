@@ -22,7 +22,7 @@
 namespace Journal {
     class EventScreenshot : public Event {
     public:
-        EventScreenshot(const QJsonObject &obj, const JournalFile *file);
+        EventScreenshot(const QJsonObject &obj, const JFile *file);
 
     private:
 

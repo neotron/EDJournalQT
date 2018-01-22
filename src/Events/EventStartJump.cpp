@@ -18,7 +18,7 @@
 #include "EventStartJump.h"
 
 namespace Journal {
-    EventStartJump::EventStartJump(const QJsonObject &obj, const JournalFile *file)
+    EventStartJump::EventStartJump(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, StartJump) {
     }
 }

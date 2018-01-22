@@ -22,7 +22,7 @@
 namespace Journal {
     class EventDockingDenied : public Event {
     public:
-        EventDockingDenied(const QJsonObject &obj, const JournalFile *file);
+        EventDockingDenied(const QJsonObject &obj, const JFile *file);
 
     private:
 

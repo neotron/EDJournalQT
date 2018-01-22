@@ -18,7 +18,7 @@
 #include "EventPayFines.h"
 
 namespace Journal {
-    EventPayFines::EventPayFines(const QJsonObject &obj, const JournalFile *file)
+    EventPayFines::EventPayFines(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PayFines) {
     }
 }

@@ -22,7 +22,7 @@
 namespace Journal {
     class EventShieldState : public Event {
     public:
-        EventShieldState(const QJsonObject &obj, const JournalFile *file);
+        EventShieldState(const QJsonObject &obj, const JFile *file);
 
     private:
 

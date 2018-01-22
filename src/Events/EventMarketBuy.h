@@ -23,7 +23,7 @@
 namespace Journal {
     class EventMarketBuy : public Event, public Extension::CommodityExchange {
     public:
-        EventMarketBuy(const QJsonObject &obj, const JournalFile *file);
+        EventMarketBuy(const QJsonObject &obj, const JFile *file);
 
         int64_t totalCost() const;
     private:

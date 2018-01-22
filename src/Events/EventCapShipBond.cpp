@@ -18,7 +18,7 @@
 #include "EventCapShipBond.h"
 
 namespace Journal {
-    EventCapShipBond::EventCapShipBond(const QJsonObject &obj, const JournalFile *file)
+    EventCapShipBond::EventCapShipBond(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, CapShipBond) {
     }
 }

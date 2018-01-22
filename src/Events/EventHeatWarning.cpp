@@ -18,7 +18,7 @@
 #include "EventHeatWarning.h"
 
 namespace Journal {
-    EventHeatWarning::EventHeatWarning(const QJsonObject &obj, const JournalFile *file)
+    EventHeatWarning::EventHeatWarning(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, HeatWarning) {
     }
 }

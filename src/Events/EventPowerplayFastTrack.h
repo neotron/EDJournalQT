@@ -22,7 +22,7 @@
 namespace Journal {
     class EventPowerplayFastTrack : public Event {
     public:
-        EventPowerplayFastTrack(const QJsonObject &obj, const JournalFile *file);
+        EventPowerplayFastTrack(const QJsonObject &obj, const JFile *file);
 
     private:
 

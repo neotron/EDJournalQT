@@ -18,7 +18,7 @@
 #include "EventModuleRetrieve.h"
 
 namespace Journal {
-    EventModuleRetrieve::EventModuleRetrieve(const QJsonObject &obj, const JournalFile *file)
+    EventModuleRetrieve::EventModuleRetrieve(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ModuleRetrieve) {
     }
 }

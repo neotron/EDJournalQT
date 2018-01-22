@@ -22,7 +22,7 @@
 namespace Journal {
     class EventMassModuleStore : public Event {
     public:
-        EventMassModuleStore(const QJsonObject &obj, const JournalFile *file);
+        EventMassModuleStore(const QJsonObject &obj, const JFile *file);
 
     private:
 

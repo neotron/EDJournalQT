@@ -22,7 +22,7 @@
 namespace Journal {
     class EventPowerplayDeliver : public Event {
     public:
-        EventPowerplayDeliver(const QJsonObject &obj, const JournalFile *file);
+        EventPowerplayDeliver(const QJsonObject &obj, const JFile *file);
 
     private:
 

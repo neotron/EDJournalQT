@@ -18,7 +18,7 @@
 #include "EventPowerplayVote.h"
 
 namespace Journal {
-    EventPowerplayVote::EventPowerplayVote(const QJsonObject &obj, const JournalFile *file)
+    EventPowerplayVote::EventPowerplayVote(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, PowerplayVote) {
     }
 }

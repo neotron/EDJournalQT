@@ -22,7 +22,7 @@
 namespace Journal {
     class EventCommitCrime : public Event {
     public:
-        EventCommitCrime(const QJsonObject &obj, const JournalFile *file);
+        EventCommitCrime(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -22,7 +22,7 @@
 namespace Journal {
     class EventBounty : public Event {
     public:
-        EventBounty(const QJsonObject &obj, const JournalFile *file);
+        EventBounty(const QJsonObject &obj, const JFile *file);
 
     private:
 

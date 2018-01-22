@@ -22,7 +22,7 @@
 namespace Journal {
     class EventUSSDrop : public Event {
     public:
-        EventUSSDrop(const QJsonObject &obj, const JournalFile *file);
+        EventUSSDrop(const QJsonObject &obj, const JFile *file);
 
     private:
 

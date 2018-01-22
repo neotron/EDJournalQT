@@ -22,7 +22,7 @@
 namespace Journal {
     class EventSetUserShipName : public Event {
     public:
-        EventSetUserShipName(const QJsonObject &obj, const JournalFile *file);
+        EventSetUserShipName(const QJsonObject &obj, const JFile *file);
 
     private:
 

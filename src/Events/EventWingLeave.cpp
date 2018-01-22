@@ -18,7 +18,7 @@
 #include "EventWingLeave.h"
 
 namespace Journal {
-    EventWingLeave::EventWingLeave(const QJsonObject &obj, const JournalFile *file)
+    EventWingLeave::EventWingLeave(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, WingLeave) {
     }
 }

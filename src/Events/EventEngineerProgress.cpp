@@ -18,7 +18,7 @@
 #include "EventEngineerProgress.h"
 
 namespace Journal {
-    EventEngineerProgress::EventEngineerProgress(const QJsonObject &obj, const JournalFile *file)
+    EventEngineerProgress::EventEngineerProgress(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, EngineerProgress) {
     }
 }

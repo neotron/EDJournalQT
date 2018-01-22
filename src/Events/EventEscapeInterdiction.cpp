@@ -18,7 +18,7 @@
 #include "EventEscapeInterdiction.h"
 
 namespace Journal {
-    EventEscapeInterdiction::EventEscapeInterdiction(const QJsonObject &obj, const JournalFile *file)
+    EventEscapeInterdiction::EventEscapeInterdiction(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, EscapeInterdiction) {
     }
 }

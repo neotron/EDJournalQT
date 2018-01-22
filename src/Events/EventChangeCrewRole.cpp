@@ -18,7 +18,7 @@
 #include "EventChangeCrewRole.h"
 
 namespace Journal {
-    EventChangeCrewRole::EventChangeCrewRole(const QJsonObject &obj, const JournalFile *file)
+    EventChangeCrewRole::EventChangeCrewRole(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ChangeCrewRole) {
     }
 }

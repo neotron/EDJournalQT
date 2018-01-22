@@ -22,7 +22,7 @@
 namespace Journal {
     class EventChangeCrewRole : public Event {
     public:
-        EventChangeCrewRole(const QJsonObject &obj, const JournalFile *file);
+        EventChangeCrewRole(const QJsonObject &obj, const JFile *file);
 
     private:
 

@@ -18,7 +18,7 @@
 #include "EventScreenshot.h"
 
 namespace Journal {
-    EventScreenshot::EventScreenshot(const QJsonObject &obj, const JournalFile *file)
+    EventScreenshot::EventScreenshot(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Screenshot) {
     }
 }

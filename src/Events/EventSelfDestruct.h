@@ -22,7 +22,7 @@
 namespace Journal {
     class EventSelfDestruct : public Event {
     public:
-        EventSelfDestruct(const QJsonObject &obj, const JournalFile *file);
+        EventSelfDestruct(const QJsonObject &obj, const JFile *file);
 
     private:
 

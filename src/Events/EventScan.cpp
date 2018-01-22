@@ -13,13 +13,13 @@
 //
 // You should have received a copy of the GNU General Public License
 
-#include <src/JournalFile.h>
+#include <src/JFile.h>
 #include <src/Types/Enums.h>
 #include "EventScan.h"
 #include "Event.h"
 namespace Journal {
 
-    EventScan::EventScan(const QJsonObject &obj, const JournalFile *file)
+    EventScan::EventScan(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Scan), _bodyType(Body::UnknownBody) {
         createBodyInstance();
     }

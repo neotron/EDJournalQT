@@ -18,7 +18,7 @@
 #include "EventDatalinkScan.h"
 
 namespace Journal {
-    EventDatalinkScan::EventDatalinkScan(const QJsonObject &obj, const JournalFile *file)
+    EventDatalinkScan::EventDatalinkScan(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, DatalinkScan) {
     }
 }

@@ -18,7 +18,7 @@
 #include "EventProgress.h"
 
 namespace Journal {
-    EventProgress::EventProgress(const QJsonObject &obj, const JournalFile *file)
+    EventProgress::EventProgress(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Progress) {
         for(auto &key: obj.keys()) {
             auto value = obj[key];

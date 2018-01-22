@@ -18,7 +18,7 @@
 #include "EventFactionKillBond.h"
 
 namespace Journal {
-    EventFactionKillBond::EventFactionKillBond(const QJsonObject &obj, const JournalFile *file)
+    EventFactionKillBond::EventFactionKillBond(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, FactionKillBond) {
     }
 }
