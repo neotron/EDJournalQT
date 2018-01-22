@@ -22,15 +22,17 @@
 #include "State/CommanderState.h"
 
 namespace Journal {
-    void Watcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate, bool newestOnly) {
+    void Watcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate, int maxFiles) {
         _watcher.addPath(path);
         _newerThanDate = parseNewerThanDate;
         QDir dir(path, "Journal.*.log");
         QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time | QDir::Reversed);
         bool didStartMonitoring = false;
         auto monitorDate = QDateTime::currentDateTime().addSecs(-3600); // Things changed in the last hour.
-        if(newestOnly) {
-            list = { list.last() };
+        if(maxFiles > 0 && list.count()) {
+            while(list.count() > maxFiles)  {
+                list.removeFirst();
+            }
         }
 
         for(const auto &entry : list) {

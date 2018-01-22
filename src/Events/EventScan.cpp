@@ -49,4 +49,15 @@ namespace Journal {
     PlanetPtr EventScan::planet() const {
         return _planet;
     }
+
+    int64_t EventScan::estimatedValue() const {
+        switch(_bodyType) {
+            case Journal::Body::Star:
+                return _star->estimatedValue();
+            case Journal::Body::Planet:
+                return _planet->estimatedValue();
+            default:
+                return 0;
+        }
+    }
 }

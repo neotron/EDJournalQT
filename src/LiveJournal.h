@@ -29,7 +29,7 @@ namespace Journal {
     public:
         static LiveJournal *instance();
 
-        void startWatching(const QDateTime &newerThanDate, const QString &path, bool newestOnly = false);
+        void startWatching(const QDateTime &newerThanDate, const QString &path, int maxFiles = 0);
 
         void deregisterHandler(QObject *handler);
 

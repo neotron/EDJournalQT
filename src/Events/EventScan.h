@@ -33,6 +33,8 @@ namespace Journal {
 
         PlanetPtr planet() const;
 
+        int64_t estimatedValue() const;
+
     private:
 
         Body::Type _bodyType;

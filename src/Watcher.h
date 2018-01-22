@@ -33,7 +33,7 @@ namespace Journal {
 
         ~Watcher() override;
 
-        void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate, bool newestOnly = false);
+        void watchDirectory(const QString &dir, const QDateTime &parseNewerThanDate, int newestOnly = false);
 
         void registerHandler(QObject *handler);
 
