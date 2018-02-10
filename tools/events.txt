@@ -1,137 +1,26 @@
-AFMURepairs
-ApproachSettlement
-Bounty
-BuyAmmo
-BuyDrones
-BuyExplorationData
-BuyTradeData
-CapShipBond
-Cargo
-ChangeCrewRole
-ClearSavedGame Startup
-CockpitBreached
-CollectCargo
-CommitCrime
-CommunityGoal
-CommunityGoalDiscard
-CommunityGoalJoin
-CommunityGoalReward
-Continued
-CrewAssign
-CrewFire
-CrewHire
-CrewMemberJoins
-CrewMemberQuits
-CrewMemberRoleChange
-DataScanned
-DatalinkScan
-DatalinkVoucher
-Died
-DockFighter
-DockSRV
-Docked Travel
-DockingCancelled Travel
-DockingDenied Travel
-DockingGranted Travel
-DockingRequested Travel
-DockingTimeout Travel
-EjectCargo
-EndCrewSession
-EngineerApply
-EngineerContribution
-EngineerCraft
-EngineerProgress
-EscapeInterdiction
-FSDJump Travel
-FactionKillBond
-FetchRemoteModule
-FileHeader
-Friends
-FuelScoop
-HeatDamage
-HeatWarning
-HullDamage
-Interdicted
-Interdiction
-JetConeBoost
-JetConeDamage
-JoinACrew
-LaunchFighter
-LaunchSRV
-Liftoff Travel
-Loadout
-Location Travel
-MarketBuy
-MarketSell
-MassModuleStore
-MaterialCollected
-MaterialDiscarded
-MaterialDiscovered
-MiningRefined
-MissionAbandoned
-MissionAccepted
-MissionCompleted
-MissionFailed
-MissionRedirected
-ModuleBuy
-ModuleRetrieve
-ModuleSell
-ModuleSellRemote
-ModuleStore
-ModuleSwap
-Music
-NavBeaconScan
-NewCommander Startup
-PVPKill
-Passengers
-PayFines
-PayLegacyFines
-PowerplayCollect
-PowerplayDefect
-PowerplayDeliver
-PowerplayFastTrack
-PowerplayJoin
-PowerplayLeave
-PowerplaySalary
-PowerplayVote
-PowerplayVoucher
-Progress Startup
-Promotion
-QuitACrew
-Rank Startup
-RebootRepair
-ReceiveText
-RedeemVoucher
-RefuelAll
-RefuelPartial
-Repair
-RepairAll
-RestockVehicle
-Resurrect
-Scanned
-ScientificResearch
-Screenshot
-SelfDestruct
-SellDrones
-SellExplorationData
-SendText
-SetUserShipName
-ShieldState
-ShipyardBuy
-ShipyardNew
-ShipyardSell
-ShipyardSwap
-ShipyardTransfer
-StartJump
-SupercruiseEntry Travel
-SupercruiseExit Travel
-Synthesis
-SystemsShutdown
-Touchdown Travel
-USSDrop
-Undocked Travel
-VehicleSwitch
-WingAdd
-WingInvite
-WingJoin
-WingLeave
+CrewLaunchFighter
+KickCrewMember
+Commander
+Reputation
+Missions
+Statistics
+NpcCrewPaidWage
+Shipyard
+StoredShips
+Outfitting
+StoredModules
+ModuleInfo
+MaterialTrade
+DiscoveryScan
+ApproachBody
+Shutdown
+ShipTargeted
+LeaveBody
+UnderAttack
+Market
+TechnologyBroker
+LaunchDrone
+FighterDestroyed
+FighterRebuilt 
+EngineerLegacyConvert
+SRVDestroyed

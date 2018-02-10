@@ -25,7 +25,7 @@ namespace Journal {
     void Watcher::watchDirectory(const QString &path, const QDateTime &parseNewerThanDate, int maxFiles) {
         _watcher.addPath(path);
         _newerThanDate = parseNewerThanDate;
-        QDir dir(path, "Journal.*.log");
+        QDir dir(path, "Journal*.log");
         QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time | QDir::Reversed);
         bool didStartMonitoring = false;
         auto monitorDate = QDateTime::currentDateTime().addSecs(-3600); // Things changed in the last hour.
@@ -62,7 +62,10 @@ namespace Journal {
     }
 
     void Watcher::directoryChanged(const QString &path) {
-        QDir dir(path, "Journal.*.log");
+        QDir dir(path);
+        QStringList filters;
+        filters << "Journal*.log" << "Status.json";
+        dir.setNameFilters(filters);
         QFileInfoList list = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files, QDir::Time);
         auto newest = list.first();
 
@@ -77,6 +80,7 @@ namespace Journal {
     void Watcher::fileChanged(const QString &path) {
         auto journal = _watchedFiles[path];
         QFileInfo checkFile(path);
+        qDebug() << "file: " << path;
         if(!checkFile.exists()) {
             if(journal) {
                 _watchedFiles.remove(path);

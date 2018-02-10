@@ -2,7 +2,7 @@
 
 
 cd "$(dirname $0)"
-rm -rf output events.inc eventclasses.inc Events.h
+rm -rf output events.inc eventclasses.inc Events.h table.h
 mkdir output
 cat events.txt | while read ev ; do
     echo "$ev"
@@ -32,7 +32,7 @@ cat events.txt | while read ev ; do
 namespace Journal {
     class ${evn} : public Event {
     public:
-        ${evn}(const QJsonObject &obj, const JournalFile *file);
+        ${evn}(const QJsonObject &obj, const JFile *file);
 
     private:
 
@@ -62,7 +62,7 @@ cat > output/${evn}.cpp <<EOF
 #include "${evn}.h"
 
 namespace Journal {
-    ${evn}::${evn}(const QJsonObject &obj, const JournalFile *file)
+    ${evn}::${evn}(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, ${ev}) {
     }
 }
@@ -76,5 +76,9 @@ class ${evn};
 EOF
 cat >> Events.h <<EOF
 #include "Events/${evn}.h"
+EOF
+
+cat >> table.h <<EOF
+                                   { "${ev:l}",              Event::${ev} },
 EOF
 done

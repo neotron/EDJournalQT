@@ -23,7 +23,7 @@
 
 #include "Events.h"
 #include "EventTable.h"
-
+static QSet<QString> s_unknownEvents = {};
 namespace Journal {
 
     Event *Event::eventFromDocument(QJsonDocument &document, Journal::JFile *file) {
@@ -33,12 +33,14 @@ namespace Journal {
         }
 
         auto obj = document.object();
-        auto event = obj.value(Key::event).toString().toLower();
+        auto eventName = obj.value(Key::event).toString();
+        auto eventId = eventName.toLower();
 
-        auto eventType = s_eventLookupMap.contains(event) ? s_eventLookupMap[event] : Unknown;
+        auto eventType = s_eventLookupMap.contains(eventId) ? s_eventLookupMap[eventId] : Unknown;
 
-        if(eventType == Unknown) {
-            qDebug() << "Unknown event" << event;
+        if(eventType == Unknown && !s_unknownEvents.contains(eventId)) {
+            qDebug() << "Add: Event"+eventName;
+            s_unknownEvents.insert(eventId);
         }
         switch(eventType) {
 #define EVENT(EV) case EV: return new Event##EV(obj, file);
