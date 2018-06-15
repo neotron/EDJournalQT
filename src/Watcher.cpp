@@ -36,7 +36,7 @@ namespace Journal {
         }
 
         for(const auto &entry : list) {
-            qDebug() << "Parsing file" <<entry.fileName() << "with"<<entry.lastModified();
+         //   qDebug() << "Parsing file" <<entry.fileName() << "with"<<entry.lastModified();
             if(entry.lastModified() > monitorDate && !didStartMonitoring) {
                 fileChanged(entry.absoluteFilePath());
                 didStartMonitoring = true;
@@ -80,7 +80,6 @@ namespace Journal {
     void Watcher::fileChanged(const QString &path) {
         auto journal = _watchedFiles[path];
         QFileInfo checkFile(path);
-        qDebug() << "file: " << path;
         if(!checkFile.exists()) {
             if(journal) {
                 _watchedFiles.remove(path);
@@ -120,7 +119,7 @@ namespace Journal {
         for(auto file: _watchedFiles.values()) {
             file->deregisterHandler(handler);
         }
-        qDebug() << "Deregistering handler" << handler;
+        //qDebug() << "Deregistering handler" << handler;
     }
 
     void Watcher::registerHandler(QObject *handler) {
@@ -128,7 +127,7 @@ namespace Journal {
         for(auto file: _watchedFiles.values()) {
             file->registerHandler(handler);
         }
-        qDebug() << "Registering handler" << handler;
+    //    qDebug() << "Registering handler" << handler;
         connect(handler, &QObject::destroyed, this, &Watcher::deregisterHandler);
     }
 

@@ -15,7 +15,7 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
 if (MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GR /std:c++latest")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GR /std:c++17")
 endif()
 set(LINK_LIBS Qt5::Core Qt5::Widgets)
 file(GLOB_RECURSE LIB_SOURCE_FILES src/*.cpp src/*.h)

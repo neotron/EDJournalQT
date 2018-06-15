@@ -110,24 +110,35 @@ QMap<QString, Material> Materials::_materialTable =
         Manufactured("Proto Radiolic Alloys", VeryRare, "PRA"),
 
         // THARGOID MATERIALS
-        ManufacturedA("Thargoid Carapace", Common, "UKCP", "unknowncarapace"),
-        ManufacturedA("Thargoid Energy Cell", Standard, "UKEC", "unknownenergycell"),
-        ManufacturedA("Thargoid Organic Circuitry", VeryRare, "UKOC", "unknownorganiccircuitry"),
-        ManufacturedA("Thargoid Technology Components", Rare, "UKTC", "unknowntechnologycomponents"),
-        ManufacturedA("Thargoid Sensor Fragment", VeryRare, "UES", "unknownenergysource"),
-        ManufacturedA("Thargoid Wreckage Components", Standard, "TWC", "tg_wreckagecomponents"),
-        ManufacturedA("Thargoid Bio-Mechanical Conduits", Standard, "TBMC", "tg_biomechanicalconduits"),
-        ManufacturedA("Thargoid Weapon Parts", Rare, "TWP", "tg_weaponparts"),
-        ManufacturedA("Thargoid Propulsion Elements", VeryRare, "TPE", "tg_propulsionelement"),
+        ManufacturedA("Thargoid Carapace", Common, "TGCP", "unknowncarapace"),
+        ManufacturedA("Thargoid Energy Cell", Standard, "TGEC", "unknownenergycell"),
+        ManufacturedA("Thargoid Organic Circuitry", VeryRare, "TGOC", "unknownorganiccircuitry"),
+        ManufacturedA("Thargoid Technology Components", Rare, "TGTC", "unknowntechnologycomponents"),
+        ManufacturedA("Thargoid Sensor Fragment", VeryRare, "TGSF", "unknownenergysource"),
+        ManufacturedA("Thargoid Wreckage Components", Standard, "TGWC", "tg_wreckagecomponents"),
+        ManufacturedA("Thargoid Bio-Mechanical Conduits", Standard, "TGBMC", "tg_biomechanicalconduits"),
+        ManufacturedA("Thargoid Weapon Parts", Rare, "TGWP", "tg_weaponparts"),
+        ManufacturedA("Thargoid Propulsion Elements", VeryRare, "TGPE", "tg_propulsionelement"),
 
         // THARGOID DATA
-        Encoded("Thargoid Material Composition Data", Standard, "UMCD", "tg_compositiondata"),
-        Encoded("Thargoid Structural Data", Common, "UKSD", "tg_structuraldata"),
-        Encoded("Thargoid Residue Data", Rare, "URDA", "tg_residuedata"),
-        Encoded("Thargoid Ship Signature", Standard, "USSig", "unknownshipsignature"),
-        Encoded("Thargoid Wake Data", Rare, "UWD", "unknownwakedata"),
-        Encoded("Thargoid Ship Flight Data", Rare, "TSFD", "tg_shipflightdata"),
-        Encoded("Thargoid Ship System Data", Rare, "TSSD", "tg_shipsystemsdata"),
+        Encoded("Thargoid Material Composition Data", Standard, "TGMCD", "tg_compositiondata"),
+        Encoded("Thargoid Structural Data", Common, "TGSD", "tg_structuraldata"),
+        Encoded("Thargoid Residue Data", Rare, "TGRD", "tg_residuedata"),
+        Encoded("Thargoid Ship Signature", Standard, "TGSS", "unknownshipsignature"),
+        Encoded("Thargoid Wake Data", Rare, "TGWD", "unknownwakedata"),
+        Encoded("Thargoid Ship Flight Data", Rare, "TGSFD", "tg_shipflightdata"),
+        Encoded("Thargoid Ship System Data", Rare, "TGSSD", "tg_shipsystemsdata"),
+
+        // Guardian data
+        Encoded("Guardian Module Blueprint", VeryRare, "GMP", "guardian_moduleblueprint"),
+        Encoded("Guardian Vessel Blueprint", Rare, "GVB", "guardian_vesselblueprint"),
+        Encoded("Guardian Weapon Blueprint", Rare, "GWB", "guardian_weaponblueprint"),
+
+        ManufacturedA("Guardian Power Cell", VeryCommon, "GPCe", "guardian_powercell"),
+        ManufacturedA("Guardian Power Conduit", Common, "GPCo", "guardian_powerconduit"),
+        ManufacturedA("Guardian Sentinel Weapon Parts", Standard, "GSWP", "guardian_sentinel_weaponparts"),
+        ManufacturedA("Guardian Sentinel Wreckage Components", VeryCommon, "GSWC", "guardian_sentinel_wreckagecomponents"),
+        ManufacturedA("Guardian Tech Component", Standard, "GTC", "guardian_techcomponent"),
 
         // RAW VERY COMMON
         Raw("Carbon", VeryCommon, "C"),
@@ -135,6 +146,8 @@ QMap<QString, Material> Materials::_materialTable =
         Raw("Nickel", VeryCommon, "Ni"),
         Raw("Phosphorus", VeryCommon, "P"),
         Raw("Sulphur", VeryCommon, "S"),
+        Raw("Rhenium", VeryCommon, "Re"),
+        Raw("Lead", VeryCommon, "Pb"),
 
         // RAW COMMON
         Raw("Chromium", Common, "Cr"),
@@ -142,27 +155,26 @@ QMap<QString, Material> Materials::_materialTable =
         Raw("Manganese", Common, "Mn"),
         Raw("Vanadium", Common, "V"),
         Raw("Zinc", Common, "Zn"),
+        Raw("Zirconium", Common, "Zr"),
+        Raw("Arsenic", Common, "As"),
 
         // RAW STANDARD
         Raw("Niobium", Standard, "Nb"),
         Raw("Tungsten", Standard, "W"),
-        Raw("Arsenic", Standard, "As"),
-        Raw("Selenium", Standard, "Se"),
-        Raw("Zirconium", Standard, "Zr"),
+        Raw("Cadmium", Standard, "Cd"),
+        Raw("Boron", Standard, "B"),
+        Raw("Mercury", Standard, "Hg"),
+        Raw("Tin", Standard, "Sn"),
+        Raw("Molybdenum", Standard, "Mo"),
 
         // RAW RARE
+        Raw("Selenium", Rare, "Se"),
         Raw("Yttrium", Rare, "Y"),
-        Raw("Cadmium", Rare, "Cd"),
-        Raw("Mercury", Rare, "Hg"),
-        Raw("Molybdenum", Rare, "Mo"),
-        Raw("Tin", Rare, "Sn"),
-
-        // RAW VERY RARE
-        Raw("Antimony", VeryRare, "Sb"),
-        Raw("Polonium", VeryRare, "Po"),
-        Raw("Ruthenium", VeryRare, "Ru"),
-        Raw("Technetium", VeryRare, "Tc"),
-        Raw("Tellurium", VeryRare, "Te")
+        Raw("Antimony", Rare, "Sb"),
+        Raw("Polonium", Rare, "Po"),
+        Raw("Ruthenium", Rare, "Ru"),
+        Raw("Technetium", Rare, "Tc"),
+        Raw("Tellurium", Rare, "Te")
 
     };
 }

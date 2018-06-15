@@ -34,7 +34,6 @@
 \#*#
 *~
 
-*/output
-tools/*.inc
-tools/*.h
-
+/tools/*.inc
+/tools/*.h
+/tools/output

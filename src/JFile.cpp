@@ -108,13 +108,13 @@ namespace Journal {
 
     void JFile::deregisterHandler(QObject *handler) {
         _eventHandlers.remove(handler);
-        qDebug() << "Deregistering handler" << handler << "for file"<<_path;
+       // qDebug() << "Deregistering handler" << handler << "for file"<<_path;
     }
 
     void JFile::registerHandler(QObject *handler) {
         _eventHandlers.insert(handler);
         connect(handler, &QObject::destroyed, this, &JFile::deregisterHandler);
-        qDebug() << "Registering handler" << handler << "for file"<<_path;
+   //     qDebug() << "Registering handler" << handler << "for file"<<_path;
     }
 
     const QList<Material> &JFile::materials() const {

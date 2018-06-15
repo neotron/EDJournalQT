@@ -22,11 +22,11 @@ void Handler::handleEvent(const JournalFile &journal, const Event &event ) {
             case EventTypeMissionCompleted:
             case EventTypeMissionFailed:
                 _missions.remove(event.integer("MissionID"));
-                qDebug() << "Active mission count: " << _missions.count();
+                //qDebug() << "Active mission count: " << _missions.count();
                 break;
             case EventTypeMissionAccepted:
                 _missions.insert(event.integer("MissionID"));
-                qDebug() << "Active mission count: " << _missions.count();
+                //qDebug() << "Active mission count: " << _missions.count();
                 break;
 
             default:
@@ -39,7 +39,7 @@ Handler::Handler(QObject *parent) : QObject(parent), _missions() {
     QDirIterator it("/Users/neotron/Elite Dangerous/");
     while(it.hasNext()) {
         auto file = it.next();
-        qDebug() << "Parsing file" << file;
+        //qDebug() << "Parsing file" << file;
         JournalFile journalFile(file);
         connect(&journalFile, SIGNAL(onEvent(const JournalFile &, const Event &)), this, SLOT(handleEvent(const JournalFile &, const Event &)));
         journalFile.parse();

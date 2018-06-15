@@ -165,3 +165,8 @@ class EventFighterDestroyed;
 class EventFighterRebuilt;
 class EventEngineerLegacyConvert;
 class EventSRVDestroyed;
+class EventPowerplay;
+class EventRepairDrone;
+class EventSearchAndRescue;
+class EventNpcCrewRank;
+class EventCargoDepot;

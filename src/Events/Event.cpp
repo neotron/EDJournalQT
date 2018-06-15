@@ -39,7 +39,7 @@ namespace Journal {
         auto eventType = s_eventLookupMap.contains(eventId) ? s_eventLookupMap[eventId] : Unknown;
 
         if(eventType == Unknown && !s_unknownEvents.contains(eventId)) {
-            qDebug() << "Add: Event"+eventName;
+            qDebug() << "Add: "+eventName;
             s_unknownEvents.insert(eventId);
         }
         switch(eventType) {

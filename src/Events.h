@@ -16,6 +16,11 @@
 //
 
 #pragma once
+
+#include "Watcher.h"
+#include "JFile.h"
+#include "LiveJournal.h"
+
 #include "Events/Event.h"
 #include "Events/EventScan.h"
 #include "Events/EventMaterials.h"
@@ -156,11 +161,6 @@
 #include "Events/EventWingInvite.h"
 #include "Events/EventWingJoin.h"
 #include "Events/EventWingLeave.h"
-
-#include "Watcher.h"
-#include "JFile.h"
-#include "LiveJournal.h"
-
 #include "Events/EventCrewLaunchFighter.h"
 #include "Events/EventKickCrewMember.h"
 #include "Events/EventCommander.h"
@@ -187,3 +187,8 @@
 #include "Events/EventFighterRebuilt.h"
 #include "Events/EventEngineerLegacyConvert.h"
 #include "Events/EventSRVDestroyed.h"
+#include "Events/EventPowerplay.h"
+#include "Events/EventRepairDrone.h"
+#include "Events/EventSearchAndRescue.h"
+#include "Events/EventNpcCrewRank.h"
+#include "Events/EventCargoDepot.h"
