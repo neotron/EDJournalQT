@@ -30,7 +30,7 @@ namespace Journal {
 #include "events.inc"
 #undef EVENT
         virtual void onEventGeneric(Event *){}
-
+        virtual ~EventDispatcher() = default;
     };
 
     class EventDispatchObject : public QObject, public EventDispatcher {

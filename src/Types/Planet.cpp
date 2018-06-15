@@ -46,7 +46,7 @@ namespace  Journal {
         if(s_tfsToType.contains(tfs)) {
             _terraformState = s_tfsToType[tfs];
         }
-        _materials = std::move(Materials::materials(ev.array(Key::Materials)));
+        _materials = Materials::materials(ev.array(Key::Materials));
 
         // We might have to calculate gravity - without a DSS it's not included in the output
         // but we get mass and radius which is all we need.

@@ -60,6 +60,8 @@ namespace  Journal {
 
         virtual int64_t estimatedValue() const;
 
+        virtual ~StellarBody() = default;
+
     protected:
         QString _typeName{};
         QString _bodyName{};

@@ -98,6 +98,7 @@ namespace Journal {
                 break;
         }
         postEvent(event);
+        delete event;
     }
 
     void JFile::postEvent(Event *event) {

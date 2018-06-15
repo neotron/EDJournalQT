@@ -118,7 +118,7 @@ namespace Journal {
 
     Event::JournalEvent Event::journalEvent() const {
         auto type = QEvent::type();
-        if(type >= Unknown && type < NumEvents){
+        if(type >= static_cast<QEvent::Type>(Unknown) && type < static_cast<QEvent::Type>(NumEvents)){
             return static_cast<JournalEvent>(type);
         }
         return Unknown;

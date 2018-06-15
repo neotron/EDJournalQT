@@ -20,7 +20,7 @@
 #include "Events.h"
 #include <QDebug>
 
-#define EVENT(EVENT) case Event::##EVENT: {\
+#define EVENT(EVENT) case Event::EVENT: {\
     auto evptr = dynamic_cast<Event##EVENT *>(event);\
     if(evptr) { onEvent##EVENT(evptr); } \
     onEventGeneric(event); \

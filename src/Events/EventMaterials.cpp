@@ -20,9 +20,9 @@
 namespace  Journal {
     EventMaterials::EventMaterials(const QJsonObject &obj, const JFile *file)
         : Event(obj, file, Materials) {
-        _raw = std::move(Materials::materials(obj.value(Key::Raw)));
-        _encoded = std::move(Materials::materials(obj.value(Key::Encoded)));
-        _manufactured= std::move(Materials::materials(obj.value(Key::Manufactured)));
+        _raw = Materials::materials(obj.value(Key::Raw));
+        _encoded = Materials::materials(obj.value(Key::Encoded));
+        _manufactured= Materials::materials(obj.value(Key::Manufactured));
     }
 
     const QList<Material> &EventMaterials::raw() const {
