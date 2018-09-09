@@ -12,6 +12,7 @@
 #include <QDebug>
 
 namespace Journal {
+    static QSet<QString> s_unknownMaterials = QSet<QString>();
 
     Material::Material(QString id, QString name, QString abbreviation, Material::Rarity rarity, Material::Type type)
         : _id(std::move(id)), _name(std::move(name)), _abbreviation(std::move(abbreviation)), _rarity(rarity),
@@ -87,7 +88,12 @@ namespace Journal {
     }
 
     Material Materials::material(const QString &id) {
-        return _materialTable[id];
+        auto material = _materialTable[id];
+        if(!material.isValid() && !s_unknownMaterials.contains(id)) {
+            s_unknownMaterials << id;
+            qDebug() << "Unknown material" << id;
+        }
+        return material;
     }
 
     // Create a material object from a json value.

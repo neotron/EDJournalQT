@@ -19,6 +19,7 @@ QMap<QString, Material> Materials::_materialTable =
         Encoded("Exceptional Scrambled Emission Data", VeryCommon, "ESED", "scrambledemissiondata"),
         Encoded("Specialised Legacy Firmware", VeryCommon, "SLF", "legacyfirmware"),
         Encoded("Unusual Encrypted Files", VeryCommon, "UEF", "encryptedfiles"),
+        Encoded("Pattern Gamma Obelisk Data", VeryCommon, "PGOD", "ancienthistoricaldata"),
         // common data
         Encoded("Anomalous FSD Telemetry", Common, "AFT", "fsdtelemetry"),
         Encoded("Inconsistent Shield Soak Analysis", Common, "ISSA", "shieldsoakanalysis"),
@@ -27,7 +28,6 @@ QMap<QString, Material> Materials::_materialTable =
         Encoded("Tagged Encryption Codes", Common, "TEC", "encryptioncodes"),
         Encoded("Unidentified Scan Archives", Common, "USA", "scanarchives"),
         Encoded("Pattern Beta Obelisk Data", Common, "PBOD", "ancientculturaldata"),
-        Encoded("Pattern Gamma Obelisk Data", Common, "PGOD", "ancienthistoricaldata"),
         // standard data
         Encoded("Classified Scan Databanks", Standard, "CSD", "scandatabanks"),
         Encoded("Cracked Industrial Firmware", Standard, "CIF", "industrialfirmware"),
@@ -35,10 +35,7 @@ QMap<QString, Material> Materials::_materialTable =
         Encoded("Strange Wake Solutions", Standard, "SWS", "wakesolutions"),
         Encoded("Unexpected Emission Data", Standard, "UED", "emissiondata"),
         Encoded("Untypical Shield Scans", Standard, "USS", "shielddensityreports"),
-        Encoded("Peculiar Shield Frequency Data", Standard, "SFD", "shieldfrequencydata"),
-        Encoded("Classified Scan Fragment", Standard, "CFSD", "classifiedscandata"),
         Encoded("Abnormal Compact Emissions Data", Standard, "CED", "compactemissionsdata"),
-        Encoded("Modified Embedded Firmware", Standard, "EFW", "embeddedfirmware"),
         Encoded("Pattern Alpha Obelisk Data", Standard, "PAOD", "ancientbiologicaldata"),
         // rare data
         Encoded("Aberrant Shield Pattern Analysis", Rare, "ASPA", "shieldpatternanalysis"),
@@ -49,10 +46,14 @@ QMap<QString, Material> Materials::_materialTable =
         Encoded("Security Firmware Patch", Rare, "SFP", "securityfirmware"),
         Encoded("Pattern Delta Obelisk Data", Rare, "PDOD", "ancientlanguagedata"),
         // very rare data
+        Encoded("Modified Embedded Firmware", VeryRare, "EFW", "embeddedfirmware"),
+        Encoded("Classified Scan Fragment", VeryRare, "CFSD", "classifiedscandata"),
+        Encoded("Peculiar Shield Frequency Data", VeryRare, "SFD", "shieldfrequencydata"),
         Encoded("Adaptive Encryptors Capture", VeryRare, "AEC", "adaptiveencryptors"),
         Encoded("Datamined Wake Exceptions", VeryRare, "DWEx", "dataminedwake"),
         Encoded("Peculiar Shield Frequency Data", VeryRare, "PSFD", "shieldfrequencydata"),
         Encoded("Pattern Epsilon Obelisk Data", VeryRare, "PSFD", "ancienttechnologicaldata"),
+
         // very common manufactured
         Manufactured("Basic Conductors", VeryCommon, "BaC"),
         Manufactured("Chemical Storage Units", VeryCommon, "CSU"),
@@ -137,7 +138,7 @@ QMap<QString, Material> Materials::_materialTable =
         ManufacturedA("Guardian Power Cell", VeryCommon, "GPCe", "guardian_powercell"),
         ManufacturedA("Guardian Power Conduit", Common, "GPCo", "guardian_powerconduit"),
         ManufacturedA("Guardian Sentinel Weapon Parts", Standard, "GSWP", "guardian_sentinel_weaponparts"),
-        ManufacturedA("Guardian Sentinel Wreckage Components", VeryCommon, "GSWC", "guardian_sentinel_wreckagecomponents"),
+        ManufacturedA("Guardian Wreckage Components", VeryCommon, "GSWC", "guardian_sentinel_wreckagecomponents"),
         ManufacturedA("Guardian Tech Component", Standard, "GTC", "guardian_techcomponent"),
 
         // RAW VERY COMMON
