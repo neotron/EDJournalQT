@@ -22,4 +22,3 @@ namespace Journal {
         : Event(obj, file, SupercruiseEntry) {
     }
 }
-
