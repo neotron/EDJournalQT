@@ -62,7 +62,7 @@ namespace Journal {
                 bool success = true;
                 float x = 0, y = 0, z = 0;
                 FLOAT(array[0], x);
-                FLOAT(array[1], x);
+                FLOAT(array[1], y);
                 FLOAT(array[2], z);
                 if(success) {
                     return { x, y, z };
