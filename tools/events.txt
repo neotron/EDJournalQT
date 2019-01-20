@@ -1,5 +1,8 @@
-Powerplay
-RepairDrone
-SearchAndRescue
-NpcCrewRank
-CargoDepot
+SquadronStartup
+FSSSignalDiscovered
+FSDTarget
+FSSDiscoveryScan
+FSSAllBodiesFound
+ReservoirReplenished
+SAAScanComplete
+Status

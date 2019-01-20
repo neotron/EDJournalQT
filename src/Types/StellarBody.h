@@ -62,6 +62,8 @@ namespace  Journal {
 
         virtual ~StellarBody() = default;
 
+        int64_t bodyId() const;
+
     protected:
         QString _typeName{};
         QString _bodyName{};
@@ -75,6 +77,7 @@ namespace  Journal {
         double _rotationPeriod;
         double _distanceFromArrivalLs;
         Body::Type _bodyType;
+        int64_t _bodyId;
 
 
     };

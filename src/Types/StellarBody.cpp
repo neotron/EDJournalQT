@@ -32,7 +32,7 @@ namespace  Journal {
           _orbitalPeriod(ev.doubleValue(Key::OrbitalPeriod)),
           _rotationPeriod(ev.doubleValue(Key::RotationPeriod)),
           _distanceFromArrivalLs(ev.doubleValue(Key::DistanceFromArrivalLS)),
-          _bodyType(type)
+          _bodyType(type), _bodyId(ev.integer(Key::BodyId))
     {
         switch(type) {
             case Body::Planet:
@@ -100,5 +100,9 @@ namespace  Journal {
 
     int64_t StellarBody::estimatedValue() const {
         return 0;
+    }
+
+    int64_t StellarBody::bodyId() const {
+        return _bodyId;
     }
 }
