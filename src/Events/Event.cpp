@@ -128,4 +128,3 @@ namespace Journal {
         return _file;
     }
 }
-

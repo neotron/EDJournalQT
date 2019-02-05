@@ -12,37 +12,21 @@
 //  GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 
-#include <QtCore/QDateTime>
-#include <QtCore/QString>
-#include <QMap>
-#include <memory>
-#include "Types.h"
-#include "Event.h"
+#include "EventMarketBuy.h"
 
 namespace Journal {
+    EventMarketBuy::EventMarketBuy(const QJsonObject &obj, const JFile *file)
+        : Event(obj, file, MarketBuy),
+          CommodityExchange(obj.value(Key::Type).toString(),
+                            obj.value(Key::BuyPrice).toInt(),
+                            -static_cast<int16_t>(obj.value(Key::Count).toInt()))
+    {
+    }
 
-    class EventScan: public Event {
-    public:
-        EventScan(const QJsonObject &obj, const JFile *file);
-        ~EventScan() override = default;
-
-        Body::Type bodyType() const;
-
-        StarPtr star() const;
-
-        PlanetPtr planet() const;
-
-        int64_t estimatedValue() const;
-
-    private:
-
-        Body::Type _bodyType;
-        StarPtr _star{};
-        PlanetPtr _planet{};
-
-    public:
-        void createBodyInstance();
-    };
+    int64_t EventMarketBuy::totalCost() const { return abs(creditChange()); }
 }
+
 #pragma once

@@ -12,37 +12,18 @@
 //  GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 
-#include <QtCore/QDateTime>
-#include <QtCore/QString>
-#include <QMap>
-#include <memory>
-#include "Types.h"
-#include "Event.h"
+#include "EventSellDrones.h"
 
 namespace Journal {
-
-    class EventScan: public Event {
-    public:
-        EventScan(const QJsonObject &obj, const JFile *file);
-        ~EventScan() override = default;
-
-        Body::Type bodyType() const;
-
-        StarPtr star() const;
-
-        PlanetPtr planet() const;
-
-        int64_t estimatedValue() const;
-
-    private:
-
-        Body::Type _bodyType;
-        StarPtr _star{};
-        PlanetPtr _planet{};
-
-    public:
-        void createBodyInstance();
-    };
+    EventSellDrones::EventSellDrones(const QJsonObject &obj, const JFile *file)
+        : Event(obj, file, SellDrones),
+          CommodityExchange(obj.value(Key::Type).toString(),
+                            obj.value(Key::SellPrice).toInt(),
+                            static_cast<int16_t>(obj.value(Key::Count).toInt())) {
+    }
 }
+
 #pragma once

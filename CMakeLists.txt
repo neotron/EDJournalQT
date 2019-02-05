@@ -23,9 +23,3 @@ file(GLOB_RECURSE LIB_SOURCE_FILES src/*.cpp src/*.h)
 add_library(EDJournalQT ${LIB_SOURCE_FILES})
 include_directories(AFTER "src")
 target_link_libraries(EDJournalQT ${LINK_LIBS})
-file(GLOB APP_SOURCE_FILES test/*.cpp test/*.h test/*.ui)
-
-add_executable(TestApp ${APP_SOURCE_FILES})
-target_link_libraries(TestApp EDJournalQT Qt5::Widgets)
-target_include_directories(TestApp PUBLIC src)
-

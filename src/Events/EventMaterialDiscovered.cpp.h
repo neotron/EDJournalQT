@@ -12,37 +12,26 @@
 //  GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 
-#include <QtCore/QDateTime>
-#include <QtCore/QString>
-#include <QMap>
-#include <memory>
-#include "Types.h"
-#include "Event.h"
+#include "EventMaterialDiscovered.h"
 
 namespace Journal {
+    EventMaterialDiscovered::EventMaterialDiscovered(const QJsonObject &obj, const JFile *file)
+        : Event(obj, file, MaterialDiscovered),
+          _material(Materials::material(obj.value(Key::Name))),
+          _discoveryNumber(obj.value(Key::DiscoveryNumber).toInt(0)) {
 
-    class EventScan: public Event {
-    public:
-        EventScan(const QJsonObject &obj, const JFile *file);
-        ~EventScan() override = default;
+    }
 
-        Body::Type bodyType() const;
+    const Material &EventMaterialDiscovered::material() const {
+        return _material;
+    }
 
-        StarPtr star() const;
-
-        PlanetPtr planet() const;
-
-        int64_t estimatedValue() const;
-
-    private:
-
-        Body::Type _bodyType;
-        StarPtr _star{};
-        PlanetPtr _planet{};
-
-    public:
-        void createBodyInstance();
-    };
+    int EventMaterialDiscovered::discoveryNumber() const {
+        return _discoveryNumber;
+    }
 }
+
 #pragma once
