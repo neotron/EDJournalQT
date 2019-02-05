@@ -1,3 +1,6 @@
+// Build all the events! Much faster than building individually.
+
+
 #include "EventAFMURepairs.cpp.h"
 #include "EventApproachBody.cpp.h"
 #include "EventApproachSettlement.cpp.h"
