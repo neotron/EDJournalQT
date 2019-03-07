@@ -41,7 +41,7 @@ namespace Journal {
 
         int64_t efficiencyTarget() const;
 
-        const bool efficiencyTargetMet() const;
+        bool efficiencyTargetMet() const;
 
     };
 }

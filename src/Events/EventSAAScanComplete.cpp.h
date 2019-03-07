@@ -38,7 +38,7 @@ namespace Journal {
         return this->integer(Key::EfficiencyTarget);
     }
 
-    const bool EventSAAScanComplete::efficiencyTargetMet() const {
+    bool EventSAAScanComplete::efficiencyTargetMet() const {
         return probesUsed() <= efficiencyTarget();
     }
 }
