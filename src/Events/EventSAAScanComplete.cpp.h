@@ -41,6 +41,7 @@ namespace Journal {
     bool EventSAAScanComplete::efficiencyTargetMet() const {
         return probesUsed() <= efficiencyTarget();
     }
+
 }
 
 #pragma once
