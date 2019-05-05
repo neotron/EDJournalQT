@@ -23,6 +23,8 @@
 
 #include "Events.h"
 #include "EventTable.h"
+#include "Event.h"
+
 static QSet<QString> s_unknownEvents = {};
 namespace Journal {
 
@@ -127,4 +129,6 @@ namespace Journal {
     const JFile *Event::file() const {
         return _file;
     }
+
+    Event::~Event() = default;
 }

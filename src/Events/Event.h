@@ -42,7 +42,7 @@ namespace Journal {
 
         Event(const QJsonObject &obj, const JFile *file, JournalEvent event);
 
-        ~Event() override = default;
+        ~Event() override;
 
         static Event *eventFromDocument(QJsonDocument &document, Journal::JFile *pFile);
 
