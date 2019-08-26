@@ -24,8 +24,16 @@ namespace Journal {
     public:
         EventFSDJump(const QJsonObject &obj, const JFile *file);
 
-    private:
+        double jumpDist() const;
 
+        double fuelUsed() const;
+
+        double fuelLevel() const;
+
+    private:
+        double _jumpDist;
+        double _fuelUsed;
+        double _fuelLevel;
     };
 }
 

@@ -81,6 +81,14 @@ namespace Journal {
 
         int64_t estimatedValue() const override;
 
+        bool isMapped() const;
+
+        void setIsMapped(bool isMapped);
+
+        bool isEfficient() const;
+
+        void setIsEfficient(bool isEfficient);
+
     private:
         Type _type;
         Atmosphere::Type _atmosphereType;
@@ -91,6 +99,8 @@ namespace Journal {
         double _surfacePressure;
         bool _landable;
         bool _tidalLock;
+        bool _isMapped;
+        bool _isEfficient;
         TerraformState::State _terraformState;
         QList<Material> _materials{};
 
@@ -100,6 +110,6 @@ namespace Journal {
 
     };
 
-    typedef std::shared_ptr<const Planet> PlanetPtr;
+    typedef std::shared_ptr<Planet> PlanetPtr;
 
 }

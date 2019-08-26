@@ -32,7 +32,9 @@ namespace  Journal {
           _surfacePressure(ev.doubleValue(Key::SurfacePressure)),
           _landable(ev.boolean(Key::Landable)),
           _tidalLock(ev.boolean(Key::TidalLock)),
-          _terraformState(TerraformState::None)
+          _terraformState(TerraformState::None),
+          _isMapped(false),
+          _isEfficient(false)
     {
         if(s_planetToType.contains(_typeName)) {
             _type = s_planetToType[_typeName];
@@ -257,5 +259,21 @@ namespace  Journal {
 
     int64_t Planet::estimatedValue() const {
         return Util::BodyWorth::estimatedWorth(*this);
+    }
+
+    bool Planet::isMapped() const {
+        return _isMapped;
+    }
+
+    void Planet::setIsMapped(bool isMapped) {
+        _isMapped = isMapped;
+    }
+
+    bool Planet::isEfficient() const {
+        return _isEfficient;
+    }
+
+    void Planet::setIsEfficient(bool isEfficient) {
+        _isEfficient = isEfficient;
     }
 }

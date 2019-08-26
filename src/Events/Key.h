@@ -283,7 +283,6 @@ namespace Journal::Key {
     K(Victim_Localised)
     K(Volcanism)
     K(Width)
-
 }
 
 #undef K

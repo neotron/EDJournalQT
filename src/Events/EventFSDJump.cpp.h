@@ -19,7 +19,21 @@
 
 namespace Journal {
     EventFSDJump::EventFSDJump(const QJsonObject &obj, const JFile *file)
-        : Event(obj, file, FSDJump) {
+        : Event(obj, file, FSDJump), _jumpDist(doubleValue(Key::JumpDist)),
+          _fuelUsed(doubleValue(Key::FuelUsed)),
+          _fuelLevel(doubleValue(Key::FuelLevel))
+    {}
+
+    double EventFSDJump::jumpDist() const {
+        return _jumpDist;
+    }
+
+    double EventFSDJump::fuelUsed() const {
+        return _fuelUsed;
+    }
+
+    double EventFSDJump::fuelLevel() const {
+        return _fuelLevel;
     }
 }
 

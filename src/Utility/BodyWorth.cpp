@@ -20,21 +20,22 @@
 namespace Journal::Util  {
 
     // Planet base values
-    static const int64_t kValueMetalRich = 52292;
-    static const int64_t kValueHMC_GGII = 23168;
-    static const int64_t kValueELW_WW = 155581;
-    static const int64_t kValueAmmoniaWorld = 232619;
-    static const int64_t kValueGGI = 3974;
+    static const int64_t kValueMetalRich = 21790;
+    static const int64_t kValueHMC_GGII = 9654;
+    static const int64_t kValueELW_WW = 64831;
+    static const int64_t kValueAmmoniaWorld = 96932;
+    static const int64_t kValueGGI = 1656;
     static const int64_t kValueDefaultPlanet = 720;
     // Planet terraformable bonus
-    static const int64_t KBonusHMC = 241607;
-    static const int64_t kBonusELW_WW = 279088;
-    static const int64_t kBonusDefaultPlanet = 233971;
+    static const int64_t kBonusMetalRich = 65631;
+    static const int64_t KBonusHMC = 100677;
+    static const int64_t kBonusELW_WW = 116295;
+    static const int64_t kBonusDefaultPlanet = 93328;
     // Stars
-    static const int64_t kValueWhiteDwarf = 33737;
-    static const int64_t kValueNS_BH = 54309;
-    static const int64_t kValueStar = 2880;
-
+    static const int64_t kValueWhiteDwarf = 14057;
+    static const int64_t kValueNS_BH = 22628;
+    static const int64_t kValueStar = 1200;
+    static const int64_t kValueSuperMassiveBH = 33.5678;
 
     int64_t BodyWorth::estimatedWorth(PlanetPtr planet) {
         return planet ? estimatedWorth(*planet) : 0;
@@ -80,10 +81,15 @@ namespace Journal::Util  {
                     bonus = kBonusDefaultPlanet;
                 }
         }
+        value += bonus;
         double mass = planet.mass() <= 0.0 ? 1.0 : planet.mass();
-        value = adjustedPlanetValue(value, mass);
-        if(bonus > 0) {
-            value += adjustedPlanetValue(bonus, mass);
+        if(planet.isMapped()) {
+            // We assume mapped, not first mapped.
+            auto effMapModifier = planet.isEfficient() ? 1.25 : 1.0;
+            value = adjustedPlanetValue(value, mass, (10 / 3.0) * effMapModifier);
+            //value  = adjustedPlanetValue(value, mass, 3.699622554 * effMapModifier) * 2.6;
+        } else {
+            value = adjustedPlanetValue(value, mass, 1.0);
         }
         return value;
     }
@@ -113,6 +119,9 @@ namespace Journal::Util  {
             case Star::H:
                 value = kValueNS_BH; // black holes
                 break;
+            case Star::SupermassiveBlackHole:
+                value = kValueSuperMassiveBH;
+                break;
             default:
                 value = kValueStar;
                 break;
@@ -124,8 +133,9 @@ namespace Journal::Util  {
         return static_cast<int64_t>(value + (mass * value / 66.25));
     }
 
-    int64_t BodyWorth::adjustedPlanetValue(int64_t value, double mass) {
-        return static_cast<int64_t>(value + (3 * value * pow(mass, 0.199977) / 5.3));
+    int64_t BodyWorth::adjustedPlanetValue(int64_t value, double mass, double map) {
+        const double q = 0.56591828;
+        return std::max(static_cast<int64_t>((value + (value * pow(mass, 0.2) * q)) * map), 500LL);
     }
 
 }

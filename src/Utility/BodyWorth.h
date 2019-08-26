@@ -30,6 +30,6 @@ namespace Journal::Util {
         static int64_t estimatedWorth(const Star &star);
     private:
         static int64_t adjustedStarValue(int64_t value, double mass);
-        static int64_t adjustedPlanetValue(int64_t value, double mass);
+        static int64_t adjustedPlanetValue(int64_t value, double mass, double map = 1.0);
 };
 }
